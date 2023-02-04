@@ -62,7 +62,7 @@ enableEmoji = true
   gitRepo = ""
   # LoveIt NEW | 0.1.1 which hash function used for SRI, when empty, no SRI is used
   # ["sha256", "sha384", "sha512", "md5"]
-  fingerprint = "sha"
+  fingerprint = "sha512"
   # LoveIt NEW | 0.2.0 date format
   dateFormat = "02-01-2006"
   # website title for Open Graph and Twitter Cards
