@@ -10,7 +10,7 @@ This post contains an introduction to this new website and how it will work from
 
 First of all, I'm still in Security but moved to Product Security (more on this on a later post but TL;DR: boredom, careeer and growth opportunities, frustration and fear of burnout). 
 Fortunately I still have time and resources on my job to conduct vulnerability research so occasionally I will post about interesting vulnerabilities I found.
-I would also like to talk about security aspects more related to SDLC, so let's how it'll go.
+I would also like to talk about security aspects more related to SDLC, so let's see how it'll go.
 
 ## How this blog works
 The setup is pretty simple, I'm using [hugo](https://gohugo.io/) to build static pages and publish them on GitHub pages. There is a [Github Action](https://github.com/peaceiris/actions-hugo) running that builds and deploy the pages every time a PR is approved on the `main` branch.
