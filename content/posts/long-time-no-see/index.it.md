@@ -41,4 +41,4 @@ Se il vecchio blog risponde con un redirect a quello nuovo significa che la migr
 
 Nonostante il nome sia `appsec.space` mi piacerebbe parlare di diversi argomenti, spaziando dall'Application security, al Malware Development (a scopo formativo, [ovviamente](https://www.youtube.com/watch?v=zlbe6BsLCNc)), al mio setup per la produttivita' a lamentele varie.
 
-Il prossimo post sara' sul [Security Theater](https://en.wikipedia.org/wiki/Security_theater) quindi,come diceva qualcuno, ci vediamo li.
+Il prossimo post sara' sul [Security Theater](https://en.wikipedia.org/wiki/Security_theater) quindi, come diceva qualcuno, ci vediamo li.
