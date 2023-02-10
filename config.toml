@@ -64,7 +64,7 @@ enableEmoji = true
     # mobile header mode ["fixed", "normal", "auto"]
     mobileMode = "auto"
     [params.header.title]
-      logo = ""
+      logo = "/images/circle_cropped_logo.png"
       # title name
       name = ""
       # you can add extra information before the name (HTML format is supported), such as icons
