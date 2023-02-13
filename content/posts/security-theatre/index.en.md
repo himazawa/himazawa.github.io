@@ -6,20 +6,19 @@ tags: [security theatre, infosec, rants]
 categories: [general-knowledge]
 ---
 
-Working in the field, I have seen many organizations invest a significant amount of time and resources (read: people and money) into security measures that provide little to no actual security.
+I have seen many companies invest significant time and resources into security measures that have little to no actual effect on security. This is commonly referred to as "security theater".
 <!--more--> 
-I've witnessed organizations perform a never-ending clown show in the name of security. 
-This is commonly referred to as "security theatre".
-
 ## What is the Security Theatre
 
-Security theatre, in its simplest form, is a grand illusion. It's security measures put in place not because they actually prevent security breaches, but because they look good on paper, pacify stakeholders, and make everyone feel like they're doing something to protect themselves.
+Security theater refers to the practice of implementing security measures for the sake of appearances, without any significant impact on actual security. These measures may give the illusion of protection, but in reality, they provide little to no real security benefits. Organizations often fall into the trap of focusing solely on compliance requirements without considering their actual security needs. Compliance-driven security measures may give the illusion of being protected, but they often fail to address the specific security risks faced by an organization. This can lead to a situation where an organization is in compliance with regulations, but still vulnerable to attack.
+
+Useless compliance can also result in organizations wasting valuable resources on implementing measures that do not have a significant impact on their security posture. This can lead to a situation where an organization's security budget is depleted, while their assets are still vulnerable to attack.
 
 [Oh, how I love the smell of compliance in the morning](https://www.youtube.com/watch?v=vRp7tYWnJJs).
 
 Take, for instance, the requirement of having complex passwords that are regularly changed. This, is a classic example of security theatre. 
 
-While this may seem like a good idea on the surface, it actually does little to prevent security breaches. And let's not forget the inevitable result: password fatigue, causing employees to use ones that are easier to remember or simple variations of the one they previously used. There is a reason (multiple, actually) if [Microsoft](https://techcommunity.microsoft.com/t5/microsoft-entra-azure-ad-blog/expansion-of-fido-standard-and-new-updates-for-microsoft/ba-p/3290633), [Google](https://blog.google/technology/safety-security/one-step-closer-to-a-passwordless-future/) and [Apple](https://www.apple.com/newsroom/2022/05/apple-google-and-microsoft-commit-to-expanded-support-for-fido-standard/) want to move away from passwords.
+Security theater is simply a deception, where security measures are put in place to give the appearance of security, but in reality do little to prevent security breaches. An example of this is the use of complex passwords that are changed regularly. Although it may seem like a good idea, it can lead to password fatigue and employees using easier-to-remember passwords, which actually undermines security. This is why companies like [Microsoft](https://techcommunity.microsoft.com/t5/microsoft-entra-azure-ad-blog/expansion-of-fido-standard-and-new-updates-for-microsoft/ba-p/3290633), [Apple](https://www.apple.com/newsroom/2022/05/apple-google-and-microsoft-commit-to-expanded-support-for-fido-standard/), and [Google](https://blog.google/technology/safety-security/one-step-closer-to-a-passwordless-future/) are moving away from passwords.
 
 {{< figure src="https://imgs.xkcd.com/comics/password_strength.png" title="fix your password policy">}}
 
@@ -27,12 +26,12 @@ Another example of security theatre is implementing security controls that are n
 
 ## Root cause
 
-So, what can organizations do to avoid this never-ending circus? First and foremost, they need to understand the real threats they face and implement controls that address those specific threats. This must include in fist place educating employees on how to recognize and respond to attacks. 
+Organizations can protect themselves from the constant security threats by taking a proactive approach. The first step is to gain a thorough understanding of the specific risks they are facing and then implement the necessary measures to mitigate these risks. This includes educating their employees to be aware of potential attacks and how to respond in such situations.
 
-Cybersecurity after all, is the Gold Rush 2.0, lots of money are on the table and everyone wants to join, so finding skilled individuals is hard and if you hire consultants is even worse because you will fully depend on them for your security posture.
+Cybersecurity has become the new gold rush, with numerous individuals and organizations seeking to take advantage of the potential financial gains. However, finding skilled personnel to address these security concerns can be challenging, and relying on consultants can lead to a situation where the organization becomes overly dependent on their expertise.
 
 ## Wrapping up
-In conclusion, security theatre, is a common problem in the IT security world. To avoid being part of the show, organizations must focus on implementing effective controls, regularly assessing their effectiveness, and having a comprehensive response plan in place. And, for the love of god, stop with the pointless policies already!
+In conclusion, to avoid being caught in the trap of "security theater", organizations must concentrate on establishing practical security measures and regularly evaluate their effectiveness. Having a well-thought-out response plan in place is also critical in ensuring the protection of the organization's assets. Additionally, organizations should cease creating redundant policies that serve no purpose in enhancing the organization's overall security posture.
 
 {{< admonition type=tip title="Tip" open=true >}}
 [Here](https://www.philvenables.com/post/ceremonial-security-and-cargo-cults) you can find an interesting article from Phil Venables, Google CISO, about Cerimonial Security and Cargo Cults
