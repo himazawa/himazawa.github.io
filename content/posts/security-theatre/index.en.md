@@ -9,7 +9,7 @@ categories: [general-knowledge]
 Working in the field, I have seen many organizations invest a significant amount of time and resources (read: people and money) into security measures that provide little to no actual security.
 <!--more--> 
 I've witnessed organizations perform a never-ending clown show in the name of security. 
-This is commonly referred to as "security theatre."
+This is commonly referred to as "security theatre".
 
 ## What is the Security Theatre
 
