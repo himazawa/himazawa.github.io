@@ -10,15 +10,16 @@ I have seen many companies invest significant time and resources into security m
 <!--more--> 
 ## What is the Security Theatre
 
-Security theater refers to the practice of implementing security measures for the sake of appearances, without any significant impact on actual security. These measures may give the illusion of protection, but in reality, they provide little to no real security benefits. Organizations often fall into the trap of focusing solely on compliance requirements without considering their actual security needs. Compliance-driven security measures may give the illusion of being protected, but they often fail to address the specific security risks faced by an organization. This can lead to a situation where an organization is in compliance with regulations, but still vulnerable to attack.
+Security theater refers to the practice of implementing security measures for the sake of appearances, without any significant impact on actual security. These measures may give the illusion of protection, but in reality, they provide little to no real security benefits. 
 
-Useless compliance can also result in organizations wasting valuable resources on implementing measures that do not have a significant impact on their security posture. This can lead to a situation where an organization's security budget is depleted, while their assets are still vulnerable to attack.
+Organizations often fall into the trap of focusing solely on compliance requirements without considering their actual security needs. Compliance-driven security measures may give the illusion of being protected, but they often fail to address the specific security risks faced by an organization. This can lead to a situation where an organization is in compliance with regulations, but the security budget is depleted, while their assets are still vulnerable to attack.
+
+Useless compliance can also result in organizations wasting valuable resources on implementing measures that do not have a significant impact on their security posture. This can lead to a situation where an organization is in compliance with regulations, while their assets are still vulnerable to attack.
 
 [Oh, how I love the smell of compliance in the morning](https://www.youtube.com/watch?v=vRp7tYWnJJs).
 
-Take, for instance, the requirement of having complex passwords that are regularly changed. This, is a classic example of security theatre. 
 
-Security theater is simply a deception, where security measures are put in place to give the appearance of security, but in reality do little to prevent security breaches. An example of this is the use of complex passwords that are changed regularly. Although it may seem like a good idea, it can lead to password fatigue and employees using easier-to-remember passwords, which actually undermines security. This is why companies like [Microsoft](https://techcommunity.microsoft.com/t5/microsoft-entra-azure-ad-blog/expansion-of-fido-standard-and-new-updates-for-microsoft/ba-p/3290633), [Apple](https://www.apple.com/newsroom/2022/05/apple-google-and-microsoft-commit-to-expanded-support-for-fido-standard/), and [Google](https://blog.google/technology/safety-security/one-step-closer-to-a-passwordless-future/) are moving away from passwords.
+An example of this is the use of complex passwords that are changed regularly. Although it may seem like a good idea, it can lead to password fatigue and employees using easier-to-remember passwords, which actually undermines security. This is among the reasons why companies like [Microsoft](https://techcommunity.microsoft.com/t5/microsoft-entra-azure-ad-blog/expansion-of-fido-standard-and-new-updates-for-microsoft/ba-p/3290633), [Apple](https://www.apple.com/newsroom/2022/05/apple-google-and-microsoft-commit-to-expanded-support-for-fido-standard/), and [Google](https://blog.google/technology/safety-security/one-step-closer-to-a-passwordless-future/) are moving away from passwords.
 
 {{< figure src="https://imgs.xkcd.com/comics/password_strength.png" title="fix your password policy">}}
 
