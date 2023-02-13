@@ -3,6 +3,7 @@ title: "Long Time No See"
 date: 2023-02-06T00:01:18+01:00
 draft: false
 tags: [updates]
+categories: [blog-news]
 ---
 
 Long time no see, uh? Lot of stuff happen since the last post in 2018 on [the old blog](https://bsod.dev).<!--more--> Unfortunately I wasn't able to write much, both for the lack of time and the impossibility to share what I learned.
