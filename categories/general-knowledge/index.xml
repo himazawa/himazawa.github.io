@@ -1,0 +1,27 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>general-knowledge - Category - appsec &amp; stuff</title><link>https://appsec.space/categories/general-knowledge/</link><description>general-knowledge - Category - appsec &amp; stuff</description><generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Mon, 13 Feb 2023 20:20:00 +0100</lastBuildDate><atom:link href="https://appsec.space/categories/general-knowledge/" rel="self" type="application/rss+xml"/><item><title>Security Theatre? More like Security Circus</title><link>https://appsec.space/posts/security-theatre/</link><pubDate>Mon, 13 Feb 2023 20:20:00 +0100</pubDate><author>himazawa</author><guid>https://appsec.space/posts/security-theatre/</guid><description><![CDATA[<p>Working in the field, I have seen many organizations invest a significant amount of time and resources (read: people and money) into security measures that provide little to no actual security.</p>
+<p>I&rsquo;ve witnessed organizations perform a never-ending clown show in the name of security.
+This is commonly referred to as &ldquo;security theatre.&rdquo;</p>
+<h2 id="what-is-the-security-theatre">What is the Security Theatre</h2>
+<p>Security theatre, in its simplest form, is a grand illusion. It&rsquo;s security measures put in place not because they actually prevent security breaches, but because they look good on paper, pacify stakeholders, and make everyone feel like they&rsquo;re doing something to protect themselves.</p>
+<p><a href="https://www.youtube.com/watch?v=vRp7tYWnJJs" target="_blank" rel="noopener noreffer ">Oh, how I love the smell of compliance in the morning</a>.</p>
+<p>Take, for instance, the requirement of having complex passwords that are regularly changed. This, is a classic example of security theatre.</p>
+<p>While this may seem like a good idea on the surface, it actually does little to prevent security breaches. And let&rsquo;s not forget the inevitable result: password fatigue, causing employees to use ones that are easier to remember or simple variations of the one they previously used. There is a reason (multiple, actually) if <a href="https://techcommunity.microsoft.com/t5/microsoft-entra-azure-ad-blog/expansion-of-fido-standard-and-new-updates-for-microsoft/ba-p/3290633" target="_blank" rel="noopener noreffer ">Microsoft</a>, <a href="https://blog.google/technology/safety-security/one-step-closer-to-a-passwordless-future/" target="_blank" rel="noopener noreffer ">Google</a> and <a href="https://www.apple.com/newsroom/2022/05/apple-google-and-microsoft-commit-to-expanded-support-for-fido-standard/" target="_blank" rel="noopener noreffer ">Apple</a> want to move away from passwords.</p>
+<figure><figcaption>
+            <h4>fix your password policy</h4>
+        </figcaption>
+</figure>
+
+<p>Another example of security theatre is implementing security controls that are not properly configured or maintained. For instance, firewalls, IDS and IPS are a common security measure that are often poorly configured or not kept up-to-date with the latest security patches</p>
+<h2 id="root-cause">Root cause</h2>
+<p>So, what can organizations do to avoid this never-ending circus? First and foremost, they need to understand the real threats they face and implement controls that address those specific threats. This must include in fist place educating employees on how to recognize and respond to attacks.</p>
+<p>Cybersecurity after all, is the Gold Rush 2.0, lots of money are on the table and everyone wants to join, so finding skilled individuals is hard and if you hire consultants is even worse because you will fully depend on them for your security posture.</p>
+<h2 id="wrapping-up">Wrapping up</h2>
+<p>In conclusion, security theatre, is a common problem in the IT security world. To avoid being part of the show, organizations must focus on implementing effective controls, regularly assessing their effectiveness, and having a comprehensive response plan in place. And, for the love of god, stop with the pointless policies already!</p>
+<div class="details admonition tip open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-lightbulb fa-fw" aria-hidden="true"></i>Tip<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><a href="https://www.philvenables.com/post/ceremonial-security-and-cargo-cults" target="_blank" rel="noopener noreffer ">Here</a> you can find an interesting article from Phil Venables, Google CISO, about Cerimonial Security and Cargo Cults</div>
+        </div>
+    </div>]]></description></item></channel></rss>
