@@ -16,8 +16,6 @@ Questo fenomeno e' comunemente chiamato "security theatre".
 
 Il security theatre, nella sua forma piu' semplice, e' una grande illusione. E' l'insieme di misure di sicurezza messe in piedi non perche' prevengano realmente i data breach, ma solo perche' sulla carta sembrano buoni, tranquillizzano gli stakeholders e fanno sentire tutti come se stessero davvero facendo qualcosa di utile per proteggersi.
 
-{{< youtube w7Ft2ymGmfc >}}
-
 [Lo senti? Lo senti l'odore? _compliance_ figliolo, non c'e' nient'altro al mondo che odora cosi'. ](https://www.youtube.com/watch?v=MzQPTdDwtVk).
 
 Come esempio, prendiamo il requisito di avere password complesse che devono essere regolarmente cambiate. Questo e' il classico esempio di security theatre.
