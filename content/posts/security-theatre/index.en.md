@@ -14,7 +14,7 @@ Security theater refers to the practice of implementing security measures for th
 
 Organizations often fall into the trap of focusing solely on compliance requirements without considering their actual security needs. Compliance-driven security measures may give the illusion of being protected, but they often fail to address the specific security risks faced by an organization.
 
-Useless compliance can also result in organizations wasting valuable resources on implementing measures that do not have a significant impact on their security posture. This can lead to a situation where an organization is in compliance with regulations, but the security budget is depleted, while their assets are still vulnerable to attack.
+Useless compliance can also result in organizations wasting valuable resources on implementing measures that do not have a significant impact on their security posture. This can lead to a situation where an organization is in compliance with regulations, but the security budget is depleted, while their assets are still vulnerable to attacks.
 
 [Oh, how I love the smell of compliance in the morning](https://www.youtube.com/watch?v=vRp7tYWnJJs).
 
