@@ -1,59 +1,59 @@
-<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>appsec &amp; stuff</title><link>https://appsec.space/</link><description>A space where I talk about Application Security &amp; other stuff</description><generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Mon, 13 Feb 2023 20:20:00 +0100</lastBuildDate><atom:link href="https://appsec.space/index.xml" rel="self" type="application/rss+xml"/><item><title>Security Theatre? More like Security Circus</title><link>https://appsec.space/posts/security-theatre/</link><pubDate>Mon, 13 Feb 2023 20:20:00 +0100</pubDate><author>himazawa</author><guid>https://appsec.space/posts/security-theatre/</guid><description><![CDATA[<p>I have seen many companies invest significant time and resources into security measures that have little to no actual effect on security. This is commonly referred to as &ldquo;security theater&rdquo;.</p>
-<h2 id="what-is-the-security-theatre">What is the Security Theatre</h2>
-<p>Security theater refers to the practice of implementing security measures for the sake of appearances, without any significant impact on actual security. These measures may give the illusion of protection, but in reality, they provide little to no real security benefits.</p>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>appsec &amp; stuff</title><link>https://appsec.space/</link><description>A space where I talk about Application Security &amp; other stuff</description><generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Mon, 13 Feb 2023 20:20:00 +0100</lastBuildDate><atom:link href="https://appsec.space/index.xml" rel="self" type="application/rss+xml"/><item><title>Security Theatre? More like Security Circus</title><link>https://appsec.space/posts/security-theatre/</link><pubDate>Mon, 13 Feb 2023 20:20:00 +0100</pubDate><author><name>himazawa</name></author><guid>https://appsec.space/posts/security-theatre/</guid><description><![CDATA[<p>I have seen many companies invest significant time and resources into security measures that have little to no actual effect on security. This is commonly referred to as &ldquo;security theater&rdquo;.</p>
+<h2 id="what-is-the-security-theatre" class="headerLink">
+    <a href="#what-is-the-security-theatre" class="header-mark"></a>What is the Security Theatre</h2><p>Security theater refers to the practice of implementing security measures for the sake of appearances, without any significant impact on actual security. These measures may give the illusion of protection, but in reality, they provide little to no real security benefits.</p>
 <p>Organizations often fall into the trap of focusing solely on compliance requirements without considering their actual security needs. Compliance-driven security measures may give the illusion of being protected, but they often fail to address the specific security risks faced by an organization.</p>
 <p>Useless compliance can also result in organizations wasting valuable resources on implementing measures that do not have a significant impact on their security posture. This can lead to a situation where an organization is in compliance with regulations, but the security budget is depleted, while their assets are still vulnerable to attacks.</p>
-<p><a href="https://www.youtube.com/watch?v=vRp7tYWnJJs" target="_blank" rel="noopener noreffer ">Oh, how I love the smell of compliance in the morning</a>.</p>
-<p>An example of Security Theatre is the use of complex passwords that are changed regularly. Although it may seem like a good idea, it can lead to password fatigue and employees using easier-to-remember passwords, which actually undermines security. This is among the reasons why companies like <a href="https://techcommunity.microsoft.com/t5/microsoft-entra-azure-ad-blog/expansion-of-fido-standard-and-new-updates-for-microsoft/ba-p/3290633" target="_blank" rel="noopener noreffer ">Microsoft</a>, <a href="https://www.apple.com/newsroom/2022/05/apple-google-and-microsoft-commit-to-expanded-support-for-fido-standard/" target="_blank" rel="noopener noreffer ">Apple</a>, and <a href="https://blog.google/technology/safety-security/one-step-closer-to-a-passwordless-future/" target="_blank" rel="noopener noreffer ">Google</a> are moving away from passwords.</p>
+<p><a href="https://www.youtube.com/watch?v=vRp7tYWnJJs" target="_blank" rel="noopener noreferrer">Oh, how I love the smell of compliance in the morning</a>.</p>
+<p>An example of Security Theatre is the use of complex passwords that are changed regularly. Although it may seem like a good idea, it can lead to password fatigue and employees using easier-to-remember passwords, which actually undermines security. This is among the reasons why companies like <a href="https://techcommunity.microsoft.com/t5/microsoft-entra-azure-ad-blog/expansion-of-fido-standard-and-new-updates-for-microsoft/ba-p/3290633" target="_blank" rel="noopener noreferrer">Microsoft</a>, <a href="https://www.apple.com/newsroom/2022/05/apple-google-and-microsoft-commit-to-expanded-support-for-fido-standard/" target="_blank" rel="noopener noreferrer">Apple</a>, and <a href="https://blog.google/technology/safety-security/one-step-closer-to-a-passwordless-future/" target="_blank" rel="noopener noreferrer">Google</a> are moving away from passwords.</p>
 <figure><figcaption>
             <h4>fix your password policy</h4>
         </figcaption>
 </figure>
 
 <p>Another example of security theatre is implementing security controls that are not properly configured or maintained. For instance, firewalls, IDS and IPS are a common security measure that are often poorly configured or not kept up-to-date with the latest security patches</p>
-<h2 id="root-cause">Root cause</h2>
-<p>Cybersecurity has become the new gold rush, with numerous individuals and organizations seeking to take advantage of the potential financial gains. However, finding skilled personnel to address these security concerns can be challenging, and relying on consultants can lead to a situation where the organization becomes overly dependent on their expertise.</p>
-<h2 id="wrapping-up">Wrapping up</h2>
-<p>Organizations can protect themselves from the constant security threats by taking a proactive approach. The first step is to gain a thorough understanding of the specific risks they are facing and then implement the necessary measures to mitigate these risks. This includes educating their employees to be aware of potential attacks and how to respond in such situations.</p>
+<h2 id="root-cause" class="headerLink">
+    <a href="#root-cause" class="header-mark"></a>Root cause</h2><p>Cybersecurity has become the new gold rush, with numerous individuals and organizations seeking to take advantage of the potential financial gains. However, finding skilled personnel to address these security concerns can be challenging, and relying on consultants can lead to a situation where the organization becomes overly dependent on their expertise.</p>
+<h2 id="wrapping-up" class="headerLink">
+    <a href="#wrapping-up" class="header-mark"></a>Wrapping up</h2><p>Organizations can protect themselves from the constant security threats by taking a proactive approach. The first step is to gain a thorough understanding of the specific risks they are facing and then implement the necessary measures to mitigate these risks. This includes educating their employees to be aware of potential attacks and how to respond in such situations.</p>
 <p>In conclusion, to avoid being caught in the trap of &ldquo;security theater&rdquo;, organizations must concentrate on establishing practical security measures and regularly evaluate their effectiveness. Having a well-thought-out response plan in place is also critical in ensuring the protection of the organization&rsquo;s assets.</p>
 <p>Additionally, organizations should cease creating redundant policies that serve no purpose in enhancing the organization&rsquo;s overall security posture.</p>
 <div class="details admonition tip open">
         <div class="details-summary admonition-title">
-            <i class="icon fas fa-lightbulb fa-fw" aria-hidden="true"></i>Tip<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+            <i class="icon fas fa-lightbulb fa-fw"></i>Tip<i class="details-icon fas fa-angle-right fa-fw"></i>
         </div>
         <div class="details-content">
-            <div class="admonition-content"><a href="https://www.philvenables.com/post/ceremonial-security-and-cargo-cults" target="_blank" rel="noopener noreffer ">Here</a> you can find an interesting article from Phil Venables, Google CISO, about Cerimonial Security and Cargo Cults</div>
+            <div class="admonition-content"><a href="https://www.philvenables.com/post/ceremonial-security-and-cargo-cults" target="_blank" rel="noopener noreferrer">Here</a> you can find an interesting article from Phil Venables, Google CISO, about Cerimonial Security and Cargo Cults</div>
         </div>
-    </div>]]></description></item><item><title>Long Time No See</title><link>https://appsec.space/posts/long-time-no-see/</link><pubDate>Mon, 06 Feb 2023 00:01:18 +0100</pubDate><author>himazawa</author><guid>https://appsec.space/posts/long-time-no-see/</guid><description><![CDATA[<p>Long time no see, uh? Lot of stuff happen since the last post in 2018 on <a href="https://bsod.dev" target="_blank" rel="noopener noreffer ">the old blog</a>.</p>
+    </div>]]></description></item><item><title>Long Time No See</title><link>https://appsec.space/posts/long-time-no-see/</link><pubDate>Mon, 06 Feb 2023 00:01:18 +0100</pubDate><author><name>himazawa</name></author><guid>https://appsec.space/posts/long-time-no-see/</guid><description><![CDATA[<p>Long time no see, uh? Lot of stuff happen since the last post in 2018 on <a href="https://bsod.dev" target="_blank" rel="noopener noreferrer">the old blog</a>.</p>
 <p>Unfortunately I wasn&rsquo;t able to write much, both for the lack of time and the impossibility to share what I learned.
 This post contains an introduction to this new website and how it will work from now on.</p>
 <p>First of all, I&rsquo;m still in Security but moved to Product Security (more on this on a later post but TL;DR: boredom, careeer and growth opportunities, frustration and fear of burnout).
 Fortunately I still have time and resources on my job to conduct vulnerability research so occasionally I will post about interesting vulnerabilities I found.
 I would also like to talk about security aspects more related to SDLC, so let&rsquo;s see how it&rsquo;ll go.</p>
-<h2 id="how-this-blog-works">How this blog works</h2>
-<p>The setup is pretty simple, I&rsquo;m using <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer ">hugo</a> to build static pages and publish them on GitHub pages. There is a <a href="https://github.com/peaceiris/actions-hugo" target="_blank" rel="noopener noreffer ">Github Action</a> running that builds and deploy the pages every time a PR is approved on the <code>main</code> branch.
+<h2 id="how-this-blog-works" class="headerLink">
+    <a href="#how-this-blog-works" class="header-mark"></a>How this blog works</h2><p>The setup is pretty simple, I&rsquo;m using <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer">hugo</a> to build static pages and publish them on GitHub pages. There is a <a href="https://github.com/peaceiris/actions-hugo" target="_blank" rel="noopener noreferrer">Github Action</a> running that builds and deploy the pages every time a PR is approved on the <code>main</code> branch.
 <figure><a class="lightgallery" href="/posts/long-time-no-see/blog_CI_CD.png" title="/posts/long-time-no-see/blog_CI_CD.png" data-thumbnail="/posts/long-time-no-see/blog_CI_CD.png" data-sub-html="<h2>A graph represeting the logic flow behind the blog deployment system</h2>">
         
     </a><figcaption class="image-caption">A graph represeting the logic flow behind the blog deployment system</figcaption>
     </figure></p>
-<p>The theme used is <a href="https://hugoloveit.com/" target="_blank" rel="noopener noreffer ">LoveIt</a>, it&rsquo;s pretty cool and rich of features but has few bugs that need to be fixed; for example, if you are using the blog in Italian you can see that the localization is pretty much fucked up.
+<p>The theme used is <a href="https://hugoloveit.com/" target="_blank" rel="noopener noreferrer">LoveIt</a>, it&rsquo;s pretty cool and rich of features but has few bugs that need to be fixed; for example, if you are using the blog in Italian you can see that the localization is pretty much fucked up.
 The theme localization it&rsquo;s a pretty cool feature but having to rewrite the same post for each language is painful, so I&rsquo;m thinking about adding the support to DeepL.</p>
 <p>Last but not least, the blog got a new logo:
 <figure><a class="lightgallery" href="/images/logo.png" title="/images/logo.png" data-thumbnail="/images/logo.png" data-sub-html="<h2>appsec.space logo</h2>">
         
     </a><figcaption class="image-caption">appsec.space logo</figcaption>
     </figure></p>
-<p>it was generated by <a href="https://midjourney.com" target="_blank" rel="noopener noreffer ">Midjourney</a> and means absolutely nothing!</p>
-<h2 id="the-future">The future</h2>
-<p>What&rsquo;s next, you ask? Well.. a lot of stuff actually. First of all I need to migrate all the posts from the old blog because I would like to retain an archive. Next I can start writing new posts.</p>
+<p>it was generated by <a href="https://midjourney.com" target="_blank" rel="noopener noreferrer">Midjourney</a> and means absolutely nothing!</p>
+<h2 id="the-future" class="headerLink">
+    <a href="#the-future" class="header-mark"></a>The future</h2><p>What&rsquo;s next, you ask? Well.. a lot of stuff actually. First of all I need to migrate all the posts from the old blog because I would like to retain an archive. Next I can start writing new posts.</p>
 <div class="details admonition note open">
         <div class="details-summary admonition-title">
-            <i class="icon fas fa-pencil-alt fa-fw" aria-hidden="true"></i>Note<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+            <i class="icon fas fa-pencil-alt fa-fw"></i>Note<i class="details-icon fas fa-angle-right fa-fw"></i>
         </div>
         <div class="details-content">
             <div class="admonition-content">If you get a redirect from the old blog to the new one the process has been completed.</div>
         </div>
     </div>
-<p>Despite being called <code>appsec.space</code> I would like to talk about different topics, spacing from Application Security to Malware Developmemnt (for learning purposes <a href="https://www.youtube.com/watch?v=HmZm8vNHBSU" target="_blank" rel="noopener noreffer ">of course</a>), to productivity setup and generic rants, basically turning this blog into my stream of counciousness.</p>
-<p>The next post will probably talk about the <a href="https://en.wikipedia.org/wiki/Security_theater" target="_blank" rel="noopener noreffer ">Security Theater</a>.</p>
+<p>Despite being called <code>appsec.space</code> I would like to talk about different topics, spacing from Application Security to Malware Developmemnt (for learning purposes <a href="https://www.youtube.com/watch?v=HmZm8vNHBSU" target="_blank" rel="noopener noreferrer">of course</a>), to productivity setup and generic rants, basically turning this blog into my stream of counciousness.</p>
+<p>The next post will probably talk about the <a href="https://en.wikipedia.org/wiki/Security_theater" target="_blank" rel="noopener noreferrer">Security Theater</a>.</p>
 <p>See you then!</p>]]></description></item></channel></rss>

@@ -1,33 +1,33 @@
-<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>blog-news - Category - appsec &amp; stuff</title><link>https://appsec.space/categories/blog-news/</link><description>blog-news - Category - appsec &amp; stuff</description><generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Mon, 06 Feb 2023 00:01:18 +0100</lastBuildDate><atom:link href="https://appsec.space/categories/blog-news/" rel="self" type="application/rss+xml"/><item><title>Long Time No See</title><link>https://appsec.space/posts/long-time-no-see/</link><pubDate>Mon, 06 Feb 2023 00:01:18 +0100</pubDate><author>himazawa</author><guid>https://appsec.space/posts/long-time-no-see/</guid><description><![CDATA[<p>Long time no see, uh? Lot of stuff happen since the last post in 2018 on <a href="https://bsod.dev" target="_blank" rel="noopener noreffer ">the old blog</a>.</p>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>blog-news - Category - appsec &amp; stuff</title><link>https://appsec.space/categories/blog-news/</link><description>blog-news - Category - appsec &amp; stuff</description><generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Mon, 06 Feb 2023 00:01:18 +0100</lastBuildDate><atom:link href="https://appsec.space/categories/blog-news/" rel="self" type="application/rss+xml"/><item><title>Long Time No See</title><link>https://appsec.space/posts/long-time-no-see/</link><pubDate>Mon, 06 Feb 2023 00:01:18 +0100</pubDate><author><name>himazawa</name></author><guid>https://appsec.space/posts/long-time-no-see/</guid><description><![CDATA[<p>Long time no see, uh? Lot of stuff happen since the last post in 2018 on <a href="https://bsod.dev" target="_blank" rel="noopener noreferrer">the old blog</a>.</p>
 <p>Unfortunately I wasn&rsquo;t able to write much, both for the lack of time and the impossibility to share what I learned.
 This post contains an introduction to this new website and how it will work from now on.</p>
 <p>First of all, I&rsquo;m still in Security but moved to Product Security (more on this on a later post but TL;DR: boredom, careeer and growth opportunities, frustration and fear of burnout).
 Fortunately I still have time and resources on my job to conduct vulnerability research so occasionally I will post about interesting vulnerabilities I found.
 I would also like to talk about security aspects more related to SDLC, so let&rsquo;s see how it&rsquo;ll go.</p>
-<h2 id="how-this-blog-works">How this blog works</h2>
-<p>The setup is pretty simple, I&rsquo;m using <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer ">hugo</a> to build static pages and publish them on GitHub pages. There is a <a href="https://github.com/peaceiris/actions-hugo" target="_blank" rel="noopener noreffer ">Github Action</a> running that builds and deploy the pages every time a PR is approved on the <code>main</code> branch.
+<h2 id="how-this-blog-works" class="headerLink">
+    <a href="#how-this-blog-works" class="header-mark"></a>How this blog works</h2><p>The setup is pretty simple, I&rsquo;m using <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer">hugo</a> to build static pages and publish them on GitHub pages. There is a <a href="https://github.com/peaceiris/actions-hugo" target="_blank" rel="noopener noreferrer">Github Action</a> running that builds and deploy the pages every time a PR is approved on the <code>main</code> branch.
 <figure><a class="lightgallery" href="/posts/long-time-no-see/blog_CI_CD.png" title="/posts/long-time-no-see/blog_CI_CD.png" data-thumbnail="/posts/long-time-no-see/blog_CI_CD.png" data-sub-html="<h2>A graph represeting the logic flow behind the blog deployment system</h2>">
         
     </a><figcaption class="image-caption">A graph represeting the logic flow behind the blog deployment system</figcaption>
     </figure></p>
-<p>The theme used is <a href="https://hugoloveit.com/" target="_blank" rel="noopener noreffer ">LoveIt</a>, it&rsquo;s pretty cool and rich of features but has few bugs that need to be fixed; for example, if you are using the blog in Italian you can see that the localization is pretty much fucked up.
+<p>The theme used is <a href="https://hugoloveit.com/" target="_blank" rel="noopener noreferrer">LoveIt</a>, it&rsquo;s pretty cool and rich of features but has few bugs that need to be fixed; for example, if you are using the blog in Italian you can see that the localization is pretty much fucked up.
 The theme localization it&rsquo;s a pretty cool feature but having to rewrite the same post for each language is painful, so I&rsquo;m thinking about adding the support to DeepL.</p>
 <p>Last but not least, the blog got a new logo:
 <figure><a class="lightgallery" href="/images/logo.png" title="/images/logo.png" data-thumbnail="/images/logo.png" data-sub-html="<h2>appsec.space logo</h2>">
         
     </a><figcaption class="image-caption">appsec.space logo</figcaption>
     </figure></p>
-<p>it was generated by <a href="https://midjourney.com" target="_blank" rel="noopener noreffer ">Midjourney</a> and means absolutely nothing!</p>
-<h2 id="the-future">The future</h2>
-<p>What&rsquo;s next, you ask? Well.. a lot of stuff actually. First of all I need to migrate all the posts from the old blog because I would like to retain an archive. Next I can start writing new posts.</p>
+<p>it was generated by <a href="https://midjourney.com" target="_blank" rel="noopener noreferrer">Midjourney</a> and means absolutely nothing!</p>
+<h2 id="the-future" class="headerLink">
+    <a href="#the-future" class="header-mark"></a>The future</h2><p>What&rsquo;s next, you ask? Well.. a lot of stuff actually. First of all I need to migrate all the posts from the old blog because I would like to retain an archive. Next I can start writing new posts.</p>
 <div class="details admonition note open">
         <div class="details-summary admonition-title">
-            <i class="icon fas fa-pencil-alt fa-fw" aria-hidden="true"></i>Note<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+            <i class="icon fas fa-pencil-alt fa-fw"></i>Note<i class="details-icon fas fa-angle-right fa-fw"></i>
         </div>
         <div class="details-content">
             <div class="admonition-content">If you get a redirect from the old blog to the new one the process has been completed.</div>
         </div>
     </div>
-<p>Despite being called <code>appsec.space</code> I would like to talk about different topics, spacing from Application Security to Malware Developmemnt (for learning purposes <a href="https://www.youtube.com/watch?v=HmZm8vNHBSU" target="_blank" rel="noopener noreffer ">of course</a>), to productivity setup and generic rants, basically turning this blog into my stream of counciousness.</p>
-<p>The next post will probably talk about the <a href="https://en.wikipedia.org/wiki/Security_theater" target="_blank" rel="noopener noreffer ">Security Theater</a>.</p>
+<p>Despite being called <code>appsec.space</code> I would like to talk about different topics, spacing from Application Security to Malware Developmemnt (for learning purposes <a href="https://www.youtube.com/watch?v=HmZm8vNHBSU" target="_blank" rel="noopener noreferrer">of course</a>), to productivity setup and generic rants, basically turning this blog into my stream of counciousness.</p>
+<p>The next post will probably talk about the <a href="https://en.wikipedia.org/wiki/Security_theater" target="_blank" rel="noopener noreferrer">Security Theater</a>.</p>
 <p>See you then!</p>]]></description></item></channel></rss>
