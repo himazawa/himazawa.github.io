@@ -1,10 +1,9 @@
 baseURL = "https://appsec.space"
 
 # Change the default theme to be use when building the site with Hugo
-theme = "LoveIt"
+theme = "DoIt"
 # website title
 title = "appsec & stuff"
-
 defaultContentLanguage = "en"
 languageCode = "en"
 languageName = "English"
@@ -51,6 +50,7 @@ enableEmoji = true
 
 [params]
   defaultTheme = "auto"
+  version = "0.3.X"
   gitRepo = "https://github.com/himazawa/himazawa.github.io"
   fingerprint = "sha512"
   dateFormat = "02-01-2006"
