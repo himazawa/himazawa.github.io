@@ -3,6 +3,7 @@ title: "Long Time No See"
 date: 2023-02-06T00:01:18+01:00
 draft: false
 tags: [updates]
+featuredImage: https://c4.wallpaperflare.com/wallpaper/52/465/301/illustration-landscape-digital-art-mountains-wallpaper-preview.jpg
 categories: [blog-news]
 ---
 

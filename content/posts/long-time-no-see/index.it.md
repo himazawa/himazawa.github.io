@@ -2,6 +2,7 @@
 title: "Tanto tempo che non ci si vede"
 date: 2023-02-06T00:01:18+01:00
 draft: false
+featuredImage: https://w0.peakpx.com/wallpaper/636/503/HD-wallpaper-a-journey-10k-horse-sunrise-artist-artwork-digital-art-minimalism-minimalist-deviantart.jpg
 tags: [updates]
 ---
 

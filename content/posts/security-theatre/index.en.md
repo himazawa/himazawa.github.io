@@ -4,6 +4,7 @@ date: 2023-02-13T20:20:00+01:00
 draft: false
 tags: [security theatre, infosec, rants]
 categories: [general-knowledge]
+featuredImage: https://business-digest.eu/wp-content/uploads/2020/10/Caroussel-pe%CC%81pite-CargoCult-1.jpg
 ---
 
 I have seen many companies invest significant time and resources into security measures that have little to no actual effect on security. This is commonly referred to as "security theater".

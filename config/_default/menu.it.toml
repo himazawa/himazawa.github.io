@@ -1,0 +1,27 @@
+# Menu config
+# 菜单配置
+
+[[main]]
+  identifier = "posts"
+  pre = ""
+  post = ""
+  name = "Post"
+  url = "/posts/"
+  title = ""
+  weight = 1
+[[main]]
+  identifier = "categories"
+  pre = ""
+  post = ""
+  name = "Categorie"
+  url = "/categories/"
+  title = ""
+  weight = 2
+[[main]]
+  identifier = "about"
+  pre = ""
+  post = ""
+  name = "About me"
+  url = "/about/"
+  title = ""
+  weight = 3
