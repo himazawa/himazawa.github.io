@@ -10,26 +10,14 @@ Questo post contiene un&rsquo;introduzione a questo nuovo sito e come funzionera
     <a href="#il-funzionamento-di-questo-blog" class="header-mark"></a>1 Il funzionamento di questo blog</h2><p>Il setup e&rsquo; molto semplice, uso <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer">hugo</a> per buildare pagine statiche che vengono pubblicate su una GithubPage.</p>
 <p>C&rsquo;e&rsquo; una <a href="https://github.com/peaceiris/actions-hugo" target="_blank" rel="noopener noreferrer">Github Action</a> che builda e deploya le pagine ogni volta che una Pull Request viene approvata sul branch <code>main</code>.</p>
 <p><figure><a class="lightgallery" href="/it/posts/long-time-no-see/blog_CI_CD.png" title="/it/posts/long-time-no-see/blog_CI_CD.png" data-thumbnail="/it/posts/long-time-no-see/blog_CI_CD.png" data-sub-html="<h2>Un grafico che rappresenta il flusso logico dietro il sistema di deployment del blog</h2>">
-        <img
-            
-            loading="lazy"
-            src="/it/posts/long-time-no-see/blog_CI_CD.png"
-            srcset="/it/posts/long-time-no-see/blog_CI_CD.png, /it/posts/long-time-no-see/blog_CI_CD.png 1.5x, /it/posts/long-time-no-see/blog_CI_CD.png 2x"
-            sizes="auto"
-            alt="/it/posts/long-time-no-see/blog_CI_CD.png">
+        
     </a><figcaption class="image-caption">Un grafico che rappresenta il flusso logico dietro il sistema di deployment del blog</figcaption>
     </figure></p>
 <p>Il tema che uso e&rsquo; <a href="https://hugoloveit.com/" target="_blank" rel="noopener noreferrer">LoveIt</a>. E&rsquo; molto carino e ricco di funzionalita&rsquo; ma ha alcuni bug che devono essere fixati; per esempio, se stai leggendo questa pagina in Italiano ti sarai accorto che l&rsquo;header ha le traduzioni abbastanza fatte a caso.</p>
 <p>La localization del tema e&rsquo; una feature molto carina ma dover riscrivere ogni volta lo stesso post per ogni linguaggio e&rsquo; abbastanza tedioso quindi penso che aggiungero&rsquo; il supporto a DeepL.</p>
 <p>Infine, il blog ha un nuovo logo:
 <figure><a class="lightgallery" href="/images/logo.png" title="/images/logo.png" data-thumbnail="/images/logo.png" data-sub-html="<h2>appsec.space logo</h2>">
-        <img
-            
-            loading="lazy"
-            src="/images/logo.png"
-            srcset="/images/logo.png, /images/logo.png 1.5x, /images/logo.png 2x"
-            sizes="auto"
-            alt="/images/logo.png">
+        
     </a><figcaption class="image-caption">appsec.space logo</figcaption>
     </figure></p>
 <p>E&rsquo; stato generato da <a href="https://midjourney.com" target="_blank" rel="noopener noreferrer">Midjourney</a> e non significa assolutamente nulla!</p>

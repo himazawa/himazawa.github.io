@@ -6,7 +6,7 @@
 <p><a href="https://www.youtube.com/watch?v=MzQPTdDwtVk" target="_blank" rel="noopener noreferrer">Lo senti? Lo senti l&rsquo;odore? <em>compliance</em> figliolo, non c&rsquo;e&rsquo; nient&rsquo;altro al mondo che odora cosi&rsquo;. </a>.</p>
 <p>Come esempio, prendiamo il requisito di avere password complesse che devono essere regolarmente cambiate. Questo e&rsquo; il classico esempio di security theatre.</p>
 <p>Per quanto possa sembrare una buona fa molto poco per prevenire un data breach. E non dimentichiamoci il downside principale: la cosiddetta &ldquo;password fatigue&rdquo;, che porta i dipendenti a usare password che sono piu&rsquo; facili da ricordare o sempli variazioni di quelle usate in precedenza. Del resto c&rsquo;e&rsquo; un motivo (molti in realta&rsquo;) se <a href="https://techcommunity.microsoft.com/t5/microsoft-entra-azure-ad-blog/expansion-of-fido-standard-and-new-updates-for-microsoft/ba-p/3290633" target="_blank" rel="noopener noreferrer">Microsoft</a>, <a href="https://blog.google/technology/safety-security/one-step-closer-to-a-passwordless-future/" target="_blank" rel="noopener noreferrer">Google</a> ed <a href="https://www.apple.com/newsroom/2022/05/apple-google-and-microsoft-commit-to-expanded-support-for-fido-standard/" target="_blank" rel="noopener noreferrer">Apple</a> vogliono abbandonare del tutto le password.</p>
-<figure><img src="https://imgs.xkcd.com/comics/password_strength.png"/><figcaption>
+<figure><figcaption>
             <h4>sistema la tua password policy</h4>
         </figcaption>
 </figure>

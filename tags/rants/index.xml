@@ -7,7 +7,7 @@
 <p>Useless compliance can also result in organizations wasting valuable resources on implementing measures that do not have a significant impact on their security posture. This can lead to a situation where an organization is in compliance with regulations, but the security budget is depleted, while their assets are still vulnerable to attacks.</p>
 <p><a href="https://www.youtube.com/watch?v=vRp7tYWnJJs" target="_blank" rel="noopener noreferrer">Oh, how I love the smell of compliance in the morning</a>.</p>
 <p>An example of Security Theatre is the use of complex passwords that are changed regularly. Although it may seem like a good idea, it can lead to password fatigue and employees using easier-to-remember passwords, which actually undermines security. This is among the reasons why companies like <a href="https://techcommunity.microsoft.com/t5/microsoft-entra-azure-ad-blog/expansion-of-fido-standard-and-new-updates-for-microsoft/ba-p/3290633" target="_blank" rel="noopener noreferrer">Microsoft</a>, <a href="https://www.apple.com/newsroom/2022/05/apple-google-and-microsoft-commit-to-expanded-support-for-fido-standard/" target="_blank" rel="noopener noreferrer">Apple</a>, and <a href="https://blog.google/technology/safety-security/one-step-closer-to-a-passwordless-future/" target="_blank" rel="noopener noreferrer">Google</a> are moving away from passwords.</p>
-<figure><img src="https://imgs.xkcd.com/comics/password_strength.png"/><figcaption>
+<figure><figcaption>
             <h4>fix your password policy</h4>
         </figcaption>
 </figure>
