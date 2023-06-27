@@ -96,7 +96,7 @@
 </div>
 </div><p>And magically we have an answer from the vocal assistant saying <code>pwned</code>!</p>
 <p>Well, now we can have Mycroft pronounce stuff remotely, but this is not a really big finding unless you want to scare your friends, right?</p>
-<figure><figcaption>
+<figure><img src="https://media1.tenor.com/images/8a4a99d3bd67ba8d9a025c36edf4a624/tenor.gif"/><figcaption>
             <h4>WRONG</h4>
         </figcaption>
 </figure>
@@ -162,7 +162,7 @@
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p>Running the exploit with <code>python pwn.py &quot;install autogui&quot; &quot;open xterm&quot; &quot;type echo pwned&quot; &quot;press enter&quot;</code>  allowed me to finally get a command execution on a Linux machine.</p>
-<figure><figcaption>
+<figure><img src="https://raw.githubusercontent.com/Nhoya/MycroftAI-RCE/master/PoC.gif"/><figcaption>
             <h4>PoC</h4>
         </figcaption>
 </figure>
