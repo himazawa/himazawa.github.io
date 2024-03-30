@@ -135,7 +135,7 @@ A good portion of the evaluation should also focus on the SDLC to e ensure secur
 Also take in considerations that we are humans, and we make errors. Passing a code review doesn't mean the code is safe, as I said before: there is no real solution, just ways to decrease the probablity for the bad stuff to happen.
 
 ### Enterprise vs Individual
-This is a controversial topic because there are projects that are maintained by individuals that are well maintained but usually relying on (large) enterprise projects will ensure their SDLC best practices are followed, money are keeping the project alive, and a big company is less likely to go all in and backdoor their project on purpose. Again, this just increase the probablity, don't take for granted ;)
+This is a controversial topic because there are projects that are maintained by individuals that are well structured but usually relying on (large) enterprise projects will ensure their SDLC best practices are followed, money are keeping the project alive, and a big company is less likely to go all in and backdoor their project on purpose. Again, this just increase the probablity, don't take for granted ;)
 
 
 ## Resources
