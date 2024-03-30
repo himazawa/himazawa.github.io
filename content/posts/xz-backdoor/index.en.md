@@ -90,29 +90,25 @@ TL;DR: there isn't an actual solution
 ![](https://imgs.xkcd.com/comics/dependency_2x.png)
 
 `xz` is a software mainteined (up until 2022) by 1 single guy. Later another maintainer joined but unfortunately for us, it was the same guy pushing the backdoor to upstream.
-
-This crashes against the fact that `xz` is an incredibly popular package available in a lot of distributions and being a dependency of many softwares.
+This crashes against the fact that `xz` is an incredibly popular package available in a lot of distributions and being a dependency of many softwares. 
 
 This was likely seen by the attacker as a gold mine since it was easy to get the role of maintainer of the project and push the malicious code.
 
-But how can we mitigate this issue?
-
 Since you are using a thirdy-part source for your supply chain, you have to trust someone at one point or another.
-When talking about supply chain security the reccomendations are always the same: pin the hashes and use signature verification.
-
-This will work as long as you have scenarios like a  malicious attacker compromising the dependency CICD and pushing a malicious build, account compromissions etc.
+When talking about supply chain security the reccomendations are always the same: pin the hashes and use signature verification. This will work as long as you have scenarios like a  malicious attacker compromising the dependency CICD and pushing a malicious build, account compromissions etc.
 
 But what can you do if all of a sudden, trusted maintainer goes rogue?
-Unless you want (and are able to) code review every single commit from every single piece of software your OS interact with: pretty much nothing.
-On the other hand, developers and repository owners should really increase controls on their supply chain and include strict metrics to exclude high risk packages.
 
+As a standard user, unless you want (and are able to) code review every single commit from every single piece of software your OS interact with: pretty much nothing.
+
+On the other hand, developers and repository owners should really increase controls on their supply chain and include strict metrics to exclude high risk packages. 
 One of the biggest gimmicks of Open Source security is people beliving that since the source code is availbale the code magically became safe.
 
 One critical factor often overlooked is the assumption that having access to the source code automatically translates into a larger pool of eyes scrutinizing it for vulnerabilities.
 
-Every time a discussion like that appears I always remember the [InfosectCBR "Month of Kali"](https://blog.infosectcbr.com.au/2018/11/pitfalls-using-strcat.html) where [Silvio Cesare](https://twitter.com/silviocesare) spent a month popping vulnerabilities on kali linux software.
-
 The effectiveness of this review process depends on the level of community engagement and the expertise of those inspecting the codem, and usually is not much at all. Many projects receive minimal attention from developers, with only a handful of individuals actively contributing or reviewing code changes. As a result, vulnerabilities may go unnoticed for extended periods, posing significant security risks to users.
+
+Every time a discussion like that appears I always remember the [InfosectCBR's "Month of Kali"](https://blog.infosectcbr.com.au/2018/11/pitfalls-using-strcat.html) where [Silvio Cesare](https://twitter.com/silviocesare) spent a month popping vulnerabilities on kali linux software.
 
 But which factors could contribute on minimizing the risks?
 
