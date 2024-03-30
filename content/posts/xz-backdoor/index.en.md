@@ -112,7 +112,7 @@ Every time a discussion like that appears I always remember the [InfosectCBR's "
 
 But which factors could contribute on minimizing the risks?
 
-### GitHub Stars
+### GitHub Stats
 
 Just to be clear from the beginning: No, you can't trust this kind of metrics.
 
