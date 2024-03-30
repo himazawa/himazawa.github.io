@@ -122,7 +122,9 @@ A large and active community can provide additional eyes for reviewing code, rep
 Consider whether the project receives financial support or sponsorship from reputable organizations. Projects with dedicated funding tend to have more resources available for security audits and ongoing maintenance. 
 And also are less likely to be completely abandoned. 
 
+{{< admonition type=tip title="Tip" open=true >}}
 Remember: you want to rely on that dependency for the whole week, not only during the maintainer's freetime, projects with a nice financial support will likely be full-time jobs and not just hobbies.
+{{< /admonition >}}
 
 ### SDLC
 A good portion of the evaluation should also focus on the SDLC to e ensure security (and quality in general) gates are correcly implemented, approvals on PRs are mandatory and there are healthy practices in place to prevent one single contributor to push malicious code without approval. 
