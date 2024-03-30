@@ -16,8 +16,11 @@ As soon as I will find a complete analysis on that matter I will link it.
 The situation doesn't look too good so I'm trying to write this blogpost as a summary. I don't want to address the technical aspect of the compromission but I want to look at the issue from the perspective of a Security Engineer, summarizing what went wrong and trying to find a remediation.
 
 ## Timeline
+{{< admonition type=tip title="Note" open=true >}}
+Check the Reference section for a link to an article with a detailed timeline
+{{< /admonition >}}
 
-- __22 Apr 2022__: 
+- __Apr 2022__: 
     - A new maintainer shows up in the `xz` project.
 - __29 Mar 2024__: 
     - Andres Freund sent an email to the oss-security security regarding a backdoor in `xz/liblzma`. 
