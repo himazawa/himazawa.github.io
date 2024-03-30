@@ -23,7 +23,7 @@ The situation doesn't look too good so I'm trying to write this blogpost as a su
 
 ## Timeline
 {{< admonition type=tip title="Note" open=true >}}
-Check the Reference section for a link to an article with a detailed timeline
+Check the Resources section for a link to an article with a detailed timeline
 {{< /admonition >}}
 
 - __Apr 2022__: 
