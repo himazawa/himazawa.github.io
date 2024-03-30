@@ -102,7 +102,7 @@ But what can you do if all of a sudden, trusted maintainer goes rogue?
 As a standard user, unless you want (and are able to) code review every single commit from every single piece of software your OS interact with: pretty much nothing.
 
 On the other hand, developers and repository owners should really increase controls on their supply chain and include strict metrics to exclude high risk packages. 
-One of the biggest gimmicks of Open Source security is people beliving that since the source code is availbale the code magically became safe.
+One of the biggest gimmicks of Open Source security is people beliving that since the source code is available the code magically became safe.
 
 One critical factor often overlooked is the assumption that having access to the source code automatically translates into a larger pool of eyes scrutinizing it for vulnerabilities.
 
