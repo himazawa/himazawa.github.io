@@ -1,11 +1,14 @@
 # The XZ backdoor from a Security Engineer persepective
 
 
+As you probably already heard, the `xz` package got compromised. 
+
+The package was used as entrypoint to inject malicious code in sshd, altering the authentication flow. This forged vulnerability is now known as CVE-2024-3094.
+<!--more--> 
+
 {{< admonition type=tip title="Note" open=true >}}
 The situation is still ongoing, more details will emerge in the near future and I will upgrade this post accordingly.
 {{< /admonition >}}
-
-As you probably already heard, the `xz` package got compromised. The package was used as entrypoint to inject malicious code in sshd, altering the authentication flow. This forged vulnerability is now known as CVE-2024-3094.
 
 This is probably a full fledge operation due to it's methodology and duration but I'm not the right guy to talk about OpSec and Threat Actors attributions. 
 As soon as I will find a complete analysis on that matter I will link it.

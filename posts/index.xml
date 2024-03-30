@@ -1,6 +1,8 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>All Posts - appsec &amp; stuff</title><link>https://appsec.space/posts/</link><description>All Posts | appsec &amp; stuff</description><generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Sat, 30 Mar 2024 19:49:24 +0100</lastBuildDate><atom:link href="https://appsec.space/posts/" rel="self" type="application/rss+xml"/><item><title>The XZ backdoor from a Security Engineer persepective</title><link>https://appsec.space/posts/xz-backdoor/</link><pubDate>Sat, 30 Mar 2024 19:49:24 +0100</pubDate><author><name>himazawa</name></author><guid>https://appsec.space/posts/xz-backdoor/</guid><description><![CDATA[<div class="featured-image">
                 <img src="/posts/xz-backdoor/xz.png" referrerpolicy="no-referrer">
-            </div><div class="details admonition tip open">
+            </div><p>As you probably already heard, the <code>xz</code> package got compromised.</p>
+<p>The package was used as entrypoint to inject malicious code in sshd, altering the authentication flow. This forged vulnerability is now known as CVE-2024-3094.</p>
+<div class="details admonition tip open">
         <div class="details-summary admonition-title">
             <i class="icon fas fa-lightbulb fa-fw"></i>Note<i class="details-icon fas fa-angle-right fa-fw"></i>
         </div>
@@ -8,7 +10,6 @@
             <div class="admonition-content">The situation is still ongoing, more details will emerge in the near future and I will upgrade this post accordingly.</div>
         </div>
     </div>
-<p>As you probably already heard, the <code>xz</code> package got compromised. The package was used as entrypoint to inject malicious code in sshd, altering the authentication flow. This forged vulnerability is now known as CVE-2024-3094.</p>
 <p>This is probably a full fledge operation due to it&rsquo;s methodology and duration but I&rsquo;m not the right guy to talk about OpSec and Threat Actors attributions.
 As soon as I will find a complete analysis on that matter I will link it.</p>
 <p>The situation doesn&rsquo;t look too good so I&rsquo;m trying to write this blogpost as a summary. I don&rsquo;t want to address the technical aspect of the compromission but I want to look at the issue from the perspective of a Security Engineer, summarizing what went wrong and trying to find a remediation.</p>
@@ -125,8 +126,7 @@ And also are less likely to be completely abandoned.</p>
     <a href="#resources" class="header-mark"></a>5 Resources</h2><ul>
 <li>OSS-Security List: <a href="https://www.openwall.com/lists/oss-security/2024/03/29/4" target="_blank" rel="noopener noreferrer">https://www.openwall.com/lists/oss-security/2024/03/29/4</a></li>
 <li>Comprehensive timeline: <a href="https://boehs.org/node/everything-i-know-about-the-xz-backdoor" target="_blank" rel="noopener noreferrer">https://boehs.org/node/everything-i-know-about-the-xz-backdoor</a></li>
-</ul>
-]]></description></item><item><title>Getting "Zero Click" Remote Code Execution in Mycroft AI vocal assistant</title><link>https://appsec.space/posts/mycroft-ai-rce/</link><pubDate>Sun, 10 Jun 2018 20:59:09 +0200</pubDate><author><name>himazawa</name></author><guid>https://appsec.space/posts/mycroft-ai-rce/</guid><description><![CDATA[<div class="featured-image">
+</ul>]]></description></item><item><title>Getting "Zero Click" Remote Code Execution in Mycroft AI vocal assistant</title><link>https://appsec.space/posts/mycroft-ai-rce/</link><pubDate>Sun, 10 Jun 2018 20:59:09 +0200</pubDate><author><name>himazawa</name></author><guid>https://appsec.space/posts/mycroft-ai-rce/</guid><description><![CDATA[<div class="featured-image">
                 <img src="/posts/mycroft-ai-rce/mycroft.png" referrerpolicy="no-referrer">
             </div><h2 id="introduction" class="headerLink">
     <a href="#introduction" class="header-mark"></a>1 Introduction</h2><p>During my journey contributing to open source I was working with my friend <a href="https://github.com/portaloffreedom" target="_blank" rel="noopener noreferrer">Matteo De Carlo</a> on an <a href="https://git.covolunablu.org/portaloffreedom/plasma-mycroft-PKGBUILD" target="_blank" rel="noopener noreferrer">AUR Package</a> of a really interesting project called <a href="https://mycroft.ai" target="_blank" rel="noopener noreferrer">Mycroft AI</a>. It&rsquo;s an AI-powered vocal assistant started with a <a href="https://www.kickstarter.com/projects/aiforeveryone/mycroft-an-open-source-artificial-intelligence-for" target="_blank" rel="noopener noreferrer">crowdfunding campaign</a> in 2015 and a <a href="https://www.indiegogo.com/projects/mycroft-mark-ii-the-open-voice-assistant#/" target="_blank" rel="noopener noreferrer">more recent one</a> that allowed Mycroft to produce their Mark-I and Mark-II devices. It&rsquo;s also running on Linux Desktop/Server, Raspberry PI and will be available soon™ on <a href="https://www.youtube.com/watch?v=6GHmzbXp_jY" target="_blank" rel="noopener noreferrer">Jaguar F-Type</a> and <a href="https://mycroft.ai/blog/mycroft-welcomes-jaguar-land-rover-new-investor/" target="_blank" rel="noopener noreferrer">Land Rover</a></p>
