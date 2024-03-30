@@ -17,11 +17,11 @@ The situation doesn't look too good so I'm trying to write this blogpost as a su
 
 ## Timeline
 
-- __23 Mar 2024__: 
-    - One of the two maintainers of the `xz` package publishes a malicious commit to upstream.
+- __22 Apr 2022__: 
+    - A new maintainer shows up in the `xz` project.
 - __29 Mar 2024__: 
     - Andres Freund sent an email to the oss-security security regarding a backdoor in `xz/liblzma`. 
-    He was optimizing his infrastructure and found that ssh was  suspiciously slow. Some debug later he found the issue was likely caused by the backdoor
+    He was optimizing his infrastructure and found that ssh was  suspiciously slow. Some debug later he found the issue was likely caused by the backdoor. The initial analysis was performed with the help of Florian Weimer.
     
     - The post was sent to the oss-security mailing list
 
