@@ -108,7 +108,7 @@ One critical factor often overlooked is the assumption that having access to the
 
 The effectiveness of this review process depends on the level of community engagement and the expertise of those inspecting the code, and usually is not much at all. Many projects receive minimal attention from developers, with only a handful of individuals actively contributing or reviewing code changes. As a result, vulnerabilities (intentional or not) may go unnoticed for extended periods, posing significant security risks to users.
 
-Every time a discussion like that appears I always remember the [InfosectCBR's "Month of Kali"](https://blog.infosectcbr.com.au/2018/11/pitfalls-using-strcat.html) where [Silvio Cesare](https://twitter.com/silviocesare) spent a month popping vulnerabilities on kali linux software.
+Every time a discussion like that appears I always remember the [InfosectCBR's "Month of Kali"](https://blog.infosectcbr.com.au/2018/11/pitfalls-using-strcat.html) where [Silvio Cesare](https://twitter.com/silviocesare) spent a month popping vulnerabilities on Kali Linux software.
 
 But which factors could contribute on minimizing the risks?
 
