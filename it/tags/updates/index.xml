@@ -1,5 +1,5 @@
-<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>updates - Etichetta - appsec &amp; stuff</title><link>https://appsec.space/it/tags/updates/</link><description>updates - Etichetta - appsec &amp; stuff</description><generator>Hugo -- gohugo.io</generator><language>it</language><lastBuildDate>Mon, 06 Feb 2023 00:01:18 +0100</lastBuildDate><atom:link href="https://appsec.space/it/tags/updates/" rel="self" type="application/rss+xml"/><item><title>Tanto tempo che non ci si vede</title><link>https://appsec.space/it/posts/long-time-no-see/</link><pubDate>Mon, 06 Feb 2023 00:01:18 +0100</pubDate><author><name>himazawa</name></author><guid>https://appsec.space/it/posts/long-time-no-see/</guid><description><![CDATA[<div class="featured-image">
-                <img src="https://w0.peakpx.com/wallpaper/636/503/HD-wallpaper-a-journey-10k-horse-sunrise-artist-artwork-digital-art-minimalism-minimalist-deviantart.jpg" referrerpolicy="no-referrer">
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>Updates - Etichetta - appsec &amp; stuff</title><link>https://appsec.space/it/tags/updates/</link><description>Updates - Etichetta - appsec &amp; stuff</description><generator>Hugo -- gohugo.io</generator><language>it</language><lastBuildDate>Mon, 06 Feb 2023 00:01:18 +0100</lastBuildDate><atom:link href="https://appsec.space/it/tags/updates/" rel="self" type="application/rss+xml"/><item><title>Tanto tempo che non ci si vede</title><link>https://appsec.space/it/posts/long-time-no-see/</link><pubDate>Mon, 06 Feb 2023 00:01:18 +0100</pubDate><author><name>himazawa</name></author><guid>https://appsec.space/it/posts/long-time-no-see/</guid><description><![CDATA[<div class="featured-image">
+                <img src="/posts/long-time-no-see/header.jpg" referrerpolicy="no-referrer">
             </div><p>Tanto tempo che non ci si vede, eh? Sono successe tante cose dall&rsquo;ultimo post nel 2018 sul <a href="https://bsod.dev" target="_blank" rel="noopener noreferrer">vecchio blog</a>.</p>
 <p>Sfortunatamente non ho scritto molto, sia per mancanza di tempo sia per l&rsquo;impossibilita&rsquo; di condivider cio&rsquo; che ho imparato.
 Questo post contiene un&rsquo;introduzione a questo nuovo sito e come funzionera&rsquo; d&rsquo;ora in poi.</p>
@@ -9,14 +9,14 @@ Questo post contiene un&rsquo;introduzione a questo nuovo sito e come funzionera
 <h2 id="il-funzionamento-di-questo-blog" class="headerLink">
     <a href="#il-funzionamento-di-questo-blog" class="header-mark"></a>1 Il funzionamento di questo blog</h2><p>Il setup e&rsquo; molto semplice, uso <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer">hugo</a> per buildare pagine statiche che vengono pubblicate su una GithubPage.</p>
 <p>C&rsquo;e&rsquo; una <a href="https://github.com/peaceiris/actions-hugo" target="_blank" rel="noopener noreferrer">Github Action</a> che builda e deploya le pagine ogni volta che una Pull Request viene approvata sul branch <code>main</code>.</p>
-<p><figure><a class="lightgallery" href="/it/posts/long-time-no-see/blog_CI_CD.png" title="/it/posts/long-time-no-see/blog_CI_CD.png" data-thumbnail="/it/posts/long-time-no-see/blog_CI_CD.png" data-sub-html="<h2>Un grafico che rappresenta il flusso logico dietro il sistema di deployment del blog</h2>">
+<p><figure><a class="lightgallery" href="/posts/long-time-no-see/blog_CI_CD.png" title="/posts/long-time-no-see/blog_CI_CD.png" data-thumbnail="/posts/long-time-no-see/blog_CI_CD.png" data-sub-html="<h2>Un grafico che rappresenta il flusso logico dietro il sistema di deployment del blog</h2>">
         <img
             
             loading="lazy"
-            src="/it/posts/long-time-no-see/blog_CI_CD.png"
-            srcset="/it/posts/long-time-no-see/blog_CI_CD.png, /it/posts/long-time-no-see/blog_CI_CD.png 1.5x, /it/posts/long-time-no-see/blog_CI_CD.png 2x"
+            src="/posts/long-time-no-see/blog_CI_CD.png"
+            srcset="/posts/long-time-no-see/blog_CI_CD.png, /posts/long-time-no-see/blog_CI_CD.png 1.5x, /posts/long-time-no-see/blog_CI_CD.png 2x"
             sizes="auto"
-            alt="/it/posts/long-time-no-see/blog_CI_CD.png">
+            alt="/posts/long-time-no-see/blog_CI_CD.png">
     </a><figcaption class="image-caption">Un grafico che rappresenta il flusso logico dietro il sistema di deployment del blog</figcaption>
     </figure></p>
 <p>Il tema che uso e&rsquo; <a href="https://hugoloveit.com/" target="_blank" rel="noopener noreferrer">LoveIt</a>. E&rsquo; molto carino e ricco di funzionalita&rsquo; ma ha alcuni bug che devono essere fixati; per esempio, se stai leggendo questa pagina in Italiano ti sarai accorto che l&rsquo;header ha le traduzioni abbastanza fatte a caso.</p>

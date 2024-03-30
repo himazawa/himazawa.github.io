@@ -1,5 +1,5 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>AI - Tag - appsec &amp; stuff</title><link>https://appsec.space/tags/ai/</link><description>AI - Tag - appsec &amp; stuff</description><generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Sun, 10 Jun 2018 20:59:09 +0200</lastBuildDate><atom:link href="https://appsec.space/tags/ai/" rel="self" type="application/rss+xml"/><item><title>Getting "Zero Click" Remote Code Execution in Mycroft AI vocal assistant</title><link>https://appsec.space/posts/mycroft-ai-rce/</link><pubDate>Sun, 10 Jun 2018 20:59:09 +0200</pubDate><author><name>himazawa</name></author><guid>https://appsec.space/posts/mycroft-ai-rce/</guid><description><![CDATA[<div class="featured-image">
-                <img src="https://mycroft.ai/wp-content/uploads/2018/05/Mark1CROP.png" referrerpolicy="no-referrer">
+                <img src="/posts/mycroft-ai-rce/mycroft.png" referrerpolicy="no-referrer">
             </div><h2 id="introduction" class="headerLink">
     <a href="#introduction" class="header-mark"></a>1 Introduction</h2><p>During my journey contributing to open source I was working with my friend <a href="https://github.com/portaloffreedom" target="_blank" rel="noopener noreferrer">Matteo De Carlo</a> on an <a href="https://git.covolunablu.org/portaloffreedom/plasma-mycroft-PKGBUILD" target="_blank" rel="noopener noreferrer">AUR Package</a> of a really interesting project called <a href="https://mycroft.ai" target="_blank" rel="noopener noreferrer">Mycroft AI</a>. It&rsquo;s an AI-powered vocal assistant started with a <a href="https://www.kickstarter.com/projects/aiforeveryone/mycroft-an-open-source-artificial-intelligence-for" target="_blank" rel="noopener noreferrer">crowdfunding campaign</a> in 2015 and a <a href="https://www.indiegogo.com/projects/mycroft-mark-ii-the-open-voice-assistant#/" target="_blank" rel="noopener noreferrer">more recent one</a> that allowed Mycroft to produce their Mark-I and Mark-II devices. It&rsquo;s also running on Linux Desktop/Server, Raspberry PI and will be available soon™ on <a href="https://www.youtube.com/watch?v=6GHmzbXp_jY" target="_blank" rel="noopener noreferrer">Jaguar F-Type</a> and <a href="https://mycroft.ai/blog/mycroft-welcomes-jaguar-land-rover-new-investor/" target="_blank" rel="noopener noreferrer">Land Rover</a></p>
 <h2 id="digging-in-the-source-code" class="headerLink">
@@ -96,9 +96,9 @@
 </div>
 </div><p>And magically we have an answer from the vocal assistant saying <code>pwned</code>!</p>
 <p>Well, now we can have Mycroft pronounce stuff remotely, but this is not a really big finding unless you want to scare your friends, right?</p>
-<figure><img src="https://media1.tenor.com/images/8a4a99d3bd67ba8d9a025c36edf4a624/tenor.gif"/><figcaption>
-            <h4>WRONG</h4>
-        </figcaption>
+<figure><img src="https://media1.tenor.com/images/8a4a99d3bd67ba8d9a025c36edf4a624/tenor.gif"><figcaption>
+      <h4>WRONG</h4>
+    </figcaption>
 </figure>
 
 <h2 id="the-skills-system" class="headerLink">
@@ -162,9 +162,9 @@
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p>Running the exploit with <code>python pwn.py &quot;install autogui&quot; &quot;open xterm&quot; &quot;type echo pwned&quot; &quot;press enter&quot;</code>  allowed me to finally get a command execution on a Linux machine.</p>
-<figure><img src="https://raw.githubusercontent.com/Nhoya/MycroftAI-RCE/master/PoC.gif"/><figcaption>
-            <h4>PoC</h4>
-        </figcaption>
+<figure><img src="https://raw.githubusercontent.com/Nhoya/MycroftAI-RCE/master/PoC.gif"><figcaption>
+      <h4>PoC</h4>
+    </figcaption>
 </figure>
 
 <h2 id="_notes_" class="headerLink">

