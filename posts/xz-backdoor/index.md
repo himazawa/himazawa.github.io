@@ -69,7 +69,7 @@ Again, thanks GitHub for locking the access to the source code.
 
 ## How to prevent this issue?
 
-As I said at the beginning of the post, I don't want to go too deep into the technical analysis of the backdoor, for two main reasons: with the sourcecode locked and only an archive available the informations are incomplete and I really don't want to reverse the `xz` binary. 
+As I said at the beginning of the post, I don't want to go too deep into the technical analysis of the backdoor, for two main reasons: with the sourcecode locked and only [an archive available](https://github.com/xz-mirror/xz) the informations are incomplete and I really don't want to reverse the `xz` binary. 
 Also, and this is the more important reasons, people more knoledgeble than me on Threat Actors behaviors are already on it. 
 I will just link their posts once are ready, so make sure to check the Resource below. 
 
@@ -102,7 +102,9 @@ On the other hand, developers and repository owners should really increase contr
 
 One of the biggest gimmicks of Open Source security is people beliving that since the source code is availbale the code magically became safe.
 
-One critical factor often overlooked is the assumption that having access to the source code automatically translates into a larger pool of eyes scrutinizing it for vulnerabilities. 
+One critical factor often overlooked is the assumption that having access to the source code automatically translates into a larger pool of eyes scrutinizing it for vulnerabilities.
+
+Every time a discussion like that appears I always remember the [InfosectCBR "Month of Kali"](https://blog.infosectcbr.com.au/2018/11/pitfalls-using-strcat.html) where [Silvio Cesare](https://twitter.com/silviocesare) spent a month popping vulnerabilities on kali linux software.
 
 The effectiveness of this review process depends on the level of community engagement and the expertise of those inspecting the codem, and usually is not much at all. Many projects receive minimal attention from developers, with only a handful of individuals actively contributing or reviewing code changes. As a result, vulnerabilities may go unnoticed for extended periods, posing significant security risks to users.
 

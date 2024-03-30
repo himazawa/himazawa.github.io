@@ -70,7 +70,7 @@ Some (homebrew, for exaple), forced the downgrade to 5.4.6.</p>
 <p>The <code>5.4.6</code> version is also builded by the attacker and honestly wouldn&rsquo;t trust it much.
 Again, thanks GitHub for locking the access to the source code.</p>
 <h2 id="how-to-prevent-this-issue" class="headerLink">
-    <a href="#how-to-prevent-this-issue" class="header-mark"></a>4 How to prevent this issue?</h2><p>As I said at the beginning of the post, I don&rsquo;t want to go too deep into the technical analysis of the backdoor, for two main reasons: with the sourcecode locked and only an archive available the informations are incomplete and I really don&rsquo;t want to reverse the <code>xz</code> binary.
+    <a href="#how-to-prevent-this-issue" class="header-mark"></a>4 How to prevent this issue?</h2><p>As I said at the beginning of the post, I don&rsquo;t want to go too deep into the technical analysis of the backdoor, for two main reasons: with the sourcecode locked and only <a href="https://github.com/xz-mirror/xz" target="_blank" rel="noopener noreferrer">an archive available</a> the informations are incomplete and I really don&rsquo;t want to reverse the <code>xz</code> binary.
 Also, and this is the more important reasons, people more knoledgeble than me on Threat Actors behaviors are already on it.
 I will just link their posts once are ready, so make sure to check the Resource below.</p>
 <p>One thing I can do here is showing the point of view of a Security Engineer on the issue, how I would mitigate the problem and what steps went wrong.</p>
@@ -104,6 +104,7 @@ Unless you want (and are able to) code review every single commit from every sin
 On the other hand, developers and repository owners should really increase controls on their supply chain and include strict metrics to exclude high risk packages.</p>
 <p>One of the biggest gimmicks of Open Source security is people beliving that since the source code is availbale the code magically became safe.</p>
 <p>One critical factor often overlooked is the assumption that having access to the source code automatically translates into a larger pool of eyes scrutinizing it for vulnerabilities.</p>
+<p>Every time a discussion like that appears I always remember the <a href="https://blog.infosectcbr.com.au/2018/11/pitfalls-using-strcat.html" target="_blank" rel="noopener noreferrer">InfosectCBR &ldquo;Month of Kali&rdquo;</a> where <a href="https://twitter.com/silviocesare" target="_blank" rel="noopener noreferrer">Silvio Cesare</a> spent a month popping vulnerabilities on kali linux software.</p>
 <p>The effectiveness of this review process depends on the level of community engagement and the expertise of those inspecting the codem, and usually is not much at all. Many projects receive minimal attention from developers, with only a handful of individuals actively contributing or reviewing code changes. As a result, vulnerabilities may go unnoticed for extended periods, posing significant security risks to users.</p>
 <p>But which factors could contribute on minimizing the risks?</p>
 <h3 id="github-stars" class="headerLink">
