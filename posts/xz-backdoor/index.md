@@ -1,4 +1,4 @@
-# The XZ backdoor from a Security Engineer persepective
+# The xz backdoor from a Security Engineer persepective
 
 
 As you probably already heard, the `xz` package got compromised. 
