@@ -4,6 +4,7 @@ date: 2023-02-13T20:20:00+01:00
 draft: false
 tags: [security theatre, infosec, rants]
 categories: [general-knowledge]
+featuredImage: cargocult.jpg
 ---
 
 Lavorando nel campo, ho visto molte organizzazioni investire una quantita' significativa di tempo e risorse (che si traduce in persone e soldi), in misure che garantiscono poca se non zero, reale sicurezza.

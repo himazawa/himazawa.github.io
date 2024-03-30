@@ -4,7 +4,7 @@ subtitle: "Hey Mycroft, we've got a Problem"
 date: 2018-06-10T20:59:09+02:00
 tags: [writeup, code review, AI, vocal assistant]
 categories: [vulnerability-research]
-featuredImage: https://mycroft.ai/wp-content/uploads/2018/05/Mark1CROP.png
+featuredImage: mycroft.png
 ---
 
 ## Introduction
