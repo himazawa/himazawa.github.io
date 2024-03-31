@@ -70,7 +70,7 @@ At the moment we know that there are checks in the backdoor to [target Linux ins
 
 The reasons behind the `xz` repositories lockdown are still a mistery to me, especially knowing that with the source code available additional anaysis on the backdoor could be performed.
 
-Blocking access to the source code is something that will delay further results, that is honestly really bad for time-critical situation like this one.
+Blocking access to the source code is something that will delay further results, that is honestly really bad for time-critical situation like this one. An updated mirror is available [here](https://git.tukaani.org/?p=xz.git;a=summary)
 
 ### The downgrades
 
