@@ -27,7 +27,7 @@ La situazione non sembra rosea quindi sto provando a scrivere questo blogpost in
 Non voglio trattare aspetti troppo tecnici della compromissione ma voglio guardare alla issue dalla prospettiva di un Security Engineer, riassumendo cosa è andato storto e quali sono le possibili remediation a questo problema.
 
 ## Timeline
-{{< admonition type=tip title="Note" open=true >}}
+{{< admonition type=tip title="Note" open=false >}}
 Controlla la sezione Risorse per i link ad una timeline più dettagliata
 {{< /admonition >}}
 
