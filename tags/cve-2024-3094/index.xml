@@ -73,7 +73,7 @@ He was optimizing his infrastructure and found that ssh was  suspiciously slow. 
 <p>Blocking access to the source code is something that will delay further results, that is honestly really bad for time-critical situation like this one.</p>
 <h3 id="the-downgrades" class="headerLink">
     <a href="#the-downgrades" class="header-mark"></a>3.2 The downgrades</h3><p>The patch strategy for basically everyone was to force a downgrade from the <code>5.6.0</code>-<code>5.6.1</code> to another version.<br>
-Some (homebrew, for exaple), forced the downgrade to 5.4.6.</p>
+Some (homebrew, for example), forced the downgrade to 5.4.6.</p>
 <p>This looks interesting because for sure we know there is a backdoor on that (<code>5.6.0</code>-<code>5.6.1</code>) versions, but we also know that the attacker has been working on the repository for over two years.</p>
 <p>The <code>5.4.6</code> version is also builded by the attacker and honestly wouldn&rsquo;t trust it much.
 Again, thanks GitHub for locking the access to the source code.</p>
