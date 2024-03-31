@@ -10,10 +10,12 @@ The package was used as entrypoint to inject malicious code in sshd, altering th
 The situation is still ongoing, more details will emerge in the near future and I will upgrade this post accordingly.
 {{< /admonition >}}
 
-This is probably a full fledge operation due to it's methodology and duration but I'm not the right guy to talk about OpSec and Threat Actors attributions. 
-As soon as I will find a complete analysis on that matter I will link it.
+This is probably a full fledged operation due to it's methodology and duration but I'm not the right guy to talk about OpSec and Threat Actors attributions. 
+Check the Resources section for additional links.
 
-The situation doesn't look too good so I'm trying to write this blogpost as a summary. I don't want to address the technical aspect of the compromission but I want to look at the issue from the perspective of a Security Engineer, summarizing what went wrong and trying to find a remediation.
+The situation doesn't look too good so I'm trying to write this blogpost as a summary. 
+
+I don't want to address the technical aspect of the compromission but I want to look at the issue from the perspective of a Security Engineer, summarizing what went wrong and trying to find a remediation.
 
 ## Timeline
 {{< admonition type=tip title="Note" open=true >}}
@@ -41,6 +43,7 @@ Distributions:
 - Arch
 - [Debian Sid](https://security-tracker.debian.org/tracker/CVE-2024-3094)
 - Gentoo
+- [Fedora 40](https://www.redhat.com/en/blog/urgent-security-alert-fedora-41-and-rawhide-users)
 - Manjaro Testing
 - Parabola
 - NixOS Unstable
@@ -52,6 +55,8 @@ The backdoored package is also contained in the following package managers:
 - Homebrew
 - MacPorts
 - pkgsrc
+
+At the moment we know that the there are checks in the backdoor to [target Linux instances and only x86_64/amd64](https://gist.github.com/thesamesam/223949d5a074ebc3dce9ee78baad9e27#design) builds so the affected target could be reduced but since the entire situation is unclear I would not reccommend to keep a compromised package on your system.
 
 ## Considerations
 
@@ -136,13 +141,13 @@ A good portion of the evaluation should also focus on the SDLC to e ensure secur
 Also take in considerations that we are humans, and we make errors. Passing a code review doesn't mean the code is safe, as I said before: there is no real solution, just ways to decrease the probablity for the bad stuff to happen.
 
 ### Enterprise vs Individual
-This is a controversial topic because there are projects that are maintained by individuals that are well structured but usually relying on (large) enterprise projects will ensure their SDLC best practices are followed, money are keeping the project alive, and a big company is less likely to go all in and backdoor their project on purpose. Again, this just increase the probablity, don't take it for granted ;)
+This is a controversial topic because there are projects that are maintained by individuals that are well structured but usually relying on (large) enterprise projects will ensure their SDLC best practices are followed, money are keeping the project alive, and a big company is less likely to go all in and backdoor their project on purpose. Again, this just increases the probablity, don't take it for granted ;)
 
 
 ## Resources
     
 - OSS-Security List: https://www.openwall.com/lists/oss-security/2024/03/29/4
 - Comprehensive timeline: https://boehs.org/node/everything-i-know-about-the-xz-backdoor
-- Compromise link roundup: https://shellsharks.com/xz-compromise-link-roundup#title
+- Compromise link roundup: https://shellsharks.com/xz-compromise-link-roundup
 - Obfuscatio Analysis: https://gynvael.coldwind.pl/?lang=en&id=782
 

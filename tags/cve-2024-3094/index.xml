@@ -10,9 +10,10 @@
             <div class="admonition-content">The situation is still ongoing, more details will emerge in the near future and I will upgrade this post accordingly.</div>
         </div>
     </div>
-<p>This is probably a full fledge operation due to it&rsquo;s methodology and duration but I&rsquo;m not the right guy to talk about OpSec and Threat Actors attributions.
-As soon as I will find a complete analysis on that matter I will link it.</p>
-<p>The situation doesn&rsquo;t look too good so I&rsquo;m trying to write this blogpost as a summary. I don&rsquo;t want to address the technical aspect of the compromission but I want to look at the issue from the perspective of a Security Engineer, summarizing what went wrong and trying to find a remediation.</p>
+<p>This is probably a full fledged operation due to it&rsquo;s methodology and duration but I&rsquo;m not the right guy to talk about OpSec and Threat Actors attributions.
+Check the Resources section for additional links.</p>
+<p>The situation doesn&rsquo;t look too good so I&rsquo;m trying to write this blogpost as a summary.</p>
+<p>I don&rsquo;t want to address the technical aspect of the compromission but I want to look at the issue from the perspective of a Security Engineer, summarizing what went wrong and trying to find a remediation.</p>
 <h2 id="timeline" class="headerLink">
     <a href="#timeline" class="header-mark"></a>1 Timeline</h2><div class="details admonition tip open">
         <div class="details-summary admonition-title">
@@ -55,6 +56,7 @@ He was optimizing his infrastructure and found that ssh was  suspiciously slow. 
 <li>Arch</li>
 <li><a href="https://security-tracker.debian.org/tracker/CVE-2024-3094" target="_blank" rel="noopener noreferrer">Debian Sid</a></li>
 <li>Gentoo</li>
+<li><a href="https://www.redhat.com/en/blog/urgent-security-alert-fedora-41-and-rawhide-users" target="_blank" rel="noopener noreferrer">Fedora 40</a></li>
 <li>Manjaro Testing</li>
 <li>Parabola</li>
 <li>NixOS Unstable</li>
@@ -68,6 +70,7 @@ He was optimizing his infrastructure and found that ssh was  suspiciously slow. 
 <li>MacPorts</li>
 <li>pkgsrc</li>
 </ul>
+<p>At the moment we know that the there are checks in the backdoor to <a href="https://gist.github.com/thesamesam/223949d5a074ebc3dce9ee78baad9e27#design" target="_blank" rel="noopener noreferrer">target Linux instances and only x86_64/amd64</a> builds so the affected target could be reduced but since the entire situation is unclear I would not reccommend to keep a compromised package on your system.</p>
 <h2 id="considerations" class="headerLink">
     <a href="#considerations" class="header-mark"></a>3 Considerations</h2><h3 id="the-github-behavior" class="headerLink">
     <a href="#the-github-behavior" class="header-mark"></a>3.1 The GitHub Behavior</h3><p>The reasons behind the <code>xz</code> repositories lockdown are still a mistery to me, especially knowing that with the source code available additional anaysis on the backdoor could be performed.</p>
@@ -136,11 +139,11 @@ And also are less likely to be completely abandoned.</p>
     <a href="#sdlc" class="header-mark"></a>4.5 SDLC</h3><p>A good portion of the evaluation should also focus on the SDLC to e ensure security (and quality in general) gates are correcly implemented, approvals on PRs are mandatory and there are healthy practices in place to prevent one single contributor to push malicious code without approval.</p>
 <p>Also take in considerations that we are humans, and we make errors. Passing a code review doesn&rsquo;t mean the code is safe, as I said before: there is no real solution, just ways to decrease the probablity for the bad stuff to happen.</p>
 <h3 id="enterprise-vs-individual" class="headerLink">
-    <a href="#enterprise-vs-individual" class="header-mark"></a>4.6 Enterprise vs Individual</h3><p>This is a controversial topic because there are projects that are maintained by individuals that are well structured but usually relying on (large) enterprise projects will ensure their SDLC best practices are followed, money are keeping the project alive, and a big company is less likely to go all in and backdoor their project on purpose. Again, this just increase the probablity, don&rsquo;t take it for granted ;)</p>
+    <a href="#enterprise-vs-individual" class="header-mark"></a>4.6 Enterprise vs Individual</h3><p>This is a controversial topic because there are projects that are maintained by individuals that are well structured but usually relying on (large) enterprise projects will ensure their SDLC best practices are followed, money are keeping the project alive, and a big company is less likely to go all in and backdoor their project on purpose. Again, this just increases the probablity, don&rsquo;t take it for granted ;)</p>
 <h2 id="resources" class="headerLink">
     <a href="#resources" class="header-mark"></a>5 Resources</h2><ul>
 <li>OSS-Security List: <a href="https://www.openwall.com/lists/oss-security/2024/03/29/4" target="_blank" rel="noopener noreferrer">https://www.openwall.com/lists/oss-security/2024/03/29/4</a></li>
 <li>Comprehensive timeline: <a href="https://boehs.org/node/everything-i-know-about-the-xz-backdoor" target="_blank" rel="noopener noreferrer">https://boehs.org/node/everything-i-know-about-the-xz-backdoor</a></li>
-<li>Compromise link roundup: <a href="https://shellsharks.com/xz-compromise-link-roundup#title" target="_blank" rel="noopener noreferrer">https://shellsharks.com/xz-compromise-link-roundup#title</a></li>
+<li>Compromise link roundup: <a href="https://shellsharks.com/xz-compromise-link-roundup" target="_blank" rel="noopener noreferrer">https://shellsharks.com/xz-compromise-link-roundup</a></li>
 <li>Obfuscatio Analysis: <a href="https://gynvael.coldwind.pl/?lang=en&amp;id=782" target="_blank" rel="noopener noreferrer">https://gynvael.coldwind.pl/?lang=en&id=782</a></li>
 </ul>]]></description></item></channel></rss>
