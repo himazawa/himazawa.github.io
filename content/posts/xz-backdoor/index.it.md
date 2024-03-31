@@ -62,7 +62,7 @@ Distribuzioni:
 - [SUSE Tumbleweed](https://news.opensuse.org/2024/03/29/xz-backdoor/)
 - [Kali Linux](https://infosec.exchange/@kalilinux/112180505434870941)
 
-Il pacchetto con la backdoor è inoltre contenuto nei seguenti package manager:
+Il pacchetto con la backdoor è inoltre contenuto nei repository dei seguenti package manager:
 - Homebrew
 - MacPorts
 - pkgsrc
