@@ -63,12 +63,12 @@ Distributions:
 - [SUSE Tumbleweed](https://news.opensuse.org/2024/03/29/xz-backdoor/)
 - [Kali Linux](https://infosec.exchange/@kalilinux/112180505434870941)
 
-The backdoored package is also contained in the repositories of following package managers:
+The backdoored package is also contained in the repositories of the following package managers:
 - Homebrew
 - MacPorts
 - pkgsrc
 
-At the moment we know that there are checks in the backdoor to [target Linux instances and only x86_64/amd64]() builds so the real number could be downsized, but since the entire situation is unclear I would not reccommend to keep a compromised package on your system.
+At the moment we know that there are checks in the backdoor to [target Linux instances and only x86_64/amd64](https://gist.github.com/thesamesam/223949d5a074ebc3dce9ee78baad9e27#design) builds so the real number could be downsized, but since the entire situation is unclear I would not reccommend to keep a compromised package on your system.
 
 ## Considerations
 
