@@ -82,7 +82,7 @@ He was optimizing his infrastructure and found that ssh was  suspiciously slow. 
 <li>MacPorts</li>
 <li>pkgsrc</li>
 </ul>
-<p>At the moment we know that the there are checks in the backdoor to <a href="" rel="">target Linux instances and only x86_64/amd64</a> builds so the real number could be downsized, but since the entire situation is unclear I would not reccommend to keep a compromised package on your system.</p>
+<p>At the moment we know that there are checks in the backdoor to <a href="" rel="">target Linux instances and only x86_64/amd64</a> builds so the real number could be downsized, but since the entire situation is unclear I would not reccommend to keep a compromised package on your system.</p>
 <h2 id="considerations" class="headerLink">
     <a href="#considerations" class="header-mark"></a>3 Considerations</h2><h3 id="the-github-behavior" class="headerLink">
     <a href="#the-github-behavior" class="header-mark"></a>3.1 The GitHub Behavior</h3><p>The reasons behind the <code>xz</code> repositories lockdown are still a mistery to me, especially knowing that with the source code available additional anaysis on the backdoor could be performed.</p>
