@@ -150,7 +150,7 @@ Puoi trovare un buon articolo qui: <a href="https://dagster.io/blog/fake-stars" 
     <a href="#enterprise-vs-individual" class="header-mark"></a>4.6 Enterprise vs Individual</h3><p>Questo è un argomento abbastanza controverso perchè ci sono progetti mantenuti da persone individuali che sono ben strutturati.
 Di solito però, utilizzando cdice prodotto da (grandi) aziende renderà più probabile l&rsquo;avere delle best practice di sviluppo, avere un continuo stream di fondi per mantenere il progetto in piedi e soprattuto difficilmente una grande azienda metterebbe una backdoor di proposito nel proprio codice. Di nuovo, questo aumenta solo le probabilità, non va preso come concetto assoluto ;)</p>
 <h3 id="controlli-ricorsivi" class="headerLink">
-    <a href="#controlli-ricorsivi" class="header-mark"></a>4.7 Controlli Ricorsivi</h3><p>Il progetto che stai includendo probabilmente avrà anche delle dipendenze, assicurati che lo stesso controllo venga applicato dai manutentori del progetto sulla loro catena di fornitura per evitare compromissioni indirette.</p>
+    <a href="#controlli-ricorsivi" class="header-mark"></a>4.7 Controlli Ricorsivi</h3><p>Il progetto che stai includendo probabilmente avrà anche delle dipendenze, assicurati che gli stessi controlli vengano applicati dai maintainers del progetto sulla loro supply chian, per evitare compromissioni indirette.</p>
 <h2 id="risorse" class="headerLink">
     <a href="#risorse" class="header-mark"></a>5 Risorse</h2><ul>
 <li>OSS-Security List: <a href="https://www.openwall.com/lists/oss-security/2024/03/29/4" target="_blank" rel="noopener noreferrer">https://www.openwall.com/lists/oss-security/2024/03/29/4</a></li>
