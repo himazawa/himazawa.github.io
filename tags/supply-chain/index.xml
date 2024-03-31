@@ -153,8 +153,12 @@ And also are less likely to be completely abandoned.</p>
     <a href="#enterprise-vs-individual" class="header-mark"></a>4.6 Enterprise vs Individual</h3><p>This is a controversial topic because there are projects that are maintained by individuals that are well structured but usually relying on (large) enterprise projects will ensure their SDLC best practices are followed, money are keeping the project alive, and a big company is less likely to go all in and backdoor their project on purpose. Again, this just increases the probablity, don&rsquo;t take it for granted ;)</p>
 <h3 id="recursive-controls" class="headerLink">
     <a href="#recursive-controls" class="header-mark"></a>4.7 Recursive controls</h3><p>The project you are including will probably also have dependencies, make sure the same scrutiny is applied by the project maintainers on their supply chain to avoid indirect compromission.</p>
+<h2 id="conclusion" class="headerLink">
+    <a href="#conclusion" class="header-mark"></a>5 Conclusion</h2><p>The <code>xz</code> backdoor is yet another case of supply chain hijacking, but this time with way more complexity and effort behind it.</p>
+<p>We shound&rsquo;t blame the current maintainer or the Open Source software: issues like that (intentional or not) are mostly unpatchable because they leverage the human factor that is inreplaceable.</p>
+<p>On the other hand we can follow some best practices in picking software to integrate inside our repositories to reduce the chance of this from happening.</p>
 <h2 id="resources" class="headerLink">
-    <a href="#resources" class="header-mark"></a>5 Resources</h2><ul>
+    <a href="#resources" class="header-mark"></a>6 Resources</h2><ul>
 <li>OSS-Security List: <a href="https://www.openwall.com/lists/oss-security/2024/03/29/4" target="_blank" rel="noopener noreferrer">https://www.openwall.com/lists/oss-security/2024/03/29/4</a></li>
 <li>Comprehensive timeline: <a href="https://boehs.org/node/everything-i-know-about-the-xz-backdoor" target="_blank" rel="noopener noreferrer">https://boehs.org/node/everything-i-know-about-the-xz-backdoor</a></li>
 <li>Compromise link roundup: <a href="https://shellsharks.com/xz-compromise-link-roundup" target="_blank" rel="noopener noreferrer">https://shellsharks.com/xz-compromise-link-roundup</a></li>

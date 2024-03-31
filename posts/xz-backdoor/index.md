@@ -151,6 +151,14 @@ This is a controversial topic because there are projects that are maintained by 
 ### Recursive controls
 The project you are including will probably also have dependencies, make sure the same scrutiny is applied by the project maintainers on their supply chain to avoid indirect compromission.
 
+## Conclusion
+The `xz` backdoor is yet another case of supply chain hijacking, but this time with way more complexity and effort behind it. 
+
+We shound't blame the current maintainer or the Open Source software: issues like that (intentional or not) are mostly unpatchable because they leverage the human factor that is inreplaceable. 
+
+On the other hand we can follow some best practices in picking software to integrate inside our repositories to reduce the chance of this from happening.
+
+
 ## Resources
     
 - OSS-Security List: https://www.openwall.com/lists/oss-security/2024/03/29/4
