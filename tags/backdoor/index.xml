@@ -10,7 +10,7 @@
             <div class="admonition-content">The situation is still ongoing, more details will emerge in the near future and I will update this post accordingly.</div>
         </div>
     </div>
-<p>This is probably a full fledged operation due to it&rsquo;s methodology and duration but I&rsquo;m not the right guy to talk about OpSec and Threat Actors attributions.
+<p>This is probably a full fledged operation due to its methodology and duration but I&rsquo;m not the right guy to talk about OpSec and Threat Actors attributions.
 Check the Resources section for additional links.</p>
 <p>The situation doesn&rsquo;t look too good so I&rsquo;m trying to write this blogpost as a summary.</p>
 <p>I don&rsquo;t want to address the technical aspect of the compromission but I want to look at the issue from the perspective of a Security Engineer, summarizing what went wrong and trying to find a remediation.</p>
