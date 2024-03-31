@@ -26,7 +26,7 @@ The situation doesn't look too good so I'm trying to write this blogpost as a su
 Check the Resources section for a link to an article with a detailed timeline
 {{< /admonition >}}
 
-- __Apr 2022__: 
+- __2023__: 
     - A new maintainer shows up in the `xz` project.
 - __29 Mar 2024__: 
     - Andres Freund sent an email to the oss-security security regarding a backdoor in `xz/liblzma`. 
@@ -148,3 +148,5 @@ This is a controversial topic because there are projects that are maintained by 
     
 - OSS-Security List: https://www.openwall.com/lists/oss-security/2024/03/29/4
 - Comprehensive timeline: https://boehs.org/node/everything-i-know-about-the-xz-backdoor
+- Compromise link roundup: https://shellsharks.com/xz-compromise-link-roundup#title
+- Obfuscatio Analysis: https://gynvael.coldwind.pl/?lang=en&id=782
