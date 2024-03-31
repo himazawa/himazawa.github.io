@@ -3,9 +3,9 @@
             </div><p>As you probably already heard, the <code>xz</code> package got compromised.</p>
 <p>The package was used as entrypoint to inject malicious code in sshd, altering the authentication flow. This forged vulnerability is now known as <a href="https://nvd.nist.gov/vuln/detail/CVE-2024-3094" target="_blank" rel="noopener noreferrer">CVE-2024-3094</a>.</p>
 <p>Looks like the injected code <a href="https://bsky.app/profile/filippo.abyssdomain.expert/post/3kowjkx2njy2b" target="_blank" rel="noopener noreferrer">takes the payload from a specific key and execute it</a>.</p>
-<div class="details admonition tip open">
+<div class="details admonition info open">
         <div class="details-summary admonition-title">
-            <i class="icon fas fa-lightbulb fa-fw"></i>Note<i class="details-icon fas fa-angle-right fa-fw"></i>
+            <i class="icon fas fa-info-circle fa-fw"></i>Info<i class="details-icon fas fa-angle-right fa-fw"></i>
         </div>
         <div class="details-content">
             <div class="admonition-content">The situation is still ongoing, more details will emerge in the near future and I will update this post accordingly.</div>
@@ -18,7 +18,7 @@ Check the Resources section for additional links.</p>
 <h2 id="timeline" class="headerLink">
     <a href="#timeline" class="header-mark"></a>1 Timeline</h2><div class="details admonition tip">
         <div class="details-summary admonition-title">
-            <i class="icon fas fa-lightbulb fa-fw"></i>Note<i class="details-icon fas fa-angle-right fa-fw"></i>
+            <i class="icon fas fa-lightbulb fa-fw"></i>Tip<i class="details-icon fas fa-angle-right fa-fw"></i>
         </div>
         <div class="details-content">
             <div class="admonition-content">Check the Resources section for a link to an article with a detailed timeline</div>
@@ -98,9 +98,9 @@ Again, thanks GitHub for locking the access to the source code.</p>
 Also, and this is the more important reasons, people more knowledgeable than me on Threat Actors behaviors are already on it.
 I will just link their posts once are ready, so make sure to check the Resources section below.</p>
 <p>One thing I can do here is showing the point of view of a Security Engineer on the issue, how I would mitigate the problem and what steps went wrong.</p>
-<div class="details admonition tip open">
+<div class="details admonition note open">
         <div class="details-summary admonition-title">
-            <i class="icon fas fa-lightbulb fa-fw"></i>Note<i class="details-icon fas fa-angle-right fa-fw"></i>
+            <i class="icon fas fa-pencil-alt fa-fw"></i>Note<i class="details-icon fas fa-angle-right fa-fw"></i>
         </div>
         <div class="details-content">
             <div class="admonition-content">TL;DR: there isn&rsquo;t an actual solution</div>
