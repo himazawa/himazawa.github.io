@@ -165,4 +165,6 @@ Il progetto che stai includendo probabilmente avrà anch'esso delle dipendenze, 
 - Comprehensive timeline: https://boehs.org/node/everything-i-know-about-the-xz-backdoor
 - Compromise link roundup: https://shellsharks.com/xz-compromise-link-roundup
 - Obfuscation Analysis: https://gynvael.coldwind.pl/?lang=en&id=782
+- Backdoor Analysis: https://gist.github.com/smx-smx/a6112d54777845d389bd7126d6e9f504
+
 

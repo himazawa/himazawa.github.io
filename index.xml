@@ -150,6 +150,7 @@ And also are less likely to be completely abandoned.</p>
 <li>Comprehensive timeline: <a href="https://boehs.org/node/everything-i-know-about-the-xz-backdoor" target="_blank" rel="noopener noreferrer">https://boehs.org/node/everything-i-know-about-the-xz-backdoor</a></li>
 <li>Compromise link roundup: <a href="https://shellsharks.com/xz-compromise-link-roundup" target="_blank" rel="noopener noreferrer">https://shellsharks.com/xz-compromise-link-roundup</a></li>
 <li>Obfuscation Analysis: <a href="https://gynvael.coldwind.pl/?lang=en&amp;id=782" target="_blank" rel="noopener noreferrer">https://gynvael.coldwind.pl/?lang=en&id=782</a></li>
+<li>Backdoor Analysis: <a href="https://gist.github.com/smx-smx/a6112d54777845d389bd7126d6e9f504" target="_blank" rel="noopener noreferrer">https://gist.github.com/smx-smx/a6112d54777845d389bd7126d6e9f504</a></li>
 </ul>]]></description></item><item><title>Security Theatre? More like Security Circus</title><link>https://appsec.space/posts/security-theatre/</link><pubDate>Mon, 13 Feb 2023 20:20:00 +0100</pubDate><author><name>himazawa</name></author><guid>https://appsec.space/posts/security-theatre/</guid><description><![CDATA[<div class="featured-image">
                 <img src="/posts/security-theatre/cargocult.jpg" referrerpolicy="no-referrer">
             </div><p>I have seen many companies invest significant time and resources into security measures that have little to no actual effect on security. This is commonly referred to as &ldquo;security theater&rdquo;.</p>

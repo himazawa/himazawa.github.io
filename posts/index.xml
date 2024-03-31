@@ -150,6 +150,7 @@ And also are less likely to be completely abandoned.</p>
 <li>Comprehensive timeline: <a href="https://boehs.org/node/everything-i-know-about-the-xz-backdoor" target="_blank" rel="noopener noreferrer">https://boehs.org/node/everything-i-know-about-the-xz-backdoor</a></li>
 <li>Compromise link roundup: <a href="https://shellsharks.com/xz-compromise-link-roundup" target="_blank" rel="noopener noreferrer">https://shellsharks.com/xz-compromise-link-roundup</a></li>
 <li>Obfuscation Analysis: <a href="https://gynvael.coldwind.pl/?lang=en&amp;id=782" target="_blank" rel="noopener noreferrer">https://gynvael.coldwind.pl/?lang=en&id=782</a></li>
+<li>Backdoor Analysis: <a href="https://gist.github.com/smx-smx/a6112d54777845d389bd7126d6e9f504" target="_blank" rel="noopener noreferrer">https://gist.github.com/smx-smx/a6112d54777845d389bd7126d6e9f504</a></li>
 </ul>]]></description></item><item><title>Getting "Zero Click" Remote Code Execution in Mycroft AI vocal assistant</title><link>https://appsec.space/posts/mycroft-ai-rce/</link><pubDate>Sun, 10 Jun 2018 20:59:09 +0200</pubDate><author><name>himazawa</name></author><guid>https://appsec.space/posts/mycroft-ai-rce/</guid><description><![CDATA[<div class="featured-image">
                 <img src="/posts/mycroft-ai-rce/mycroft.png" referrerpolicy="no-referrer">
             </div><h2 id="introduction" class="headerLink">
