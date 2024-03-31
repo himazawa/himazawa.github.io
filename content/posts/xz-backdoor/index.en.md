@@ -150,6 +150,8 @@ Also take in considerations that we are humans, and we make errors. Passing a co
 ### Enterprise vs Individual
 This is a controversial topic because there are projects that are maintained by individuals that are well structured but usually relying on (large) enterprise projects will ensure their SDLC best practices are followed, money are keeping the project alive, and a big company is less likely to go all in and backdoor their project on purpose. Again, this just increases the probablity, don't take it for granted ;)
 
+### Recursive controls
+The project you are including will probably also have dependencies, make sure the same scrutiny is applied by the project maintainers on their supply chain to avoid indirect compromission.
 
 ## Resources
     
