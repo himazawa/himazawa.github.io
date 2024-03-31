@@ -165,3 +165,4 @@ The project you are including will probably also have dependencies, make sure th
 - Obfuscation Analysis: https://gynvael.coldwind.pl/?lang=en&id=782
 - Backdoor Analysis: https://gist.github.com/smx-smx/a6112d54777845d389bd7126d6e9f504
 - Additional info: https://bsky.app/profile/filippo.abyssdomain.expert/post/3kowjkx2njy2b
+- Visualized timeline: https://infosec.exchange/@fr0gger/112189232773640259
