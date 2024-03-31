@@ -54,6 +54,9 @@ Stava ottimizzando la sua infrastruttura e si è accorto che ssh era &ldquo;sosp
 <li>
 <p>Un <a href="https://tukaani.org/xz-backdoor/" target="_blank" rel="noopener noreferrer">comunicato ufficiale</a> è stato rilasciato dal maintainer del progetto</p>
 </li>
+<li>
+<p>Un <strong>potenziale</strong> <a href="https://gist.github.com/sgammon/ec604c3fabd1a22dd3cdc381b736b03e" target="_blank" rel="noopener noreferrer">killswitch</a> è stato identificato, prendete questa informazione con le pinze.</p>
+</li>
 </ul>
 </li>
 </ul>
@@ -158,6 +161,7 @@ Di solito però, utilizzando cdice prodotto da (grandi) aziende renderà più pr
 <li>Compromise link roundup: <a href="https://shellsharks.com/xz-compromise-link-roundup" target="_blank" rel="noopener noreferrer">https://shellsharks.com/xz-compromise-link-roundup</a></li>
 <li>Obfuscation Analysis: <a href="https://gynvael.coldwind.pl/?lang=en&amp;id=782" target="_blank" rel="noopener noreferrer">https://gynvael.coldwind.pl/?lang=en&id=782</a></li>
 <li>Backdoor Analysis: <a href="https://gist.github.com/smx-smx/a6112d54777845d389bd7126d6e9f504" target="_blank" rel="noopener noreferrer">https://gist.github.com/smx-smx/a6112d54777845d389bd7126d6e9f504</a></li>
+<li>Additional info: <a href="https://bsky.app/profile/filippo.abyssdomain.expert/post/3kowjkx2njy2b" target="_blank" rel="noopener noreferrer">https://bsky.app/profile/filippo.abyssdomain.expert/post/3kowjkx2njy2b</a></li>
 </ul>]]></description></item><item><title>Tanto tempo che non ci si vede</title><link>https://appsec.space/it/posts/long-time-no-see/</link><pubDate>Mon, 06 Feb 2023 00:01:18 +0100</pubDate><author><name>himazawa</name></author><guid>https://appsec.space/it/posts/long-time-no-see/</guid><description><![CDATA[<div class="featured-image">
                 <img src="/posts/long-time-no-see/header.jpg" referrerpolicy="no-referrer">
             </div><p>Tanto tempo che non ci si vede, eh? Sono successe tante cose dall&rsquo;ultimo post nel 2018 sul <a href="https://bsod.dev" target="_blank" rel="noopener noreferrer">vecchio blog</a>.</p>

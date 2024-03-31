@@ -34,6 +34,8 @@ Check the Resources section for a link to an article with a detailed timeline
 
     - An [official statement](https://tukaani.org/xz-backdoor/) was released by the project maintainer 
 
+    - __potential__ [killswitch identified](https://gist.github.com/sgammon/ec604c3fabd1a22dd3cdc381b736b03e), take that as a grain of salt
+
 
 
 ## Impacted components
@@ -154,4 +156,5 @@ The project you are including will probably also have dependencies, make sure th
 - Compromise link roundup: https://shellsharks.com/xz-compromise-link-roundup
 - Obfuscation Analysis: https://gynvael.coldwind.pl/?lang=en&id=782
 - Backdoor Analysis: https://gist.github.com/smx-smx/a6112d54777845d389bd7126d6e9f504
+- Additional info: https://bsky.app/profile/filippo.abyssdomain.expert/post/3kowjkx2njy2b
 
