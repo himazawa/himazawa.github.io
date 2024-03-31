@@ -24,12 +24,14 @@ Check the Resources section for additional links.</p>
         </div>
     </div>
 <ul>
-<li><strong>2023</strong>:
+<li>
+<p><strong>2023</strong>:</p>
 <ul>
 <li>A new maintainer shows up in the <code>xz</code> project</li>
 </ul>
 </li>
-<li><strong>29 Mar 2024</strong>:
+<li>
+<p><strong>29 Mar 2024</strong>:</p>
 <ul>
 <li>
 <p>Andres Freund sent an email to the oss-security mailing list regarding a backdoor in <code>xz/liblzma</code>.
@@ -40,7 +42,8 @@ He was optimizing his infrastructure and found that ssh was  suspiciously slow. 
 </li>
 </ul>
 </li>
-<li><strong>30 Mar 2024</strong>:
+<li>
+<p><strong>30 Mar 2024</strong>:</p>
 <ul>
 <li>
 <p>GitHub blocked access to the repostiory and blocked the account of both the xz maintainers</p>
@@ -48,9 +51,12 @@ He was optimizing his infrastructure and found that ssh was  suspiciously slow. 
 <li>
 <p>An <a href="https://tukaani.org/xz-backdoor/" target="_blank" rel="noopener noreferrer">official statement</a> was released by the project maintainer</p>
 </li>
-<li>
-<p><strong>potential</strong> <a href="https://gist.github.com/sgammon/ec604c3fabd1a22dd3cdc381b736b03e" target="_blank" rel="noopener noreferrer">killswitch identified</a>, take that as a grain of salt</p>
+</ul>
 </li>
+<li>
+<p><strong>31 Mar 2024</strong>:</p>
+<ul>
+<li><strong>potential</strong> <a href="https://gist.github.com/sgammon/ec604c3fabd1a22dd3cdc381b736b03e" target="_blank" rel="noopener noreferrer">killswitch identified</a>, take that as a grain of salt</li>
 </ul>
 </li>
 </ul>

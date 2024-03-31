@@ -54,9 +54,12 @@ Stava ottimizzando la sua infrastruttura e si è accorto che ssh era &ldquo;sosp
 <li>
 <p>Un <a href="https://tukaani.org/xz-backdoor/" target="_blank" rel="noopener noreferrer">comunicato ufficiale</a> è stato rilasciato dal maintainer del progetto</p>
 </li>
-<li>
-<p>Un <strong>potenziale</strong> <a href="https://gist.github.com/sgammon/ec604c3fabd1a22dd3cdc381b736b03e" target="_blank" rel="noopener noreferrer">killswitch</a> è stato identificato, prendete questa informazione con le pinze.</p>
+</ul>
 </li>
+<li>
+<p><strong>31 Mar 2024</strong>:</p>
+<ul>
+<li>Un <strong>potenziale</strong> <a href="https://gist.github.com/sgammon/ec604c3fabd1a22dd3cdc381b736b03e" target="_blank" rel="noopener noreferrer">killswitch</a> è stato identificato, prendete questa informazione con le pinze.</li>
 </ul>
 </li>
 </ul>

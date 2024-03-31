@@ -32,8 +32,9 @@ Check the Resources section for a link to an article with a detailed timeline
 - __30 Mar 2024__: 
     - GitHub blocked access to the repostiory and blocked the account of both the xz maintainers
 
-    - An [official statement](https://tukaani.org/xz-backdoor/) was released by the project maintainer 
-
+    - An [official statement](https://tukaani.org/xz-backdoor/) was released by the project maintainer
+    
+- __31 Mar 2024__: 
     - __potential__ [killswitch identified](https://gist.github.com/sgammon/ec604c3fabd1a22dd3cdc381b736b03e), take that as a grain of salt
 
 

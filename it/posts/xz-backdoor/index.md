@@ -39,6 +39,7 @@ Controlla la sezione Risorse per i link ad una timeline più dettagliata
 
     - Un [comunicato ufficiale](https://tukaani.org/xz-backdoor/) è stato rilasciato dal maintainer del progetto
 
+- __31 Mar 2024__: 
     - Un __potenziale__ [killswitch](https://gist.github.com/sgammon/ec604c3fabd1a22dd3cdc381b736b03e) è stato identificato, prendete questa informazione con le pinze.
 
 
