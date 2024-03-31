@@ -14,7 +14,7 @@ The package was used as entrypoint to inject malicious code in sshd, altering th
 
 Looks like the injected code [takes the payload from a specific key and execute it](https://bsky.app/profile/filippo.abyssdomain.expert/post/3kowjkx2njy2b).
 
-{{< admonition type=tip title="Note" open=true >}}
+{{< admonition type=info title="Info" open=true >}}
 The situation is still ongoing, more details will emerge in the near future and I will update this post accordingly.
 {{< /admonition >}}
 
@@ -26,7 +26,7 @@ The situation doesn't look too good so I'm trying to write this blogpost as a su
 I don't want to address the technical aspect of the compromission but I want to look at the issue from the perspective of a Security Engineer, summarizing what went wrong and trying to find a remediation.
 
 ## Timeline
-{{< admonition type=tip title="Note" open=false >}}
+{{< admonition type=tip title="Tip" open=false >}}
 Check the Resources section for a link to an article with a detailed timeline
 {{< /admonition >}}
 
@@ -96,7 +96,7 @@ I will just link their posts once are ready, so make sure to check the Resources
 
 One thing I can do here is showing the point of view of a Security Engineer on the issue, how I would mitigate the problem and what steps went wrong.
 
-{{< admonition type=tip title="Note" open=true >}}
+{{< admonition type=note title="Note" open=true >}}
 TL;DR: there isn't an actual solution
 {{< /admonition >}}
 
