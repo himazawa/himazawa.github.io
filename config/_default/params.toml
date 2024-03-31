@@ -174,7 +174,7 @@ bundle = false
     keepStatic = false
     # whether to make the table of the contents in the sidebar automatically collapsed
     # 是否使侧边目录自动折叠展开
-    auto = false
+    auto = true
   # Code config
   # 代码配置
   [page.code]
