@@ -2,11 +2,11 @@
                 <img src="/posts/xz-backdoor/xz.png" referrerpolicy="no-referrer">
             </div><p>Come probablilmente già sai, <code>xz</code> è stato compromesso.
 Per i non addetti ai lavori <code>xz</code> è una libreria per la compressione dei dati molto utilizzata sopratutto su Linux.</p>
-<p>Il pacchetto è stato usato come entrypoint per l&rsquo;injection di codice malevolo in <code>sshd</code>, modificandone il flusso di autenticazione.</p>
+<p>Il pacchetto è stato usato come entrypoint per l&rsquo;injection di codice malevolo in <code>sshd</code>, modificandone il flusso di autenticazione. <a href="https://bsky.app/profile/filippo.abyssdomain.expert/post/3kowjkx2njy2b" target="_blank" rel="noopener noreferrer">Sembrerebbe che ci sia una code execution direttamente tramite i parametri della chiave</a>.</p>
 <p>Questa vulnerabilità, introdotta deliberatamente attraverso una backdoor, è conosciuta come <a href="https://nvd.nist.gov/vuln/detail/CVE-2024-3094" target="_blank" rel="noopener noreferrer">CVE-2024-3094</a>.</p>
-<div class="details admonition tip open">
+<div class="details admonition note open">
         <div class="details-summary admonition-title">
-            <i class="icon fas fa-lightbulb fa-fw"></i>Note<i class="details-icon fas fa-angle-right fa-fw"></i>
+            <i class="icon fas fa-pencil-alt fa-fw"></i>Note<i class="details-icon fas fa-angle-right fa-fw"></i>
         </div>
         <div class="details-content">
             <div class="admonition-content">La situazione si sta ancora evolvendo, maggiori dettagli emergeranno nel prossimo futuro e aggiornerò il post di conseguenza.</div>
@@ -19,7 +19,7 @@ Nella sezione &ldquo;Risorse&rdquo; in fondo alla pagina ci sono link che riport
 <h2 id="timeline" class="headerLink">
     <a href="#timeline" class="header-mark"></a>1 Timeline</h2><div class="details admonition tip">
         <div class="details-summary admonition-title">
-            <i class="icon fas fa-lightbulb fa-fw"></i>Note<i class="details-icon fas fa-angle-right fa-fw"></i>
+            <i class="icon fas fa-lightbulb fa-fw"></i>tip<i class="details-icon fas fa-angle-right fa-fw"></i>
         </div>
         <div class="details-content">
             <div class="admonition-content">Controlla la sezione Risorse per i link ad una timeline più dettagliata</div>
@@ -99,9 +99,9 @@ Ancora una volta, grazie GitHub per aver bloccato l&rsquo;accesso ai sorgenti e 
 <p>Inoltre, e questo è il motivo più importante, persone con più conoscienze di me sul modo di operare dei Threat Actors ci stanno già lavorando.
 Non appena verranno pubblicati i primi articoli tecnici saranno disponibili nella sezione &ldquo;Risorse&rdquo;, in fondo alla pagina</p>
 <p>Una cosa che però posso fare qui è mostrare il punto di vista di un Security Engineer sul problema, come avrei mitigato la situazione e quali step sono andati storti.</p>
-<div class="details admonition tip open">
+<div class="details admonition note">
         <div class="details-summary admonition-title">
-            <i class="icon fas fa-lightbulb fa-fw"></i>Note<i class="details-icon fas fa-angle-right fa-fw"></i>
+            <i class="icon fas fa-pencil-alt fa-fw"></i>Note<i class="details-icon fas fa-angle-right fa-fw"></i>
         </div>
         <div class="details-content">
             <div class="admonition-content">TL;DR: non esiste una reale soluzione al problema</div>
