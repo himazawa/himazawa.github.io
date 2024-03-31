@@ -31,7 +31,7 @@ Check the Resources section for a link to an article with a detailed timeline
 - __2023__: 
     - A new maintainer shows up in the `xz` project
 - __29 Mar 2024__: 
-    - Andres Freund sent an email to the oss-security security regarding a backdoor in `xz/liblzma`. 
+    - Andres Freund sent an email to the oss-security mailing list regarding a backdoor in `xz/liblzma`. 
     He was optimizing his infrastructure and found that ssh was  suspiciously slow. Some debug later he found the issue was likely caused by the backdoor. The initial analysis was performed with the help of Florian Weimer.
     
     - The post was sent to the oss-security mailing list
@@ -39,6 +39,9 @@ Check the Resources section for a link to an article with a detailed timeline
     - Impacted distros are starting to ship patches to downgrade the xz version (more on that later)
 - __30 Mar 2024__: 
     - GitHub blocked access to the repostiory and blocked the account of both the xz maintainers
+
+    - An [official statement](https://tukaani.org/xz-backdoor/) was released by the project maintainer 
+
 
 
 ## Impacted components
@@ -62,7 +65,7 @@ The backdoored package is also contained in the following package managers:
 - MacPorts
 - pkgsrc
 
-At the moment we know that the there are checks in the backdoor to [target Linux instances and only x86_64/amd64](https://gist.github.com/thesamesam/223949d5a074ebc3dce9ee78baad9e27#design) builds so the affected target could be reduced but since the entire situation is unclear I would not reccommend to keep a compromised package on your system.
+At the moment we know that the there are checks in the backdoor to [target Linux instances and only x86_64/amd64]() builds so the affected target could be reduced but since the entire situation is unclear I would not reccommend to keep a compromised package on your system.
 
 ## Considerations
 
