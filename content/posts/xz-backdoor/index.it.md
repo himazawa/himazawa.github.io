@@ -163,7 +163,7 @@ Questo è un argomento abbastanza controverso perchè ci sono progetti mantenuti
 Di solito però, utilizzando cdice prodotto da (grandi) aziende renderà più probabile l'avere delle best practice di sviluppo, avere un continuo stream di fondi per mantenere il progetto in piedi e soprattuto difficilmente una grande azienda metterebbe una backdoor di proposito nel proprio codice. Di nuovo, questo aumenta solo le probabilità, non va preso come concetto assoluto ;)
 
 ### Controlli Ricorsivi
-Il progetto che stai includendo probabilmente avrà anche delle dipendenze, assicurati che lo stesso controllo venga applicato dai manutentori del progetto sulla loro catena di fornitura per evitare compromissioni indirette.
+Il progetto che stai includendo probabilmente avrà anche delle dipendenze, assicurati che gli stessi controlli vengano applicati dai maintainers del progetto sulla loro supply chian, per evitare compromissioni indirette.
 
 ## Risorse
     
