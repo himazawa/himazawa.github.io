@@ -4,7 +4,7 @@
 Come probablilmente già sai, `xz` è stato compromesso.
 Per i non addetti ai lavori `xz` è una libreria per la compressione dei dati molto utilizzata sopratutto su Linux.
 
-Il pacchetto è stato usato come entrypoint per l'injection di codice malevolo in `sshd`, modificandone il flusso di autenticatione.
+Il pacchetto è stato usato come entrypoint per l'injection di codice malevolo in `sshd`, modificandone il flusso di autenticazione.
 
 Questa vulnerabilità, introdotta deliberatamente attraverso una backdoor, è conosciuta come [CVE-2024-3094](https://nvd.nist.gov/vuln/detail/CVE-2024-3094).
 <!--more--> 

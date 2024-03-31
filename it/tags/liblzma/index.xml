@@ -2,7 +2,7 @@
                 <img src="/posts/xz-backdoor/xz.png" referrerpolicy="no-referrer">
             </div><p>Come probablilmente già sai, <code>xz</code> è stato compromesso.
 Per i non addetti ai lavori <code>xz</code> è una libreria per la compressione dei dati molto utilizzata sopratutto su Linux.</p>
-<p>Il pacchetto è stato usato come entrypoint per l&rsquo;injection di codice malevolo in <code>sshd</code>, modificandone il flusso di autenticatione.</p>
+<p>Il pacchetto è stato usato come entrypoint per l&rsquo;injection di codice malevolo in <code>sshd</code>, modificandone il flusso di autenticazione.</p>
 <p>Questa vulnerabilità, introdotta deliberatamente attraverso una backdoor, è conosciuta come <a href="https://nvd.nist.gov/vuln/detail/CVE-2024-3094" target="_blank" rel="noopener noreferrer">CVE-2024-3094</a>.</p>
 <div class="details admonition tip open">
         <div class="details-summary admonition-title">
