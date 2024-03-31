@@ -92,7 +92,7 @@ TL;DR: there isn't an actual solution
 ### Trust issues
 ![](https://imgs.xkcd.com/comics/dependency_2x.png)
 
-`xz` is a software mainteined (up until 2022) by 1 single guy. Later another maintainer joined but unfortunately for us, it was the same guy pushing the backdoor to upstream.
+`xz` is a software mainteined (up until 2023) by 1 single guy. Later another maintainer joined but unfortunately for us, it was the same guy pushing the backdoor to upstream.
 This crashes against the fact that `xz` is an incredibly popular package available in a lot of distributions and being a dependency of many softwares. 
 
 This was likely seen by the attacker as a gold mine since it was easy to get the role of maintainer of the project and push the malicious code.
