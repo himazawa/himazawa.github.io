@@ -28,8 +28,6 @@ Check the Resources section for a link to an article with a detailed timeline
     - Andres Freund sent an email to the oss-security mailing list regarding a backdoor in `xz/liblzma`. 
     He was optimizing his infrastructure and found that ssh was  suspiciously slow. Some debug later he found the issue was likely caused by the backdoor. The initial analysis was performed with the help of Florian Weimer.
     
-    - The post was sent to the oss-security mailing list
-
     - Impacted distros are starting to ship patches to downgrade the xz version (more on that later)
 - __30 Mar 2024__: 
     - GitHub blocked access to the repostiory and blocked the account of both the xz maintainers
