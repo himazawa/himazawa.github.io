@@ -156,4 +156,4 @@ This is a controversial topic because there are projects that are maintained by 
 - OSS-Security List: https://www.openwall.com/lists/oss-security/2024/03/29/4
 - Comprehensive timeline: https://boehs.org/node/everything-i-know-about-the-xz-backdoor
 - Compromise link roundup: https://shellsharks.com/xz-compromise-link-roundup
-- Obfuscatio Analysis: https://gynvael.coldwind.pl/?lang=en&id=782
+- Obfuscation Analysis: https://gynvael.coldwind.pl/?lang=en&id=782
