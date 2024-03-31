@@ -17,7 +17,7 @@ Nella sezione &ldquo;Risorse&rdquo; in fondo alla pagina ci sono link che riport
 <p>La situazione non sembra rosea quindi sto provando a scrivere questo blogpost in modo tale da fare un pò di chiarezza.</p>
 <p>Non voglio trattare aspetti troppo tecnici della compromissione ma voglio guardare alla issue dalla prospettiva di un Security Engineer, riassumendo cosa è andato storto e quali sono le possibili remediation a questo problema.</p>
 <h2 id="timeline" class="headerLink">
-    <a href="#timeline" class="header-mark"></a>1 Timeline</h2><div class="details admonition tip open">
+    <a href="#timeline" class="header-mark"></a>1 Timeline</h2><div class="details admonition tip">
         <div class="details-summary admonition-title">
             <i class="icon fas fa-lightbulb fa-fw"></i>Note<i class="details-icon fas fa-angle-right fa-fw"></i>
         </div>
