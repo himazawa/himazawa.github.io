@@ -6,6 +6,8 @@ As you probably already heard, the `xz` package got compromised.
 The package was used as entrypoint to inject malicious code in sshd, altering the authentication flow. This forged vulnerability is now known as [CVE-2024-3094](https://nvd.nist.gov/vuln/detail/CVE-2024-3094).
 <!--more--> 
 
+Looks like the injected code [takes the payload from a specific key and execute it](https://bsky.app/profile/filippo.abyssdomain.expert/post/3kowjkx2njy2b).
+
 {{< admonition type=tip title="Note" open=true >}}
 The situation is still ongoing, more details will emerge in the near future and I will update this post accordingly.
 {{< /admonition >}}
@@ -33,7 +35,7 @@ Check the Resources section for a link to an article with a detailed timeline
     - GitHub blocked access to the repostiory and blocked the account of both the xz maintainers
 
     - An [official statement](https://tukaani.org/xz-backdoor/) was released by the project maintainer
-    
+
 - __31 Mar 2024__: 
     - __potential__ [killswitch identified](https://gist.github.com/sgammon/ec604c3fabd1a22dd3cdc381b736b03e), take that as a grain of salt
 
