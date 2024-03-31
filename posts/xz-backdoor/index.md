@@ -92,9 +92,9 @@ This crashes against the fact that `xz` is an incredibly popular package availab
 This was likely seen by the attacker as a gold mine since it was easy to get the role of maintainer of the project and push the malicious code.
 
 Since you are using a thirdy-part source for your supply chain, you have to trust someone at one point or another.
-When talking about supply chain security the reccomendations are always the same: pin the hashes and use signature verification. This will work as long as you have scenarios like a  malicious attacker compromising the dependency CICD and pushing a malicious build, account compromissions etc.
+When talking about supply chain security the reccomendations are always the same: pin the hashes and use signature verification. This will work as long as you have scenarios like a malicious attacker compromising the dependency CICD and pushing a malicious build, account compromissions etc.
 
-But what can you do if all of a sudden, trusted maintainer goes rogue?
+But what can you do if all of a sudden, trusted maintainers goes rogue?
 
 As a standard user, unless you want (and are able to) code review every single commit from every single piece of software your OS interact with: pretty much nothing.
 

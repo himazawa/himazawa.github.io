@@ -104,8 +104,8 @@ I will just link their posts once are ready, so make sure to check the Resources
 This crashes against the fact that <code>xz</code> is an incredibly popular package available in a lot of distributions and being a dependency of many softwares.</p>
 <p>This was likely seen by the attacker as a gold mine since it was easy to get the role of maintainer of the project and push the malicious code.</p>
 <p>Since you are using a thirdy-part source for your supply chain, you have to trust someone at one point or another.
-When talking about supply chain security the reccomendations are always the same: pin the hashes and use signature verification. This will work as long as you have scenarios like a  malicious attacker compromising the dependency CICD and pushing a malicious build, account compromissions etc.</p>
-<p>But what can you do if all of a sudden, trusted maintainer goes rogue?</p>
+When talking about supply chain security the reccomendations are always the same: pin the hashes and use signature verification. This will work as long as you have scenarios like a malicious attacker compromising the dependency CICD and pushing a malicious build, account compromissions etc.</p>
+<p>But what can you do if all of a sudden, trusted maintainers goes rogue?</p>
 <p>As a standard user, unless you want (and are able to) code review every single commit from every single piece of software your OS interact with: pretty much nothing.</p>
 <p>On the other hand, developers and repository owners should really increase controls on their supply chain and include strict metrics to exclude high risk packages.
 One of the biggest gimmicks of Open Source security is people beliving that since the source code is available the code magically became safe.</p>
