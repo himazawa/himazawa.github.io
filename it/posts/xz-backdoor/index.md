@@ -27,7 +27,6 @@ Controlla la sezione Risorse per i link ad una timeline più dettagliata
 
 - __2023__:
     - Un nuovo maintainer appare sul progetto `xz`
-    - A new maintainer shows up in the `xz` project
 - __29 Mar 2024__: 
     - Andres Freund invia un'email alla mailing list oss-security che riguarda una backdoor in `xz/liblzma`.
     Stava ottimizzando la sua infrastruttura e si è accorto che ssh era "sospettosamente" lento (parliamo di 400ms di differenza, difficilmente notabili a meno che non si stia facendo micro ottimizzazione). Qualche debug dopo si è accorto che la problmatica di performace era probabilmente causata dal codice della backdoor. L'analisi iniziale è stata fatta con l'aiuto di Florian Weimer.
