@@ -142,6 +142,8 @@ And also are less likely to be completely abandoned.</p>
 <p>Also take in considerations that we are humans, and we make errors. Passing a code review doesn&rsquo;t mean the code is safe, as I said before: there is no real solution, just ways to decrease the probablity for the bad stuff to happen.</p>
 <h3 id="enterprise-vs-individual" class="headerLink">
     <a href="#enterprise-vs-individual" class="header-mark"></a>4.6 Enterprise vs Individual</h3><p>This is a controversial topic because there are projects that are maintained by individuals that are well structured but usually relying on (large) enterprise projects will ensure their SDLC best practices are followed, money are keeping the project alive, and a big company is less likely to go all in and backdoor their project on purpose. Again, this just increases the probablity, don&rsquo;t take it for granted ;)</p>
+<h3 id="recursive-controls" class="headerLink">
+    <a href="#recursive-controls" class="header-mark"></a>4.7 Recursive controls</h3><p>The project you are including will probably also have dependencies, make sure the same scrutiny is applied by the project maintainers on their supply chain to avoid indirect compromission.</p>
 <h2 id="resources" class="headerLink">
     <a href="#resources" class="header-mark"></a>5 Resources</h2><ul>
 <li>OSS-Security List: <a href="https://www.openwall.com/lists/oss-security/2024/03/29/4" target="_blank" rel="noopener noreferrer">https://www.openwall.com/lists/oss-security/2024/03/29/4</a></li>
