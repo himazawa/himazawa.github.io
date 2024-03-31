@@ -73,7 +73,7 @@ Again, thanks GitHub for locking the access to the source code.
 ## How to prevent this issue?
 
 As I said at the beginning of the post, I don't want to go too deep into the technical analysis of the backdoor, for two main reasons: with the sourcecode locked and only [an archive available](https://github.com/xz-mirror/xz) the informations are incomplete and I really don't want to reverse the `xz` binary. 
-Also, and this is the more important reasons, people more knoledgeble than me on Threat Actors behaviors are already on it. 
+Also, and this is the more important reasons, people more knowledgeable than me on Threat Actors behaviors are already on it. 
 I will just link their posts once are ready, so make sure to check the Resource below. 
 
 One thing I can do here is showing the point of view of a Security Engineer on the issue, how I would mitigate the problem and what steps went wrong.
