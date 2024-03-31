@@ -45,12 +45,12 @@ Controlla la sezione Risorse per i link ad una timeline più dettagliata
 L'estensione di questo breach è ancora poco chiaro di seguito è riportata una (parziale) lista dei componenti che contiengono la versione malevola di `xz`:
 
 Distribuzioni:
-- Arch
+- [Arch](https://archlinux.org/news/the-xz-package-has-been-backdoored/)
 - [Debian Sid](https://security-tracker.debian.org/tracker/CVE-2024-3094)
-- Gentoo
+- [Gentoo](https://bugs.gentoo.org/928134)
 - [Fedora 40](https://www.redhat.com/en/blog/urgent-security-alert-fedora-41-and-rawhide-users)
 - Manjaro Testing
-- Parabola
+- [Parabola](https://www.parabola.nu/news/arch-announce-the-xz-package-has-been-backdoored/)
 - NixOS Unstable
 - Slackware
 - [SUSE Tumbleweed](https://news.opensuse.org/2024/03/29/xz-backdoor/)

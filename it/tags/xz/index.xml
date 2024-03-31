@@ -61,12 +61,12 @@ Stava ottimizzando la sua infrastruttura e si è accorto che ssh era &ldquo;sosp
     <a href="#componenti-impattate" class="header-mark"></a>2 Componenti impattate</h2><p>L&rsquo;estensione di questo breach è ancora poco chiaro di seguito è riportata una (parziale) lista dei componenti che contiengono la versione malevola di <code>xz</code>:</p>
 <p>Distribuzioni:</p>
 <ul>
-<li>Arch</li>
+<li><a href="https://archlinux.org/news/the-xz-package-has-been-backdoored/" target="_blank" rel="noopener noreferrer">Arch</a></li>
 <li><a href="https://security-tracker.debian.org/tracker/CVE-2024-3094" target="_blank" rel="noopener noreferrer">Debian Sid</a></li>
-<li>Gentoo</li>
+<li><a href="https://bugs.gentoo.org/928134" target="_blank" rel="noopener noreferrer">Gentoo</a></li>
 <li><a href="https://www.redhat.com/en/blog/urgent-security-alert-fedora-41-and-rawhide-users" target="_blank" rel="noopener noreferrer">Fedora 40</a></li>
 <li>Manjaro Testing</li>
-<li>Parabola</li>
+<li><a href="https://www.parabola.nu/news/arch-announce-the-xz-package-has-been-backdoored/" target="_blank" rel="noopener noreferrer">Parabola</a></li>
 <li>NixOS Unstable</li>
 <li>Slackware</li>
 <li><a href="https://news.opensuse.org/2024/03/29/xz-backdoor/" target="_blank" rel="noopener noreferrer">SUSE Tumbleweed</a></li>

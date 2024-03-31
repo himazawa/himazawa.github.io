@@ -15,7 +15,7 @@ Check the Resources section for additional links.</p>
 <p>The situation doesn&rsquo;t look too good so I&rsquo;m trying to write this blogpost as a summary.</p>
 <p>I don&rsquo;t want to address the technical aspect of the compromission but I want to look at the issue from the perspective of a Security Engineer, summarizing what went wrong and trying to find a remediation.</p>
 <h2 id="timeline" class="headerLink">
-    <a href="#timeline" class="header-mark"></a>1 Timeline</h2><div class="details admonition tip open">
+    <a href="#timeline" class="header-mark"></a>1 Timeline</h2><div class="details admonition tip">
         <div class="details-summary admonition-title">
             <i class="icon fas fa-lightbulb fa-fw"></i>Note<i class="details-icon fas fa-angle-right fa-fw"></i>
         </div>
@@ -55,12 +55,12 @@ He was optimizing his infrastructure and found that ssh was  suspiciously slow. 
     <a href="#impacted-components" class="header-mark"></a>2 Impacted components</h2><p>The extent of this breach is still unkown, but here is a (partial) list of components shipping the known malicious version of <code>xz</code>:</p>
 <p>Distributions:</p>
 <ul>
-<li>Arch</li>
+<li><a href="https://archlinux.org/news/the-xz-package-has-been-backdoored/" target="_blank" rel="noopener noreferrer">Arch</a></li>
 <li><a href="https://security-tracker.debian.org/tracker/CVE-2024-3094" target="_blank" rel="noopener noreferrer">Debian Sid</a></li>
-<li>Gentoo</li>
+<li><a href="https://bugs.gentoo.org/928134" target="_blank" rel="noopener noreferrer">Gentoo</a></li>
 <li><a href="https://www.redhat.com/en/blog/urgent-security-alert-fedora-41-and-rawhide-users" target="_blank" rel="noopener noreferrer">Fedora 40</a></li>
 <li>Manjaro Testing</li>
-<li>Parabola</li>
+<li><a href="https://www.parabola.nu/news/arch-announce-the-xz-package-has-been-backdoored/" target="_blank" rel="noopener noreferrer">Parabola</a></li>
 <li>NixOS Unstable</li>
 <li>Slackware</li>
 <li><a href="https://news.opensuse.org/2024/03/29/xz-backdoor/" target="_blank" rel="noopener noreferrer">SUSE Tumbleweed</a></li>

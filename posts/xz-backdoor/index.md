@@ -18,7 +18,7 @@ The situation doesn't look too good so I'm trying to write this blogpost as a su
 I don't want to address the technical aspect of the compromission but I want to look at the issue from the perspective of a Security Engineer, summarizing what went wrong and trying to find a remediation.
 
 ## Timeline
-{{< admonition type=tip title="Note" open=true >}}
+{{< admonition type=tip title="Note" open=false >}}
 Check the Resources section for a link to an article with a detailed timeline
 {{< /admonition >}}
 
@@ -41,12 +41,12 @@ Check the Resources section for a link to an article with a detailed timeline
 The extent of this breach is still unkown, but here is a (partial) list of components shipping the known malicious version of `xz`:
 
 Distributions:
-- Arch
+- [Arch](https://archlinux.org/news/the-xz-package-has-been-backdoored/)
 - [Debian Sid](https://security-tracker.debian.org/tracker/CVE-2024-3094)
-- Gentoo
+- [Gentoo](https://bugs.gentoo.org/928134)
 - [Fedora 40](https://www.redhat.com/en/blog/urgent-security-alert-fedora-41-and-rawhide-users)
 - Manjaro Testing
-- Parabola
+- [Parabola](https://www.parabola.nu/news/arch-announce-the-xz-package-has-been-backdoored/)
 - NixOS Unstable
 - Slackware
 - [SUSE Tumbleweed](https://news.opensuse.org/2024/03/29/xz-backdoor/)
