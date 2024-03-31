@@ -10,12 +10,12 @@ tags: [backdoor, CVE-2024-3094, xz, liblzma, supply-chain, security-engineering]
 Come probablilmente già sai, `xz` è stato compromesso.
 Per i non addetti ai lavori `xz` è una libreria per la compressione dei dati molto utilizzata sopratutto su Linux.
 
-Il pacchetto è stato usato come entrypoint per l'injection di codice malevolo in `sshd`, modificandone il flusso di autenticazione.
+Il pacchetto è stato usato come entrypoint per l'injection di codice malevolo in `sshd`, modificandone il flusso di autenticazione. [Sembrerebbe che ci sia una code execution direttamente tramite i parametri della chiave](https://bsky.app/profile/filippo.abyssdomain.expert/post/3kowjkx2njy2b).
 
 Questa vulnerabilità, introdotta deliberatamente attraverso una backdoor, è conosciuta come [CVE-2024-3094](https://nvd.nist.gov/vuln/detail/CVE-2024-3094).
 <!--more--> 
 
-{{< admonition type=tip title="Note" open=true >}}
+{{< admonition type=note title="Note" open=true >}}
 La situazione si sta ancora evolvendo, maggiori dettagli emergeranno nel prossimo futuro e aggiornerò il post di conseguenza.
 {{< /admonition >}}
 
@@ -27,7 +27,7 @@ La situazione non sembra rosea quindi sto provando a scrivere questo blogpost in
 Non voglio trattare aspetti troppo tecnici della compromissione ma voglio guardare alla issue dalla prospettiva di un Security Engineer, riassumendo cosa è andato storto e quali sono le possibili remediation a questo problema.
 
 ## Timeline
-{{< admonition type=tip title="Note" open=false >}}
+{{< admonition type=tip title="tip" open=false >}}
 Controlla la sezione Risorse per i link ad una timeline più dettagliata
 {{< /admonition >}}
 
@@ -100,7 +100,7 @@ Non appena verranno pubblicati i primi articoli tecnici saranno disponibili nell
 
 Una cosa che però posso fare qui è mostrare il punto di vista di un Security Engineer sul problema, come avrei mitigato la situazione e quali step sono andati storti.
 
-{{< admonition type=tip title="Note" open=true >}}
+{{< admonition type=note title="Note" open=false >}}
 TL;DR: non esiste una reale soluzione al problema
 {{< /admonition >}}
 
