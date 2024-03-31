@@ -96,7 +96,7 @@ I will just link their posts once are ready, so make sure to check the Resources
 
 One thing I can do here is showing the point of view of a Security Engineer on the issue, how I would mitigate the problem and what steps went wrong.
 
-{{< admonition type=note title="Note" open=true >}}
+{{< admonition type=note title="Note" open=false >}}
 TL;DR: there isn't an actual solution
 {{< /admonition >}}
 
@@ -143,7 +143,7 @@ A large and active community can provide additional eyes for reviewing code, rep
 Consider whether the project receives financial support or sponsorship from reputable organizations. Projects with dedicated funding tend to have more resources available for security audits and ongoing maintenance. 
 And also are less likely to be completely abandoned. 
 
-{{< admonition type=tip title="Tip" open=true >}}
+{{< admonition type=tip title="Tip" open=false >}}
 Remember: you want to rely on that dependency for the whole week, not only during the maintainer's freetime, projects with a nice financial support will likely be full-time jobs and not just hobbies.
 {{< /admonition >}}
 
