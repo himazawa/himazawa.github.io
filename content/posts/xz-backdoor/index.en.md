@@ -13,7 +13,7 @@ The package was used as entrypoint to inject malicious code in sshd, altering th
 <!--more--> 
 
 {{< admonition type=tip title="Note" open=true >}}
-The situation is still ongoing, more details will emerge in the near future and I will upgrade this post accordingly.
+The situation is still ongoing, more details will emerge in the near future and I will update this post accordingly.
 {{< /admonition >}}
 
 This is probably a full fledged operation due to it's methodology and duration but I'm not the right guy to talk about OpSec and Threat Actors attributions. 
