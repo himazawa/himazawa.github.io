@@ -98,7 +98,7 @@ Again, thanks GitHub for locking the access to the source code.</p>
 Also, and this is the more important reasons, people more knowledgeable than me on Threat Actors behaviors are already on it.
 I will just link their posts once are ready, so make sure to check the Resources section below.</p>
 <p>One thing I can do here is showing the point of view of a Security Engineer on the issue, how I would mitigate the problem and what steps went wrong.</p>
-<div class="details admonition note open">
+<div class="details admonition note">
         <div class="details-summary admonition-title">
             <i class="icon fas fa-pencil-alt fa-fw"></i>Note<i class="details-icon fas fa-angle-right fa-fw"></i>
         </div>
@@ -139,7 +139,7 @@ You can read a nice article here: <a href="https://dagster.io/blog/fake-stars" t
 <h3 id="funding-and-support" class="headerLink">
     <a href="#funding-and-support" class="header-mark"></a>4.4 Funding and Support</h3><p>Consider whether the project receives financial support or sponsorship from reputable organizations. Projects with dedicated funding tend to have more resources available for security audits and ongoing maintenance.
 And also are less likely to be completely abandoned.</p>
-<div class="details admonition tip open">
+<div class="details admonition tip">
         <div class="details-summary admonition-title">
             <i class="icon fas fa-lightbulb fa-fw"></i>Tip<i class="details-icon fas fa-angle-right fa-fw"></i>
         </div>
