@@ -32,7 +32,7 @@ Check the Resources section for a link to an article with a detailed timeline
     
     - Impacted distros are starting to ship patches to downgrade the xz version (more on that later)
 - __30 Mar 2024__: 
-    - GitHub blocked access to the repostiory and blocked the account of both the xz maintainers
+    - GitHub blocked access to the repostiory and blocked the account of both the xz maintainers, an updated code is available [here](https://git.tukaani.org/?p=xz.git;a=summary)
 
     - An [official statement](https://tukaani.org/xz-backdoor/) was released by the project maintainer
 

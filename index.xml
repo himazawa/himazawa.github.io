@@ -47,7 +47,7 @@ He was optimizing his infrastructure and found that ssh was  suspiciously slow. 
 <p><strong>30 Mar 2024</strong>:</p>
 <ul>
 <li>
-<p>GitHub blocked access to the repostiory and blocked the account of both the xz maintainers</p>
+<p>GitHub blocked access to the repostiory and blocked the account of both the xz maintainers, an updated code is available <a href="https://git.tukaani.org/?p=xz.git;a=summary" target="_blank" rel="noopener noreferrer">here</a></p>
 </li>
 <li>
 <p>An <a href="https://tukaani.org/xz-backdoor/" target="_blank" rel="noopener noreferrer">official statement</a> was released by the project maintainer</p>
