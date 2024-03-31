@@ -91,8 +91,7 @@ He was optimizing his infrastructure and found that ssh was  suspiciously slow. 
     <a href="#the-downgrades" class="header-mark"></a>3.2 The downgrades</h3><p>The patch strategy for basically everyone was to force a downgrade from the <code>5.6.0</code>-<code>5.6.1</code> to another version.<br>
 Some (homebrew, for example), forced the downgrade to 5.4.6.</p>
 <p>This looks interesting because for sure we know there is a backdoor on that (<code>5.6.0</code>-<code>5.6.1</code>) versions, but we also know that the attacker has been working on the repository for over two years.</p>
-<p>The <code>5.4.6</code> version is also builded by the attacker and honestly wouldn&rsquo;t trust it much.
-Again, thanks GitHub for locking the access to the source code.</p>
+<p>The <code>5.4.6</code> version is also builded by the attacker and honestly wouldn&rsquo;t trust it much.</p>
 <h2 id="how-to-prevent-this-issue" class="headerLink">
     <a href="#how-to-prevent-this-issue" class="header-mark"></a>4 How to prevent this issue?</h2><p>As I said at the beginning of the post, I don&rsquo;t want to go too deep into the technical analysis of the backdoor, for two main reasons: with the sourcecode locked and only <a href="https://github.com/xz-mirror/xz" target="_blank" rel="noopener noreferrer">an archive available</a> the informations are incomplete and I really don&rsquo;t want to reverse the <code>xz</code> binary.
 Also, and this is the more important reasons, people more knowledgeable than me on Threat Actors behaviors are already on it.

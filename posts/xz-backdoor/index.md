@@ -80,7 +80,6 @@ Some (homebrew, for example), forced the downgrade to 5.4.6.
 This looks interesting because for sure we know there is a backdoor on that (`5.6.0`-`5.6.1`) versions, but we also know that the attacker has been working on the repository for over two years.
 
 The `5.4.6` version is also builded by the attacker and honestly wouldn't trust it much. 
-Again, thanks GitHub for locking the access to the source code.
 
 ## How to prevent this issue?
 
