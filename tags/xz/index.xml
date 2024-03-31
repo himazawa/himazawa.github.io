@@ -66,7 +66,7 @@ He was optimizing his infrastructure and found that ssh was  suspiciously slow. 
 <li><a href="https://news.opensuse.org/2024/03/29/xz-backdoor/" target="_blank" rel="noopener noreferrer">SUSE Tumbleweed</a></li>
 <li><a href="https://infosec.exchange/@kalilinux/112180505434870941" target="_blank" rel="noopener noreferrer">Kali Linux</a></li>
 </ul>
-<p>The backdoored package is also contained in the following package managers:</p>
+<p>The backdoored package is also contained in the repositories of following package managers:</p>
 <ul>
 <li>Homebrew</li>
 <li>MacPorts</li>

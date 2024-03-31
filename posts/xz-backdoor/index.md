@@ -52,7 +52,7 @@ Distributions:
 - [SUSE Tumbleweed](https://news.opensuse.org/2024/03/29/xz-backdoor/)
 - [Kali Linux](https://infosec.exchange/@kalilinux/112180505434870941)
 
-The backdoored package is also contained in the following package managers:
+The backdoored package is also contained in the repositories of following package managers:
 - Homebrew
 - MacPorts
 - pkgsrc
