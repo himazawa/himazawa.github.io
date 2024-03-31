@@ -69,7 +69,7 @@ He was optimizing his infrastructure and found that ssh was  suspiciously slow. 
 </ul>
 <h2 id="considerations" class="headerLink">
     <a href="#considerations" class="header-mark"></a>3 Considerations</h2><h3 id="the-github-behavior" class="headerLink">
-    <a href="#the-github-behavior" class="header-mark"></a>3.1 The GitHub Behavior</h3><p>The reasons behind the <code>xz</code> repositories are still a mistery to me, especially knowing that with the source code available additional anaysis on the backdoor could be performed.</p>
+    <a href="#the-github-behavior" class="header-mark"></a>3.1 The GitHub Behavior</h3><p>The reasons behind the <code>xz</code> repositories lockdown are still a mistery to me, especially knowing that with the source code available additional anaysis on the backdoor could be performed.</p>
 <p>Blocking access to the source code is something that will delay further results, that is honestly really bad for time-critical situation like this one.</p>
 <h3 id="the-downgrades" class="headerLink">
     <a href="#the-downgrades" class="header-mark"></a>3.2 The downgrades</h3><p>The patch strategy for basically everyone was to force a downgrade from the <code>5.6.0</code>-<code>5.6.1</code> to another version.<br>

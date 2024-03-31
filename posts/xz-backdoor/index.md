@@ -56,7 +56,7 @@ The backdoored package is also contained in the following package managers:
 
 ### The GitHub Behavior
 
-The reasons behind the `xz` repositories are still a mistery to me, especially knowing that with the source code available additional anaysis on the backdoor could be performed.
+The reasons behind the `xz` repositories lockdown are still a mistery to me, especially knowing that with the source code available additional anaysis on the backdoor could be performed.
 
 Blocking access to the source code is something that will delay further results, that is honestly really bad for time-critical situation like this one.
 
