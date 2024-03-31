@@ -69,7 +69,7 @@ Blocking access to the source code is something that will delay further results,
 ### The downgrades
 
 The patch strategy for basically everyone was to force a downgrade from the `5.6.0`-`5.6.1` to another version.  
-Some (homebrew, for exaple), forced the downgrade to 5.4.6. 
+Some (homebrew, for example), forced the downgrade to 5.4.6. 
 
 This looks interesting because for sure we know there is a backdoor on that (`5.6.0`-`5.6.1`) versions, but we also know that the attacker has been working on the repository for over two years.
 
