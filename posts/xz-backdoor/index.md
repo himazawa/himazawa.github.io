@@ -62,7 +62,7 @@ The backdoored package is also contained in the repositories of following packag
 - MacPorts
 - pkgsrc
 
-At the moment we know that the there are checks in the backdoor to [target Linux instances and only x86_64/amd64]() builds so the affected target could be reduced but since the entire situation is unclear I would not reccommend to keep a compromised package on your system.
+At the moment we know that the there are checks in the backdoor to [target Linux instances and only x86_64/amd64]() builds so the real number could be downsized, but since the entire situation is unclear I would not reccommend to keep a compromised package on your system.
 
 ## Considerations
 
