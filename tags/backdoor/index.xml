@@ -1,7 +1,7 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>Backdoor - Tag - appsec &amp; stuff</title><link>https://appsec.space/tags/backdoor/</link><description>Backdoor - Tag - appsec &amp; stuff</description><generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Sat, 30 Mar 2024 19:49:24 +0100</lastBuildDate><atom:link href="https://appsec.space/tags/backdoor/" rel="self" type="application/rss+xml"/><item><title>The xz backdoor from a Security Engineer persepective</title><link>https://appsec.space/posts/xz-backdoor/</link><pubDate>Sat, 30 Mar 2024 19:49:24 +0100</pubDate><author><name>himazawa</name></author><guid>https://appsec.space/posts/xz-backdoor/</guid><description><![CDATA[<div class="featured-image">
                 <img src="/posts/xz-backdoor/xz.png" referrerpolicy="no-referrer">
             </div><p>As you probably already heard, the <code>xz</code> package got compromised.</p>
-<p>The package was used as entrypoint to inject malicious code in sshd, altering the authentication flow. This forged vulnerability is now known as CVE-2024-3094.</p>
+<p>The package was used as entrypoint to inject malicious code in sshd, altering the authentication flow. This forged vulnerability is now known as <a href="https://nvd.nist.gov/vuln/detail/CVE-2024-3094" target="_blank" rel="noopener noreferrer">CVE-2024-3094</a>.</p>
 <div class="details admonition tip open">
         <div class="details-summary admonition-title">
             <i class="icon fas fa-lightbulb fa-fw"></i>Note<i class="details-icon fas fa-angle-right fa-fw"></i>
@@ -25,7 +25,7 @@ As soon as I will find a complete analysis on that matter I will link it.</p>
 <ul>
 <li><strong>2023</strong>:
 <ul>
-<li>A new maintainer shows up in the <code>xz</code> project.</li>
+<li>A new maintainer shows up in the <code>xz</code> project</li>
 </ul>
 </li>
 <li><strong>29 Mar 2024</strong>:
@@ -53,13 +53,14 @@ He was optimizing his infrastructure and found that ssh was  suspiciously slow. 
 <p>Distributions:</p>
 <ul>
 <li>Arch</li>
+<li><a href="https://security-tracker.debian.org/tracker/CVE-2024-3094" target="_blank" rel="noopener noreferrer">Debian Sid</a></li>
 <li>Gentoo</li>
 <li>Manjaro Testing</li>
 <li>Parabola</li>
 <li>NixOS Unstable</li>
 <li>Slackware</li>
-<li>SUSE Thumbleweed</li>
-<li>Kali Linux</li>
+<li><a href="https://news.opensuse.org/2024/03/29/xz-backdoor/" target="_blank" rel="noopener noreferrer">SUSE Tumbleweed</a></li>
+<li><a href="https://infosec.exchange/@kalilinux/112180505434870941" target="_blank" rel="noopener noreferrer">Kali Linux</a></li>
 </ul>
 <p>The backdoored package is also contained in the following package managers:</p>
 <ul>
