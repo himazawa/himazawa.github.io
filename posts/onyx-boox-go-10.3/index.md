@@ -129,7 +129,7 @@ adb shell settings put global ntp_server_2 en.pool.ntp.org # replace "en" with y
 ```
 
 ## Change captive portal endpoints
-Onyx uses their endpoints for the captive portal pings so I changed android ones:
+Onyx uses their endpoints for the captive portal pings so I switched them with the ones from Android:
 
 ```adb
 adb shell settings put global captive_portal_http_url "http://connectivitycheck.android.com/generate_204"

@@ -494,7 +494,7 @@ After <a href="https://www.xda-developers.com/install-adb-windows-macos-linux/#h
 </span></span><span class="line"><span class="cl"><span class="n">adb</span> <span class="n">shell</span> <span class="n">settings</span> <span class="n">put</span> <span class="n">global</span> <span class="n">ntp_server_2</span> <span class="n">en</span><span class="p">.</span><span class="n">pool</span><span class="p">.</span><span class="n">ntp</span><span class="p">.</span><span class="n">org</span> <span class="err">#</span> <span class="n">replace</span> <span class="s">&#34;en&#34;</span> <span class="kn">with</span> <span class="nn">your</span> <span class="n">local</span> <span class="n">time</span></span></span></code></pre>
 </div>
 <h2 id="change-captive-portal-endpoints" class="headerLink">
-    <a href="#change-captive-portal-endpoints" class="header-mark" aria-label="Header mark for 'Change captive portal endpoints'"></a>5 Change captive portal endpoints</h2><p>Onyx uses their endpoints for the captive portal pings so I changed android ones:</p>
+    <a href="#change-captive-portal-endpoints" class="header-mark" aria-label="Header mark for 'Change captive portal endpoints'"></a>5 Change captive portal endpoints</h2><p>Onyx uses their endpoints for the captive portal pings so I switched them with the ones from Android:</p>
 <div class="code-block highlight is-open show-line-numbers  tw-group tw-my-2">
   <div class="
     code-block-title 
