@@ -149,7 +149,7 @@ onyx-international.cn #Used for NTP Server
 
 ## Conclusion
 In the end the Onyx Boox Go 10.3 is a very nice device (hardware-wise) that suits my needs.
-If you want to buy it consider everything written in this post and make an informed puchease.
+If you want to buy it consider everything written in this post and make an informed purchease.
 
 P.S. also consider that the device is new at the time of writing and the default cover is terrible.
 
