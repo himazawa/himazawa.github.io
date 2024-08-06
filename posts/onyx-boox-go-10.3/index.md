@@ -64,7 +64,7 @@ pm uninstall com.onyx.dict # Dict app
 pm uninstall com.onyx.easytransfer # Easytransfer app
 pm uninstall com.onyx.gallery # Gallery app
 pm uninstall com.onyx.kime # Kime app
-pm uninstall com.onyx.latinime # Keaboard app, removing it will leave you with the Google Speech-to-text keaboard 
+pm uninstall com.onyx.latinime # Keyboard app, removing it will leave you with the Google Speech-to-text keyboard 
 pm uninstall com.onyx.mail # Mail app
 pm uninstall com.onyx.musicplayer # Music player
 pm uninstall com.onyx.voicerecorder # Voice Recorder
