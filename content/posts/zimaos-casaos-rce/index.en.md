@@ -207,7 +207,7 @@ This way we can detect if any directory has been created in `/tmp/casaos-install
 
 
 #### Path traversal in upload
-So we have an arbitrary file read, a directory listing and two entrypoints (even if we need to perform a system update), we just need an arbitrary file write to complete the chain.
+We have an arbitrary file read, a directory listing and two entrypoints (even if we need to perform a system update), we just need an arbitrary file write to complete the chain.
 
 Luckily (only for us tho), the same endpoint we used to read arbitrary files [has an upload function with a path traversal vulnerability ](https://github.com/IceWhaleTech/CasaOS/blob/8f7c99779fe31026d2b0d0fe3cb15cb25c0ebb82/service/file_upload.go#L60-L167)
 
@@ -310,12 +310,12 @@ Indeed, sending a `POST` request to `/v2_1/files/task` with the following body:
 allows us to move files around in places we are not supposed to, easy as that.
 
 A standard WebUI user could just move files in the `/Media` directory, that is allowed to read, or upload files to `/Media` and then move them around arbitrarily.
-So this functionality can be effectively abused to get full code execution on the machine since we eariler found that everything in `/etc/casaos/start.d` grants execution at boot.
+This functionality can be effectively abused to get full code execution on the machine since we eariler found that everything in `/etc/casaos/start.d` grants execution at boot.
 
 
 ### Finalizing the exploit
 
-So I finally have enough to resolve the issue. 
+I finally have enough to resolve the issue. 
 
 I wrote few lines of code to do the following:
 
