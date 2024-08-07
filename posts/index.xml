@@ -279,7 +279,7 @@ And I also don&rsquo;t want to change a working keyboard.</p>
     <a href="#arbitrary-file-read" class="header-mark" aria-label="Header mark for 'Arbitrary file read'"></a>2.1 Arbitrary file read</h3><p>This UI has 3 main features:</p>
 <ul>
 <li>
-<p>The <code>App Store</code> that basically let&rsquo;s you download apps that run in Docker via <code>docker-compose</code> files (more on this later).</p>
+<p>The <code>App Store</code> that basically let you download apps that run in Docker via <code>docker-compose</code> files (more on this later).</p>
 </li>
 <li>
 <p>The <code>Files</code> app that allows you to navigate the filesystem (only partially)</p>

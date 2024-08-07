@@ -92,7 +92,7 @@ Unfortunately I have no empty disks at the moment so I have to find another bug.
 ### Arbitrary file read
 This UI has 3 main features:
 
-- The `App Store` that basically let's you download apps that run in Docker via `docker-compose` files (more on this later).
+- The `App Store` that basically let you download apps that run in Docker via `docker-compose` files (more on this later).
 
 - The `Files` app that allows you to navigate the filesystem (only partially)
 
