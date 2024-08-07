@@ -41,7 +41,7 @@ And I also don't want to change a working keyboard.
 
 - `D` is kinda reasonable too, but the OS is on an M2 Drive and I have no adapters.
 
-So I don't see any other choice of getting my hands dirty and find some good, old unintended solutions.
+I don't see any other choice of getting my hands dirty and find some good, old unintended solutions.
 
 {{< admonition type=note title="Note" open=false >}}
 There were at least 10 different solutions that were faster and cleaner than this one (like patching the OS image file or getting an ESP32 to inject the keystrokes) but it was my first free Saturday in a while and I really love to overcomplicate stuff.
