@@ -2,6 +2,7 @@
 
 
 I recently received my [ZimaCube](https://www.zimaspace.com/products/cube-personal-cloud): a NAS from [IceWhale](https://github.com/IceWhaleTech), the same company behind the [ZimaBlade](https://www.zimaspace.com/products/blade-personal-nas), [ZimaBoard](https://www.zimaspace.com/products/single-board-server) and most notably [CasaOS](https://casaos.io/), a UI to manage docker applications.
+<!--more--> 
 
 The ZimaCube ships with the default OS called `ZimaOS`.
 
