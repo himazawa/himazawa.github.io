@@ -18,7 +18,7 @@ Upon booting it up connected to an external monitor I was welcomed with the foll
 
 {{< figure src="press_alt_f2.jpeg" title="Press alt+F2 to proceed" >}}
 
-Cool, I need to press al `alt+F2`, there is just one small, insignificant problem...
+Cool, I need to press `alt+F2`, there is just one small, insignificant problem...
 
 ## The problem
 All my keyboards are <= 60% so the F row is activated by the `Fn` special key, the problem is that for some reasons I'm not aware of connecting it to the NAS will not work so no luck.
