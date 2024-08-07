@@ -333,7 +333,7 @@ Feel free to experiment and write your own chain.
 
 
 
-### Bonus #3: DOM based XSS
+### Bonus #2: DOM based XSS
 I have no interest in making the chain remote, but there is a DOM based xss at `/v2/app_management/web/sync/appstore` in the `url` parameter and the payload is `:<img src=x onerror=alert(1) >`.
 Note the `:` because they are needed in order to make this [function fail](https://github.com/IceWhaleTech/CasaOS-AppManagement/blob/8d0082ad64c2fc4209031284abcf7c9d252e0d72/service/appstore_management.go#L99)
 

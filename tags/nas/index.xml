@@ -1159,8 +1159,8 @@ So this functionality can be effectively abused to get full code execution on th
     <div class="details-content">
         <div class="admonition-content">Due to the number of vulnerabilities found there are plenty of other ways to do the same thing. I decided to use the move functionality just because it looked more interesting to me.
 Feel free to experiment and write your own chain.</div></div></div>
-<h3 id="bonus-3-dom-based-xss" class="headerLink">
-    <a href="#bonus-3-dom-based-xss" class="header-mark" aria-label="Header mark for 'Bonus #3: DOM based XSS'"></a>2.4 Bonus #3: DOM based XSS</h3><p>I have no interest in making the chain remote, but there is a DOM based xss at <code>/v2/app_management/web/sync/appstore</code> in the <code>url</code> parameter and the payload is <code>:&lt;img src=x onerror=alert(1) &gt;</code>.
+<h3 id="bonus-2-dom-based-xss" class="headerLink">
+    <a href="#bonus-2-dom-based-xss" class="header-mark" aria-label="Header mark for 'Bonus #2: DOM based XSS'"></a>2.4 Bonus #2: DOM based XSS</h3><p>I have no interest in making the chain remote, but there is a DOM based xss at <code>/v2/app_management/web/sync/appstore</code> in the <code>url</code> parameter and the payload is <code>:&lt;img src=x onerror=alert(1) &gt;</code>.
 Note the <code>:</code> because they are needed in order to make this <a href="https://github.com/IceWhaleTech/CasaOS-AppManagement/blob/8d0082ad64c2fc4209031284abcf7c9d252e0d72/service/appstore_management.go#L99" target="_blank" rel="noopener noreferrer">function fail</a></p>
 <figure><img src="/posts/zimaos-casaos-rce/XSS.png"><figcaption>
       <h4>XSS</h4>
