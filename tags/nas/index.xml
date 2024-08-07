@@ -658,7 +658,7 @@ And will for sure cut out issues like the domain being unreachable or, even wors
 
 <p>This way we can detect if any directory has been created in <code>/tmp/casaos-installer/</code> and find the name of the temporary directory.</p>
 <h4 id="path-traversal-in-upload" class="headerLink">
-    <a href="#path-traversal-in-upload" class="header-mark" aria-label="Header mark for 'Path traversal in upload'"></a>2.2.3 Path traversal in upload</h4><p>So we have an arbitrary file read, a directory listing and two entrypoints (even if we need to perform a system update), we just need an arbitrary file write to complete the chain.</p>
+    <a href="#path-traversal-in-upload" class="header-mark" aria-label="Header mark for 'Path traversal in upload'"></a>2.2.3 Path traversal in upload</h4><p>We have an arbitrary file read, a directory listing and two entrypoints (even if we need to perform a system update), we just need an arbitrary file write to complete the chain.</p>
 <p>Luckily (only for us tho), the same endpoint we used to read arbitrary files <a href="https://github.com/IceWhaleTech/CasaOS/blob/8f7c99779fe31026d2b0d0fe3cb15cb25c0ebb82/service/file_upload.go#L60-L167" target="_blank" rel="noopener noreferrer">has an upload function with a path traversal vulnerability </a></p>
 <div class="code-block highlight is-open show-line-numbers  tw-group tw-my-2">
   <div class="
@@ -1126,9 +1126,9 @@ This time the only requirement is a reboot (the webUI allows to reboot from web 
 </div>
 <p>allows us to move files around in places we are not supposed to, easy as that.</p>
 <p>A standard WebUI user could just move files in the <code>/Media</code> directory, that is allowed to read, or upload files to <code>/Media</code> and then move them around arbitrarily.
-So this functionality can be effectively abused to get full code execution on the machine since we eariler found that everything in <code>/etc/casaos/start.d</code> grants execution at boot.</p>
+This functionality can be effectively abused to get full code execution on the machine since we eariler found that everything in <code>/etc/casaos/start.d</code> grants execution at boot.</p>
 <h3 id="finalizing-the-exploit" class="headerLink">
-    <a href="#finalizing-the-exploit" class="header-mark" aria-label="Header mark for 'Finalizing the exploit'"></a>2.3 Finalizing the exploit</h3><p>So I finally have enough to resolve the issue.</p>
+    <a href="#finalizing-the-exploit" class="header-mark" aria-label="Header mark for 'Finalizing the exploit'"></a>2.3 Finalizing the exploit</h3><p>I finally have enough to resolve the issue.</p>
 <p>I wrote few lines of code to do the following:</p>
 <ul>
 <li>Write a file containing a reverse shell to <code>/media/ZimaOS-HD/Downloads/</code> (intended functionality)</li>
