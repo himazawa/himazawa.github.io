@@ -328,7 +328,7 @@ I wrote few lines of code to do the following:
 Since the script is executed at boot the network interface could still be in the process of going up, so remember to add a small timeout before executing the payload.
 {{< /admonition>}}
 
-The PoC is available at https://github.com/himazawa/zimaos-rce-poc
+The PoC is available at https://github.com/himazawa/zimaos-postauth-rce
 
 {{< figure src="rev_shell.png" title="Problem Solved" >}}
 
