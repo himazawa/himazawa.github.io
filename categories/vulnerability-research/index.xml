@@ -1144,7 +1144,7 @@ This functionality can be effectively abused to get full code execution on the m
     </div>
     <div class="details-content">
         <div class="admonition-content">Since the script is executed at boot the network interface could still be in the process of going up, so remember to add a small timeout before executing the payload.</div></div></div>
-<p>The PoC is available at <a href="https://github.com/himazawa/zimaos-rce-poc" target="_blank" rel="noopener noreferrer">https://github.com/himazawa/zimaos-rce-poc</a></p>
+<p>The PoC is available at <a href="https://github.com/himazawa/zimaos-postauth-rce" target="_blank" rel="noopener noreferrer">https://github.com/himazawa/zimaos-postauth-rce</a></p>
 <figure><img src="/posts/zimaos-casaos-rce/rev_shell.png"><figcaption>
       <h4>Problem Solved</h4>
     </figcaption>
