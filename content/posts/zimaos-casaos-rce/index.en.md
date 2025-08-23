@@ -4,6 +4,7 @@ subtitle: "How I found multiple vulnerabilities in ZimaOS and CasaOS due to my k
 date: 2024-08-07T10:00:24+01:00
 categories: [vulnerability-research]
 draft: false
+authors: ["himazawa"]
 featuredImage: https://imgs.xkcd.com/comics/im_an_idiot.png
 tags: [zimaos, casaos, research, nas]
 ---

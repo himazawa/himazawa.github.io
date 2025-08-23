@@ -2,6 +2,7 @@
 title: "Security Theatre? Direi quasi Security Circus"
 date: 2023-02-13T20:20:00+01:00
 draft: false
+authors: ["himazawa"]
 tags: [security theatre, infosec, rants]
 categories: [general-knowledge]
 featuredImage: cargocult.jpg

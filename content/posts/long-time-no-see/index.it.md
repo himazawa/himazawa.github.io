@@ -2,6 +2,7 @@
 title: "Tanto tempo che non ci si vede"
 date: 2023-02-06T00:01:18+01:00
 draft: false
+authors: ["himazawa"]
 featuredImage: header.jpg
 tags: [updates]
 ---

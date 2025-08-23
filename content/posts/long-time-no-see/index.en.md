@@ -2,6 +2,7 @@
 title: "Long Time No See"
 date: 2023-02-06T00:01:18+01:00
 draft: false
+authors: ["himazawa"]
 tags: [updates]
 featuredImage: header.jpg
 categories: [blog-news]

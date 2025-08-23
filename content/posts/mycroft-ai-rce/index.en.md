@@ -2,6 +2,7 @@
 title: "Getting \"Zero Click\" Remote Code Execution in Mycroft AI vocal assistant"
 subtitle: "Hey Mycroft, we've got a Problem"
 date: 2018-06-10T20:59:09+02:00
+authors: ["himazawa"]
 tags: [writeup, code review, AI, vocal assistant]
 categories: [vulnerability-research]
 featuredImage: mycroft.png

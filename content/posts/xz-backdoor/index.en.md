@@ -3,6 +3,7 @@ title: "The xz backdoor from a Security Engineer persepective"
 subtitle: "Yet another supply chain attack"
 date: 2024-03-30T19:49:24+01:00
 draft: false
+authors: ["himazawa"]
 featuredImage: xz.png
 tags: [backdoor, CVE-2024-3094, xz, liblzma, supply-chain, security-engineering]
 ---
