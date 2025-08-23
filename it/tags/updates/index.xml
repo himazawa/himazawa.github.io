@@ -7,18 +7,18 @@ Questo post contiene un&rsquo;introduzione a questo nuovo sito e come funzionera
 <p>Fortunatamente nel mio attuale lavoro mi vengono concessi tempo e risorse per fare anche vulnerability research quindi occasionalmente postero&rsquo; alcune vulnerabilita&rsquo; interessanti che ho trovato.</p>
 <p>Vorrei inoltre parlare degli aspetti dell&rsquo;Application Security a applicata al SDLC, vedremo se funzionera'.</p>
 <h2 id="il-funzionamento-di-questo-blog" class="headerLink">
-    <a href="#il-funzionamento-di-questo-blog" class="header-mark" aria-label="Header mark for 'Il funzionamento di questo blog'"></a>1 Il funzionamento di questo blog</h2><p>Il setup e&rsquo; molto semplice, uso <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer">hugo</a> per buildare pagine statiche che vengono pubblicate su una GithubPage.</p>
+    <a href="#il-funzionamento-di-questo-blog" class="header-mark"></a>1 Il funzionamento di questo blog</h2><p>Il setup e&rsquo; molto semplice, uso <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer">hugo</a> per buildare pagine statiche che vengono pubblicate su una GithubPage.</p>
 <p>C&rsquo;e&rsquo; una <a href="https://github.com/peaceiris/actions-hugo" target="_blank" rel="noopener noreferrer">Github Action</a> che builda e deploya le pagine ogni volta che una Pull Request viene approvata sul branch <code>main</code>.</p>
-<p><figure><img  loading="lazy" src="/posts/long-time-no-see/blog_CI_CD.png"    height="746" width="1104"><figcaption class="image-caption">Un grafico che rappresenta il flusso logico dietro il sistema di deployment del blog</figcaption>
+<p><figure><img  loading="lazy" src='/posts/long-time-no-see/blog_CI_CD.png'    height="746" width="1104"><figcaption class="image-caption">Un grafico che rappresenta il flusso logico dietro il sistema di deployment del blog</figcaption>
 </figure></p>
 <p>Il tema che uso e&rsquo; <a href="https://hugoloveit.com/" target="_blank" rel="noopener noreferrer">LoveIt</a>. E&rsquo; molto carino e ricco di funzionalita&rsquo; ma ha alcuni bug che devono essere fixati; per esempio, se stai leggendo questa pagina in Italiano ti sarai accorto che l&rsquo;header ha le traduzioni abbastanza fatte a caso.</p>
 <p>La localization del tema e&rsquo; una feature molto carina ma dover riscrivere ogni volta lo stesso post per ogni linguaggio e&rsquo; abbastanza tedioso quindi penso che aggiungero&rsquo; il supporto a DeepL.</p>
 <p>Infine, il blog ha un nuovo logo:
-<figure><img  loading="lazy" src="/images/logo.png"     ><figcaption class="image-caption">appsec.space logo</figcaption>
+<figure><img  loading="lazy" src='/images/logo.png'     ><figcaption class="image-caption">appsec.space logo</figcaption>
 </figure></p>
 <p>E&rsquo; stato generato da <a href="https://midjourney.com" target="_blank" rel="noopener noreferrer">Midjourney</a> e non significa assolutamente nulla!</p>
 <h2 id="il-futuro" class="headerLink">
-    <a href="#il-futuro" class="header-mark" aria-label="Header mark for 'Il futuro'"></a>2 Il futuro</h2><p>Ho intenzione di cambiare molte cose: prima di tutto vorrei migrare tutti i post del vecchio blog perche&rsquo; vorreri mantenere un archivio. Successivamente potro&rsquo; cominciare a scrivere nuovi post.
+    <a href="#il-futuro" class="header-mark"></a>2 Il futuro</h2><p>Ho intenzione di cambiare molte cose: prima di tutto vorrei migrare tutti i post del vecchio blog perche&rsquo; vorreri mantenere un archivio. Successivamente potro&rsquo; cominciare a scrivere nuovi post.
 <div class="details admonition note open">
     <div class="details-summary admonition-title">
         <span class="icon"><svg class="icon"

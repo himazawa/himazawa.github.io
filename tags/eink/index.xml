@@ -1,6 +1,7 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>Eink - Tag - appsec &amp; stuff</title><link>https://appsec.space/tags/eink/</link><description>Eink - Tag - appsec &amp; stuff</description><generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Fri, 02 Aug 2024 12:00:00 +0100</lastBuildDate><atom:link href="https://appsec.space/tags/eink/" rel="self" type="application/rss+xml"/><item><title>Debloating the Onyx Boox Go 10.3</title><link>https://appsec.space/posts/onyx-boox-go-10.3/</link><pubDate>Fri, 02 Aug 2024 12:00:00 +0100</pubDate><author><name>himazawa</name></author><guid>https://appsec.space/posts/onyx-boox-go-10.3/</guid><description><![CDATA[<div class="featured-image">
                 <img src="/posts/onyx-boox-go-10.3/boox_go_cover.jpg" referrerpolicy="no-referrer">
-            </div><p>I was looking for an eink tablet to read books and take notes while I&rsquo;m away from home.</p>
+            </div><p>I was looking for an eink tablet to r
+ead books and take notes while I&rsquo;m away from home.</p>
 <p>After adventuring in the eInk rabbit hole I decided to go for the <a href="https://amzn.to/3SC2W6Z" target="_blank" rel="noopener noreferrer">Onyx Boox Go 10.3</a>: a Black and White eInk Android Tablet with 300ppi that&rsquo;s also good for taking notes, weighting only 365g!</p>
 <p>I was a bit concerned about <a href="https://foundation.mozilla.org/en/privacynotincluded/onyx-boox/" target="_blank" rel="noopener noreferrer">this report from Mozilla</a> so I decided to take a look at the device.</p>
 <div class="details admonition danger open">
@@ -12,7 +13,7 @@
     <div class="details-content">
         <div class="admonition-content">Boox is using a custom version of the kernel <a href="https://news.ycombinator.com/item?id=23735962" target="_blank" rel="noopener noreferrer">and it&rsquo;s not sharing the source</a> so act accordingly.</div></div></div>
 <h2 id="enabling-adb" class="headerLink">
-    <a href="#enabling-adb" class="header-mark" aria-label="Header mark for 'Enabling ADB'"></a>1 Enabling ADB</h2><p>The Onyx default Launcher is hiding a lot of the Android inner features but reading a bit of documentation I figured out how to enable ADB.</p>
+    <a href="#enabling-adb" class="header-mark"></a>17 Enabling ADB</h2><p>The Onyx default Launcher is hiding a lot of the Android inner features but reading a bit of documentation I figured out how to enable ADB.</p>
 <p><strong>TL;DR</strong>: Press the <code>Apps</code> Icon on the left -&gt; Top right icon -&gt; <code>App Management</code> -&gt; Enable &ldquo;USB Debug Mode&rdquo;.</p>
 <p>Connecting the device via usb and running <code>adb shell</code> will open a shell on the device.</p>
 <figure><img src="/posts/onyx-boox-go-10.3/onyx_settings.jpg"><figcaption>
@@ -21,39 +22,34 @@
 </figure>
 
 <h2 id="removing-unnecessary-apps" class="headerLink">
-    <a href="#removing-unnecessary-apps" class="header-mark" aria-label="Header mark for 'Removing unnecessary apps'"></a>2 Removing unnecessary apps</h2><p>Navigating the UI I figured out the tablet is full of useless (for me) apps, so I decided to remove them.
+    <a href="#removing-unnecessary-apps" class="header-mark"></a>18 Removing unnecessary apps</h2><p>Navigating the UI I figured out the tablet is full of useless (for me) apps, so I decided to remove them.
 After <a href="https://www.xda-developers.com/install-adb-windows-macos-linux/#how-to-set-up-adb-on-your-computer" target="_blank" rel="noopener noreferrer">installing adb</a> I removed the unwanted apps with the following commands:</p>
 <div class="code-block highlight is-open show-line-numbers  tw-group tw-my-2">
   <div class="
-    code-block-title 
     
     tw-flex 
-    tw-flex-row 
+    tw-flex-row
+    tw-flex-1 
     tw-justify-between 
     tw-w-full tw-bg-bgColor-secondary
     ">      
     <button 
       class="
-        tw-select-none 
+        code-block-button
         tw-mx-2 
-        tw-block
-        group-[.is-open]:tw-rotate-90
-        tw-transition-[transform] 
-        tw-duration-500 
-        tw-ease-in-out
-        print:!tw-hidden"
-      disabled
-      aria-hidden="true"><svg class="icon"
-    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M285.476 272.971L91.132 467.314c-9.373 9.373-24.569 9.373-33.941 0l-22.667-22.667c-9.357-9.357-9.375-24.522-.04-33.901L188.505 256 34.484 101.255c-9.335-9.379-9.317-24.544.04-33.901l22.667-22.667c9.373-9.373 24.569-9.373 33.941 0L285.475 239.03c9.373 9.372 9.373 24.568.001 33.941z"/></svg></button>
+        tw-flex
+        tw-flex-row
+        tw-flex-1"
+      aria-hidden="true">
+          <div class="group-[.is-open]:tw-rotate-90 tw-transition-[transform] tw-duration-500 tw-ease-in-out print:!tw-hidden tw-w-min tw-h-min tw-my-1 tw-mx-1"><svg class="icon"
+    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M285.476 272.971L91.132 467.314c-9.373 9.373-24.569 9.373-33.941 0l-22.667-22.667c-9.357-9.357-9.375-24.522-.04-33.901L188.505 256 34.484 101.255c-9.335-9.379-9.317-24.544.04-33.901l22.667-22.667c9.373-9.373 24.569-9.373 33.941 0L285.475 239.03c9.373 9.372 9.373 24.568.001 33.941z"/></svg></div>
+          <p class="tw-select-none !tw-my-1">adb</p>
+      </button>
 
-    <div class="code-block-title-bar tw-w-full">
-      <p class="tw-select-none !tw-my-1">adb</p>
-    </div>
-    <div class="tw-flex">
+   <div class="tw-flex">
       <button 
         class="
           line-number-button
-          tw-select-none 
           tw-mx-2 
           tw-hidden 
           group-[.is-open]:tw-block 
@@ -103,7 +99,7 @@ After <a href="https://www.xda-developers.com/install-adb-windows-macos-linux/#h
     </div>
   </div>
   <pre style="counter-reset: codeblock;" class="tw-block tw-m-0 tw-p-0"><code 
-    id="codeblock-id-1" 
+    id="codeblock-id-13" 
     class="
       chroma 
       !tw-block 
@@ -180,35 +176,30 @@ After <a href="https://www.xda-developers.com/install-adb-windows-macos-linux/#h
         <div class="admonition-content">Removing this apps without changing launcher will result in Onyx Launcher crashing.</div></div></div>
 <div class="code-block highlight is-open show-line-numbers  tw-group tw-my-2">
   <div class="
-    code-block-title 
     
     tw-flex 
-    tw-flex-row 
+    tw-flex-row
+    tw-flex-1 
     tw-justify-between 
     tw-w-full tw-bg-bgColor-secondary
     ">      
     <button 
       class="
-        tw-select-none 
+        code-block-button
         tw-mx-2 
-        tw-block
-        group-[.is-open]:tw-rotate-90
-        tw-transition-[transform] 
-        tw-duration-500 
-        tw-ease-in-out
-        print:!tw-hidden"
-      disabled
-      aria-hidden="true"><svg class="icon"
-    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M285.476 272.971L91.132 467.314c-9.373 9.373-24.569 9.373-33.941 0l-22.667-22.667c-9.357-9.357-9.375-24.522-.04-33.901L188.505 256 34.484 101.255c-9.335-9.379-9.317-24.544.04-33.901l22.667-22.667c9.373-9.373 24.569-9.373 33.941 0L285.475 239.03c9.373 9.372 9.373 24.568.001 33.941z"/></svg></button>
+        tw-flex
+        tw-flex-row
+        tw-flex-1"
+      aria-hidden="true">
+          <div class="group-[.is-open]:tw-rotate-90 tw-transition-[transform] tw-duration-500 tw-ease-in-out print:!tw-hidden tw-w-min tw-h-min tw-my-1 tw-mx-1"><svg class="icon"
+    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M285.476 272.971L91.132 467.314c-9.373 9.373-24.569 9.373-33.941 0l-22.667-22.667c-9.357-9.357-9.375-24.522-.04-33.901L188.505 256 34.484 101.255c-9.335-9.379-9.317-24.544.04-33.901l22.667-22.667c9.373-9.373 24.569-9.373 33.941 0L285.475 239.03c9.373 9.372 9.373 24.568.001 33.941z"/></svg></div>
+          <p class="tw-select-none !tw-my-1">adb</p>
+      </button>
 
-    <div class="code-block-title-bar tw-w-full">
-      <p class="tw-select-none !tw-my-1">adb</p>
-    </div>
-    <div class="tw-flex">
+   <div class="tw-flex">
       <button 
         class="
           line-number-button
-          tw-select-none 
           tw-mx-2 
           tw-hidden 
           group-[.is-open]:tw-block 
@@ -258,7 +249,7 @@ After <a href="https://www.xda-developers.com/install-adb-windows-macos-linux/#h
     </div>
   </div>
   <pre style="counter-reset: codeblock;" class="tw-block tw-m-0 tw-p-0"><code 
-    id="codeblock-id-2" 
+    id="codeblock-id-14" 
     class="
       chroma 
       !tw-block 
@@ -277,7 +268,7 @@ After <a href="https://www.xda-developers.com/install-adb-windows-macos-linux/#h
 </span></span><span class="line"><span class="cl"><span class="n">pm</span> <span class="n">uninstall</span> <span class="n">com</span><span class="p">.</span><span class="n">onyx</span><span class="p">.</span><span class="n">kreader</span> <span class="err">#</span> <span class="n">Reader</span> <span class="ow">and</span> <span class="n">Note</span> <span class="n">taking</span> <span class="n">app</span></span></span></code></pre>
 </div>
 <h3 id="for-less-tech-savvy-people" class="headerLink">
-    <a href="#for-less-tech-savvy-people" class="header-mark" aria-label="Header mark for 'For less tech-savvy people'"></a>2.1 For less tech-savvy people</h3><p>If you don&rsquo;t want to play around with the shell and manual adb commands, I added the Onyx apps to the <a href="https://github.com/Universal-Debloater-Alliance/universal-android-debloater-next-generation" target="_blank" rel="noopener noreferrer">Android Universal Debloater</a> list.</p>
+    <a href="#for-less-tech-savvy-people" class="header-mark"></a>18.1 For less tech-savvy people</h3><p>If you don&rsquo;t want to play around with the shell and manual adb commands, I added the Onyx apps to the <a href="https://github.com/Universal-Debloater-Alliance/universal-android-debloater-next-generation" target="_blank" rel="noopener noreferrer">Android Universal Debloater</a> list.</p>
 <div class="details admonition note open">
     <div class="details-summary admonition-title">
         <span class="icon"><svg class="icon"
@@ -293,39 +284,34 @@ After <a href="https://www.xda-developers.com/install-adb-windows-macos-linux/#h
 </figure>
 
 <h2 id="installing-an-alternative-store" class="headerLink">
-    <a href="#installing-an-alternative-store" class="header-mark" aria-label="Header mark for 'Installing an alternative store'"></a>3 Installing an alternative store</h2><p>Since I removed the default Onyx Store, I decided to install Obtanium to get releases directly from the source.</p>
+    <a href="#installing-an-alternative-store" class="header-mark"></a>19 Installing an alternative store</h2><p>Since I removed the default Onyx Store, I decided to install Obtanium to get releases directly from the source.</p>
 <p>Go <a href="https://obtainium.imranr.dev/" target="_blank" rel="noopener noreferrer">here</a>, download the APK and install it via adb with:</p>
 <div class="code-block highlight is-open show-line-numbers  tw-group tw-my-2">
   <div class="
-    code-block-title 
     
     tw-flex 
-    tw-flex-row 
+    tw-flex-row
+    tw-flex-1 
     tw-justify-between 
     tw-w-full tw-bg-bgColor-secondary
     ">      
     <button 
       class="
-        tw-select-none 
+        code-block-button
         tw-mx-2 
-        tw-block
-        group-[.is-open]:tw-rotate-90
-        tw-transition-[transform] 
-        tw-duration-500 
-        tw-ease-in-out
-        print:!tw-hidden"
-      disabled
-      aria-hidden="true"><svg class="icon"
-    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M285.476 272.971L91.132 467.314c-9.373 9.373-24.569 9.373-33.941 0l-22.667-22.667c-9.357-9.357-9.375-24.522-.04-33.901L188.505 256 34.484 101.255c-9.335-9.379-9.317-24.544.04-33.901l22.667-22.667c9.373-9.373 24.569-9.373 33.941 0L285.475 239.03c9.373 9.372 9.373 24.568.001 33.941z"/></svg></button>
+        tw-flex
+        tw-flex-row
+        tw-flex-1"
+      aria-hidden="true">
+          <div class="group-[.is-open]:tw-rotate-90 tw-transition-[transform] tw-duration-500 tw-ease-in-out print:!tw-hidden tw-w-min tw-h-min tw-my-1 tw-mx-1"><svg class="icon"
+    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M285.476 272.971L91.132 467.314c-9.373 9.373-24.569 9.373-33.941 0l-22.667-22.667c-9.357-9.357-9.375-24.522-.04-33.901L188.505 256 34.484 101.255c-9.335-9.379-9.317-24.544.04-33.901l22.667-22.667c9.373-9.373 24.569-9.373 33.941 0L285.475 239.03c9.373 9.372 9.373 24.568.001 33.941z"/></svg></div>
+          <p class="tw-select-none !tw-my-1">adb</p>
+      </button>
 
-    <div class="code-block-title-bar tw-w-full">
-      <p class="tw-select-none !tw-my-1">adb</p>
-    </div>
-    <div class="tw-flex">
+   <div class="tw-flex">
       <button 
         class="
           line-number-button
-          tw-select-none 
           tw-mx-2 
           tw-hidden 
           group-[.is-open]:tw-block 
@@ -375,7 +361,7 @@ After <a href="https://www.xda-developers.com/install-adb-windows-macos-linux/#h
     </div>
   </div>
   <pre style="counter-reset: codeblock;" class="tw-block tw-m-0 tw-p-0"><code 
-    id="codeblock-id-3" 
+    id="codeblock-id-15" 
     class="
       chroma 
       !tw-block 
@@ -393,40 +379,35 @@ After <a href="https://www.xda-developers.com/install-adb-windows-macos-linux/#h
 </div>
 <p>Why not F-Droid you ask? Because F-Droid doesn&rsquo;t get updates directly from the source and sometimes are slow with releases alignment.</p>
 <h3 id="minor-changes-to-avoid-phoning-home" class="headerLink">
-    <a href="#minor-changes-to-avoid-phoning-home" class="header-mark" aria-label="Header mark for 'Minor changes to avoid phoning home'"></a>3.1 Minor changes to avoid phoning home</h3><p>Onyx has a lot of calls to their domains, I just replaced them with different endpoints.</p>
+    <a href="#minor-changes-to-avoid-phoning-home" class="header-mark"></a>19.1 Minor changes to avoid phoning home</h3><p>Onyx has a lot of calls to their domains, I just replaced them with different endpoints.</p>
 <h2 id="changing-ntp-server" class="headerLink">
-    <a href="#changing-ntp-server" class="header-mark" aria-label="Header mark for 'Changing NTP Server'"></a>4 Changing NTP Server</h2><p>Onyx uses its own NTP server, I replaced it with <code>ntp.org</code></p>
+    <a href="#changing-ntp-server" class="header-mark"></a>20 Changing NTP Server</h2><p>Onyx uses its own NTP server, I replaced it with <code>ntp.org</code></p>
 <div class="code-block highlight is-open show-line-numbers  tw-group tw-my-2">
   <div class="
-    code-block-title 
     
     tw-flex 
-    tw-flex-row 
+    tw-flex-row
+    tw-flex-1 
     tw-justify-between 
     tw-w-full tw-bg-bgColor-secondary
     ">      
     <button 
       class="
-        tw-select-none 
+        code-block-button
         tw-mx-2 
-        tw-block
-        group-[.is-open]:tw-rotate-90
-        tw-transition-[transform] 
-        tw-duration-500 
-        tw-ease-in-out
-        print:!tw-hidden"
-      disabled
-      aria-hidden="true"><svg class="icon"
-    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M285.476 272.971L91.132 467.314c-9.373 9.373-24.569 9.373-33.941 0l-22.667-22.667c-9.357-9.357-9.375-24.522-.04-33.901L188.505 256 34.484 101.255c-9.335-9.379-9.317-24.544.04-33.901l22.667-22.667c9.373-9.373 24.569-9.373 33.941 0L285.475 239.03c9.373 9.372 9.373 24.568.001 33.941z"/></svg></button>
+        tw-flex
+        tw-flex-row
+        tw-flex-1"
+      aria-hidden="true">
+          <div class="group-[.is-open]:tw-rotate-90 tw-transition-[transform] tw-duration-500 tw-ease-in-out print:!tw-hidden tw-w-min tw-h-min tw-my-1 tw-mx-1"><svg class="icon"
+    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M285.476 272.971L91.132 467.314c-9.373 9.373-24.569 9.373-33.941 0l-22.667-22.667c-9.357-9.357-9.375-24.522-.04-33.901L188.505 256 34.484 101.255c-9.335-9.379-9.317-24.544.04-33.901l22.667-22.667c9.373-9.373 24.569-9.373 33.941 0L285.475 239.03c9.373 9.372 9.373 24.568.001 33.941z"/></svg></div>
+          <p class="tw-select-none !tw-my-1">adb</p>
+      </button>
 
-    <div class="code-block-title-bar tw-w-full">
-      <p class="tw-select-none !tw-my-1">adb</p>
-    </div>
-    <div class="tw-flex">
+   <div class="tw-flex">
       <button 
         class="
           line-number-button
-          tw-select-none 
           tw-mx-2 
           tw-hidden 
           group-[.is-open]:tw-block 
@@ -476,7 +457,7 @@ After <a href="https://www.xda-developers.com/install-adb-windows-macos-linux/#h
     </div>
   </div>
   <pre style="counter-reset: codeblock;" class="tw-block tw-m-0 tw-p-0"><code 
-    id="codeblock-id-4" 
+    id="codeblock-id-16" 
     class="
       chroma 
       !tw-block 
@@ -494,38 +475,33 @@ After <a href="https://www.xda-developers.com/install-adb-windows-macos-linux/#h
 </span></span><span class="line"><span class="cl"><span class="n">adb</span> <span class="n">shell</span> <span class="n">settings</span> <span class="n">put</span> <span class="n">global</span> <span class="n">ntp_server_2</span> <span class="n">en</span><span class="p">.</span><span class="n">pool</span><span class="p">.</span><span class="n">ntp</span><span class="p">.</span><span class="n">org</span> <span class="err">#</span> <span class="n">replace</span> <span class="s">&#34;en&#34;</span> <span class="kn">with</span> <span class="nn">your</span> <span class="n">local</span> <span class="n">time</span></span></span></code></pre>
 </div>
 <h2 id="change-captive-portal-endpoints" class="headerLink">
-    <a href="#change-captive-portal-endpoints" class="header-mark" aria-label="Header mark for 'Change captive portal endpoints'"></a>5 Change captive portal endpoints</h2><p>Onyx uses their endpoints for the captive portal pings so I switched them with the ones from Android:</p>
+    <a href="#change-captive-portal-endpoints" class="header-mark"></a>21 Change captive portal endpoints</h2><p>Onyx uses their endpoints for the captive portal pings so I switched them with the ones from Android:</p>
 <div class="code-block highlight is-open show-line-numbers  tw-group tw-my-2">
   <div class="
-    code-block-title 
     
     tw-flex 
-    tw-flex-row 
+    tw-flex-row
+    tw-flex-1 
     tw-justify-between 
     tw-w-full tw-bg-bgColor-secondary
     ">      
     <button 
       class="
-        tw-select-none 
+        code-block-button
         tw-mx-2 
-        tw-block
-        group-[.is-open]:tw-rotate-90
-        tw-transition-[transform] 
-        tw-duration-500 
-        tw-ease-in-out
-        print:!tw-hidden"
-      disabled
-      aria-hidden="true"><svg class="icon"
-    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M285.476 272.971L91.132 467.314c-9.373 9.373-24.569 9.373-33.941 0l-22.667-22.667c-9.357-9.357-9.375-24.522-.04-33.901L188.505 256 34.484 101.255c-9.335-9.379-9.317-24.544.04-33.901l22.667-22.667c9.373-9.373 24.569-9.373 33.941 0L285.475 239.03c9.373 9.372 9.373 24.568.001 33.941z"/></svg></button>
+        tw-flex
+        tw-flex-row
+        tw-flex-1"
+      aria-hidden="true">
+          <div class="group-[.is-open]:tw-rotate-90 tw-transition-[transform] tw-duration-500 tw-ease-in-out print:!tw-hidden tw-w-min tw-h-min tw-my-1 tw-mx-1"><svg class="icon"
+    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M285.476 272.971L91.132 467.314c-9.373 9.373-24.569 9.373-33.941 0l-22.667-22.667c-9.357-9.357-9.375-24.522-.04-33.901L188.505 256 34.484 101.255c-9.335-9.379-9.317-24.544.04-33.901l22.667-22.667c9.373-9.373 24.569-9.373 33.941 0L285.475 239.03c9.373 9.372 9.373 24.568.001 33.941z"/></svg></div>
+          <p class="tw-select-none !tw-my-1">adb</p>
+      </button>
 
-    <div class="code-block-title-bar tw-w-full">
-      <p class="tw-select-none !tw-my-1">adb</p>
-    </div>
-    <div class="tw-flex">
+   <div class="tw-flex">
       <button 
         class="
           line-number-button
-          tw-select-none 
           tw-mx-2 
           tw-hidden 
           group-[.is-open]:tw-block 
@@ -575,7 +551,7 @@ After <a href="https://www.xda-developers.com/install-adb-windows-macos-linux/#h
     </div>
   </div>
   <pre style="counter-reset: codeblock;" class="tw-block tw-m-0 tw-p-0"><code 
-    id="codeblock-id-5" 
+    id="codeblock-id-17" 
     class="
       chroma 
       !tw-block 
@@ -594,38 +570,33 @@ After <a href="https://www.xda-developers.com/install-adb-windows-macos-linux/#h
 </span></span><span class="line"><span class="cl"><span class="n">adb</span> <span class="n">shell</span> <span class="n">settings</span> <span class="n">put</span> <span class="n">global</span> <span class="n">captive_portal_fallback_url</span> <span class="s">&#34;http://connectivitycheck.gstatic.com/generate_204&#34;</span></span></span></code></pre>
 </div>
 <h2 id="bonus-blocking-onyx-domains" class="headerLink">
-    <a href="#bonus-blocking-onyx-domains" class="header-mark" aria-label="Header mark for 'Bonus: Blocking onyx domains'"></a>6 Bonus: Blocking onyx domains</h2><p>Just in case I added the following domains to my blocklist:</p>
+    <a href="#bonus-blocking-onyx-domains" class="header-mark"></a>22 Bonus: Blocking onyx domains</h2><p>Just in case I added the following domains to my blocklist:</p>
 <div class="code-block highlight is-open show-line-numbers  tw-group tw-my-2">
   <div class="
-    code-block-title 
     
     tw-flex 
-    tw-flex-row 
+    tw-flex-row
+    tw-flex-1 
     tw-justify-between 
     tw-w-full tw-bg-bgColor-secondary
     ">      
     <button 
       class="
-        tw-select-none 
+        code-block-button
         tw-mx-2 
-        tw-block
-        group-[.is-open]:tw-rotate-90
-        tw-transition-[transform] 
-        tw-duration-500 
-        tw-ease-in-out
-        print:!tw-hidden"
-      disabled
-      aria-hidden="true"><svg class="icon"
-    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M285.476 272.971L91.132 467.314c-9.373 9.373-24.569 9.373-33.941 0l-22.667-22.667c-9.357-9.357-9.375-24.522-.04-33.901L188.505 256 34.484 101.255c-9.335-9.379-9.317-24.544.04-33.901l22.667-22.667c9.373-9.373 24.569-9.373 33.941 0L285.475 239.03c9.373 9.372 9.373 24.568.001 33.941z"/></svg></button>
+        tw-flex
+        tw-flex-row
+        tw-flex-1"
+      aria-hidden="true">
+          <div class="group-[.is-open]:tw-rotate-90 tw-transition-[transform] tw-duration-500 tw-ease-in-out print:!tw-hidden tw-w-min tw-h-min tw-my-1 tw-mx-1"><svg class="icon"
+    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M285.476 272.971L91.132 467.314c-9.373 9.373-24.569 9.373-33.941 0l-22.667-22.667c-9.357-9.357-9.375-24.522-.04-33.901L188.505 256 34.484 101.255c-9.335-9.379-9.317-24.544.04-33.901l22.667-22.667c9.373-9.373 24.569-9.373 33.941 0L285.475 239.03c9.373 9.372 9.373 24.568.001 33.941z"/></svg></div>
+          <p class="tw-select-none !tw-my-1">text</p>
+      </button>
 
-    <div class="code-block-title-bar tw-w-full">
-      <p class="tw-select-none !tw-my-1">text</p>
-    </div>
-    <div class="tw-flex">
+   <div class="tw-flex">
       <button 
         class="
           line-number-button
-          tw-select-none 
           tw-mx-2 
           tw-hidden 
           group-[.is-open]:tw-block 
@@ -675,7 +646,7 @@ After <a href="https://www.xda-developers.com/install-adb-windows-macos-linux/#h
     </div>
   </div>
   <pre style="counter-reset: codeblock;" class="tw-block tw-m-0 tw-p-0"><code 
-    id="codeblock-id-6" 
+    id="codeblock-id-18" 
     class="
       chroma 
       !tw-block 
@@ -695,11 +666,11 @@ After <a href="https://www.xda-developers.com/install-adb-windows-macos-linux/#h
 </span></span><span class="line"><span class="cl">onyx-international.cn #Used for NTP Server</span></span></code></pre>
 </div>
 <h2 id="conclusion" class="headerLink">
-    <a href="#conclusion" class="header-mark" aria-label="Header mark for 'Conclusion'"></a>7 Conclusion</h2><p>In the end the Onyx Boox Go 10.3 is a very nice device (hardware-wise) that suits my needs.
+    <a href="#conclusion" class="header-mark"></a>23 Conclusion</h2><p>In the end the Onyx Boox Go 10.3 is a very nice device (hardware-wise) that suits my needs.
 If you want to buy it consider everything written in this post and make an informed purchease.</p>
 <p>P.S. also consider that the device is new at the time of writing and the default cover is terrible.</p>
 <h2 id="useful-resources" class="headerLink">
-    <a href="#useful-resources" class="header-mark" aria-label="Header mark for 'Useful Resources'"></a>8 Useful Resources</h2><ul>
+    <a href="#useful-resources" class="header-mark"></a>24 Useful Resources</h2><ul>
 <li><a href="https://www.boox.com/" target="_blank" rel="noopener noreferrer">Manifacturer website</a></li>
 <li><a href="https://www.mobileread.com/forums/showthread.php?t=349930" target="_blank" rel="noopener noreferrer">Mobile Read thread on Onyx Boox Debloat</a></li>
 <li><a href="https://www.reddit.com/r/Onyx_Boox/" target="_blank" rel="noopener noreferrer">Reddit Onyx Boox Community</a></li>

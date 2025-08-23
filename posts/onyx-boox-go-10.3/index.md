@@ -1,7 +1,8 @@
 # Debloating the Onyx Boox Go 10.3
 
 
-I was looking for an eink tablet to read books and take notes while I'm away from home.
+I was looking for an eink tablet to r
+ead books and take notes while I'm away from home.
 
 After adventuring in the eInk rabbit hole I decided to go for the [Onyx Boox Go 10.3](https://amzn.to/3SC2W6Z): a Black and White eInk Android Tablet with 300ppi that's also good for taking notes, weighting only 365g!
 

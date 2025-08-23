@@ -1,40 +1,35 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>Code Review - Tag - appsec &amp; stuff</title><link>https://appsec.space/tags/code-review/</link><description>Code Review - Tag - appsec &amp; stuff</description><generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Sun, 10 Jun 2018 20:59:09 +0200</lastBuildDate><atom:link href="https://appsec.space/tags/code-review/" rel="self" type="application/rss+xml"/><item><title>Getting "Zero Click" Remote Code Execution in Mycroft AI vocal assistant</title><link>https://appsec.space/posts/mycroft-ai-rce/</link><pubDate>Sun, 10 Jun 2018 20:59:09 +0200</pubDate><author><name>himazawa</name></author><guid>https://appsec.space/posts/mycroft-ai-rce/</guid><description><![CDATA[<div class="featured-image">
                 <img src="/posts/mycroft-ai-rce/mycroft.png" referrerpolicy="no-referrer">
             </div><h2 id="introduction" class="headerLink">
-    <a href="#introduction" class="header-mark" aria-label="Header mark for 'Introduction'"></a>1 Introduction</h2><p>During my journey contributing to open source I was working with my friend <a href="https://github.com/portaloffreedom" target="_blank" rel="noopener noreferrer">Matteo De Carlo</a> on an <a href="https://git.covolunablu.org/portaloffreedom/plasma-mycroft-PKGBUILD" target="_blank" rel="noopener noreferrer">AUR Package</a> of a really interesting project called <a href="https://mycroft.ai" target="_blank" rel="noopener noreferrer">Mycroft AI</a>. It&rsquo;s an AI-powered vocal assistant started with a <a href="https://www.kickstarter.com/projects/aiforeveryone/mycroft-an-open-source-artificial-intelligence-for" target="_blank" rel="noopener noreferrer">crowdfunding campaign</a> in 2015 and a <a href="https://www.indiegogo.com/projects/mycroft-mark-ii-the-open-voice-assistant#/" target="_blank" rel="noopener noreferrer">more recent one</a> that allowed Mycroft to produce their Mark-I and Mark-II devices. It&rsquo;s also running on Linux Desktop/Server, Raspberry PI and will be available soon™ on <a href="https://www.youtube.com/watch?v=6GHmzbXp_jY" target="_blank" rel="noopener noreferrer">Jaguar F-Type</a> and <a href="https://mycroft.ai/blog/mycroft-welcomes-jaguar-land-rover-new-investor/" target="_blank" rel="noopener noreferrer">Land Rover</a></p>
+    <a href="#introduction" class="header-mark"></a>1 Introduction</h2><p>During my journey contributing to open source I was working with my friend <a href="https://github.com/portaloffreedom" target="_blank" rel="noopener noreferrer">Matteo De Carlo</a> on an <a href="https://git.covolunablu.org/portaloffreedom/plasma-mycroft-PKGBUILD" target="_blank" rel="noopener noreferrer">AUR Package</a> of a really interesting project called <a href="https://mycroft.ai" target="_blank" rel="noopener noreferrer">Mycroft AI</a>. It&rsquo;s an AI-powered vocal assistant started with a <a href="https://www.kickstarter.com/projects/aiforeveryone/mycroft-an-open-source-artificial-intelligence-for" target="_blank" rel="noopener noreferrer">crowdfunding campaign</a> in 2015 and a <a href="https://www.indiegogo.com/projects/mycroft-mark-ii-the-open-voice-assistant#/" target="_blank" rel="noopener noreferrer">more recent one</a> that allowed Mycroft to produce their Mark-I and Mark-II devices. It&rsquo;s also running on Linux Desktop/Server, Raspberry PI and will be available soon™ on <a href="https://www.youtube.com/watch?v=6GHmzbXp_jY" target="_blank" rel="noopener noreferrer">Jaguar F-Type</a> and <a href="https://mycroft.ai/blog/mycroft-welcomes-jaguar-land-rover-new-investor/" target="_blank" rel="noopener noreferrer">Land Rover</a></p>
 <h2 id="digging-in-the-source-code" class="headerLink">
-    <a href="#digging-in-the-source-code" class="header-mark" aria-label="Header mark for 'Digging in the source code'"></a>2 Digging in the source code</h2><p>While looking at the <a href="https://github.com/MycroftAI/mycroft-core" target="_blank" rel="noopener noreferrer">source code</a> I found an interesting point: <a href="https://github.com/MycroftAI/mycroft-core/blob/1f4c98f29ceb6a7981474f1620441e43aa364d00/mycroft/messagebus/service/main.py#L28-L57" target="_blank" rel="noopener noreferrer">here</a></p>
+    <a href="#digging-in-the-source-code" class="header-mark"></a>2 Digging in the source code</h2><p>While looking at the <a href="https://github.com/MycroftAI/mycroft-core" target="_blank" rel="noopener noreferrer">source code</a> I found an interesting point: <a href="https://github.com/MycroftAI/mycroft-core/blob/1f4c98f29ceb6a7981474f1620441e43aa364d00/mycroft/messagebus/service/main.py#L28-L57" target="_blank" rel="noopener noreferrer">here</a></p>
 <div class="code-block highlight is-open show-line-numbers  tw-group tw-my-2">
   <div class="
-    code-block-title 
     
     tw-flex 
-    tw-flex-row 
+    tw-flex-row
+    tw-flex-1 
     tw-justify-between 
     tw-w-full tw-bg-bgColor-secondary
     ">      
     <button 
       class="
-        tw-select-none 
+        code-block-button
         tw-mx-2 
-        tw-block
-        group-[.is-open]:tw-rotate-90
-        tw-transition-[transform] 
-        tw-duration-500 
-        tw-ease-in-out
-        print:!tw-hidden"
-      disabled
-      aria-hidden="true"><svg class="icon"
-    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M285.476 272.971L91.132 467.314c-9.373 9.373-24.569 9.373-33.941 0l-22.667-22.667c-9.357-9.357-9.375-24.522-.04-33.901L188.505 256 34.484 101.255c-9.335-9.379-9.317-24.544.04-33.901l22.667-22.667c9.373-9.373 24.569-9.373 33.941 0L285.475 239.03c9.373 9.372 9.373 24.568.001 33.941z"/></svg></button>
+        tw-flex
+        tw-flex-row
+        tw-flex-1"
+      aria-hidden="true">
+          <div class="group-[.is-open]:tw-rotate-90 tw-transition-[transform] tw-duration-500 tw-ease-in-out print:!tw-hidden tw-w-min tw-h-min tw-my-1 tw-mx-1"><svg class="icon"
+    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M285.476 272.971L91.132 467.314c-9.373 9.373-24.569 9.373-33.941 0l-22.667-22.667c-9.357-9.357-9.375-24.522-.04-33.901L188.505 256 34.484 101.255c-9.335-9.379-9.317-24.544.04-33.901l22.667-22.667c9.373-9.373 24.569-9.373 33.941 0L285.475 239.03c9.373 9.372 9.373 24.568.001 33.941z"/></svg></div>
+          <p class="tw-select-none !tw-my-1">python</p>
+      </button>
 
-    <div class="code-block-title-bar tw-w-full">
-      <p class="tw-select-none !tw-my-1">python</p>
-    </div>
-    <div class="tw-flex">
+   <div class="tw-flex">
       <button 
         class="
           line-number-button
-          tw-select-none 
           tw-mx-2 
           tw-hidden 
           group-[.is-open]:tw-block 
@@ -117,35 +112,30 @@
 <p>it defines a websocket server that uses to get instructions from the remote clients (like the <a href="https://github.com/MycroftAI/Mycroft-Android" target="_blank" rel="noopener noreferrer">Android one</a>). The settings for the websocket server are defined in <a href="https://github.com/MycroftAI/mycroft-core/blob/aa594aebea99eebd0109ad013b71a2210f2b72f4/mycroft/configuration/mycroft.conf#L111-L117" target="_blank" rel="noopener noreferrer">mycroft.conf</a></p>
 <div class="code-block highlight is-open show-line-numbers  tw-group tw-my-2">
   <div class="
-    code-block-title 
     
     tw-flex 
-    tw-flex-row 
+    tw-flex-row
+    tw-flex-1 
     tw-justify-between 
     tw-w-full tw-bg-bgColor-secondary
     ">      
     <button 
       class="
-        tw-select-none 
+        code-block-button
         tw-mx-2 
-        tw-block
-        group-[.is-open]:tw-rotate-90
-        tw-transition-[transform] 
-        tw-duration-500 
-        tw-ease-in-out
-        print:!tw-hidden"
-      disabled
-      aria-hidden="true"><svg class="icon"
-    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M285.476 272.971L91.132 467.314c-9.373 9.373-24.569 9.373-33.941 0l-22.667-22.667c-9.357-9.357-9.375-24.522-.04-33.901L188.505 256 34.484 101.255c-9.335-9.379-9.317-24.544.04-33.901l22.667-22.667c9.373-9.373 24.569-9.373 33.941 0L285.475 239.03c9.373 9.372 9.373 24.568.001 33.941z"/></svg></button>
+        tw-flex
+        tw-flex-row
+        tw-flex-1"
+      aria-hidden="true">
+          <div class="group-[.is-open]:tw-rotate-90 tw-transition-[transform] tw-duration-500 tw-ease-in-out print:!tw-hidden tw-w-min tw-h-min tw-my-1 tw-mx-1"><svg class="icon"
+    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M285.476 272.971L91.132 467.314c-9.373 9.373-24.569 9.373-33.941 0l-22.667-22.667c-9.357-9.357-9.375-24.522-.04-33.901L188.505 256 34.484 101.255c-9.335-9.379-9.317-24.544.04-33.901l22.667-22.667c9.373-9.373 24.569-9.373 33.941 0L285.475 239.03c9.373 9.372 9.373 24.568.001 33.941z"/></svg></div>
+          <p class="tw-select-none !tw-my-1">json</p>
+      </button>
 
-    <div class="code-block-title-bar tw-w-full">
-      <p class="tw-select-none !tw-my-1">json</p>
-    </div>
-    <div class="tw-flex">
+   <div class="tw-flex">
       <button 
         class="
           line-number-button
-          tw-select-none 
           tw-mx-2 
           tw-hidden 
           group-[.is-open]:tw-block 
@@ -220,35 +210,30 @@
 <p>So there is a websocket server that doesn&rsquo;t require authentication that by default is exposed on <code>0.0.0.0:8181/core</code>. Let&rsquo;s test it 😉</p>
 <div class="code-block highlight is-open show-line-numbers  tw-group tw-my-2">
   <div class="
-    code-block-title 
     
     tw-flex 
-    tw-flex-row 
+    tw-flex-row
+    tw-flex-1 
     tw-justify-between 
     tw-w-full tw-bg-bgColor-secondary
     ">      
     <button 
       class="
-        tw-select-none 
+        code-block-button
         tw-mx-2 
-        tw-block
-        group-[.is-open]:tw-rotate-90
-        tw-transition-[transform] 
-        tw-duration-500 
-        tw-ease-in-out
-        print:!tw-hidden"
-      disabled
-      aria-hidden="true"><svg class="icon"
-    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M285.476 272.971L91.132 467.314c-9.373 9.373-24.569 9.373-33.941 0l-22.667-22.667c-9.357-9.357-9.375-24.522-.04-33.901L188.505 256 34.484 101.255c-9.335-9.379-9.317-24.544.04-33.901l22.667-22.667c9.373-9.373 24.569-9.373 33.941 0L285.475 239.03c9.373 9.372 9.373 24.568.001 33.941z"/></svg></button>
+        tw-flex
+        tw-flex-row
+        tw-flex-1"
+      aria-hidden="true">
+          <div class="group-[.is-open]:tw-rotate-90 tw-transition-[transform] tw-duration-500 tw-ease-in-out print:!tw-hidden tw-w-min tw-h-min tw-my-1 tw-mx-1"><svg class="icon"
+    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M285.476 272.971L91.132 467.314c-9.373 9.373-24.569 9.373-33.941 0l-22.667-22.667c-9.357-9.357-9.375-24.522-.04-33.901L188.505 256 34.484 101.255c-9.335-9.379-9.317-24.544.04-33.901l22.667-22.667c9.373-9.373 24.569-9.373 33.941 0L285.475 239.03c9.373 9.372 9.373 24.568.001 33.941z"/></svg></div>
+          <p class="tw-select-none !tw-my-1">python</p>
+      </button>
 
-    <div class="code-block-title-bar tw-w-full">
-      <p class="tw-select-none !tw-my-1">python</p>
-    </div>
-    <div class="tw-flex">
+   <div class="tw-flex">
       <button 
         class="
           line-number-button
-          tw-select-none 
           tw-mx-2 
           tw-hidden 
           group-[.is-open]:tw-block 
@@ -334,7 +319,7 @@
 </figure>
 
 <h2 id="the-skills-system" class="headerLink">
-    <a href="#the-skills-system" class="header-mark" aria-label="Header mark for 'The skills system'"></a>3 The skills system</h2><p>Digging deeper we can see that Mycroft has a skills system and a default skill that can install others skills (pretty neat, right?)</p>
+    <a href="#the-skills-system" class="header-mark"></a>3 The skills system</h2><p>Digging deeper we can see that Mycroft has a skills system and a default skill that can install others skills (pretty neat, right?)</p>
 <p>How is a skill composed? From what we can see from the documentation a default skill is composed by:</p>
 <ul>
 <li><code>dialog/en-us/command.dialog</code> contains the vocal command that will trigger the skill</li>
@@ -343,43 +328,38 @@
 <li><code>__int__.py</code> contains the main function of the skill and will be loaded when the skill is triggered</li>
 </ul>
 <h2 id="what-can-i-do-now" class="headerLink">
-    <a href="#what-can-i-do-now" class="header-mark" aria-label="Header mark for 'What can I do now?'"></a>4 What can I do now?</h2><p>I could create a malicious skill that when triggered runs arbitrary code on the remote machine, but unfortunately this is not possible via vocal command unless the URL of the skill is not whitelisted via the online website. So this is possible but will be a little tricky.</p>
+    <a href="#what-can-i-do-now" class="header-mark"></a>4 What can I do now?</h2><p>I could create a malicious skill that when triggered runs arbitrary code on the remote machine, but unfortunately this is not possible via vocal command unless the URL of the skill is not whitelisted via the online website. So this is possible but will be a little tricky.</p>
 <h3 id="so-im-done" class="headerLink">
-    <a href="#so-im-done" class="header-mark" aria-label="Header mark for 'So I&amp;rsquo;m done?'"></a>4.1 So I&rsquo;m done?</h3><p>Not yet. I found out that I can trigger skills remotely and that is possible to execute commands on a remote machine convincing the user to install a malicious skill. I may have enough to submit a vulnerability report. But maybe I can do a bit better&hellip;</p>
+    <a href="#so-im-done" class="header-mark"></a>4.1 So I&rsquo;m done?</h3><p>Not yet. I found out that I can trigger skills remotely and that is possible to execute commands on a remote machine convincing the user to install a malicious skill. I may have enough to submit a vulnerability report. But maybe I can do a bit better&hellip;</p>
 <h2 id="getting-a-remote-shell-using-default-skills" class="headerLink">
-    <a href="#getting-a-remote-shell-using-default-skills" class="header-mark" aria-label="Header mark for 'Getting a remote shell using default skills'"></a>5 Getting a remote shell using default skills</h2><p>We know that Mycroft has some <a href="https://github.com/MycroftAI/mycroft-skills" target="_blank" rel="noopener noreferrer">default skills</a> like <code>open</code> that will open an application and others that are whitelisted but not installed. Reading through to the list, I found a really interesting skill called <code>skill-autogui</code>, whose description says <code>Manipulate your mouse and keyboard with Mycroft</code>. <strong>We got it!</strong></p>
+    <a href="#getting-a-remote-shell-using-default-skills" class="header-mark"></a>5 Getting a remote shell using default skills</h2><p>We know that Mycroft has some <a href="https://github.com/MycroftAI/mycroft-skills" target="_blank" rel="noopener noreferrer">default skills</a> like <code>open</code> that will open an application and others that are whitelisted but not installed. Reading through to the list, I found a really interesting skill called <code>skill-autogui</code>, whose description says <code>Manipulate your mouse and keyboard with Mycroft</code>. <strong>We got it!</strong></p>
 <p>Let&rsquo;s try to combine everything we found so far into a PoC:</p>
 <div class="code-block highlight is-open show-line-numbers  tw-group tw-my-2">
   <div class="
-    code-block-title 
     
     tw-flex 
-    tw-flex-row 
+    tw-flex-row
+    tw-flex-1 
     tw-justify-between 
     tw-w-full tw-bg-bgColor-secondary
     ">      
     <button 
       class="
-        tw-select-none 
+        code-block-button
         tw-mx-2 
-        tw-block
-        group-[.is-open]:tw-rotate-90
-        tw-transition-[transform] 
-        tw-duration-500 
-        tw-ease-in-out
-        print:!tw-hidden"
-      disabled
-      aria-hidden="true"><svg class="icon"
-    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M285.476 272.971L91.132 467.314c-9.373 9.373-24.569 9.373-33.941 0l-22.667-22.667c-9.357-9.357-9.375-24.522-.04-33.901L188.505 256 34.484 101.255c-9.335-9.379-9.317-24.544.04-33.901l22.667-22.667c9.373-9.373 24.569-9.373 33.941 0L285.475 239.03c9.373 9.372 9.373 24.568.001 33.941z"/></svg></button>
+        tw-flex
+        tw-flex-row
+        tw-flex-1"
+      aria-hidden="true">
+          <div class="group-[.is-open]:tw-rotate-90 tw-transition-[transform] tw-duration-500 tw-ease-in-out print:!tw-hidden tw-w-min tw-h-min tw-my-1 tw-mx-1"><svg class="icon"
+    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M285.476 272.971L91.132 467.314c-9.373 9.373-24.569 9.373-33.941 0l-22.667-22.667c-9.357-9.357-9.375-24.522-.04-33.901L188.505 256 34.484 101.255c-9.335-9.379-9.317-24.544.04-33.901l22.667-22.667c9.373-9.373 24.569-9.373 33.941 0L285.475 239.03c9.373 9.372 9.373 24.568.001 33.941z"/></svg></div>
+          <p class="tw-select-none !tw-my-1">python</p>
+      </button>
 
-    <div class="code-block-title-bar tw-w-full">
-      <p class="tw-select-none !tw-my-1">python</p>
-    </div>
-    <div class="tw-flex">
+   <div class="tw-flex">
       <button 
         class="
           line-number-button
-          tw-select-none 
           tw-mx-2 
           tw-hidden 
           group-[.is-open]:tw-block 
@@ -469,16 +449,16 @@
     </figcaption>
 </figure>
 
-<h2 id="_notes_" class="headerLink">
-    <a href="#_notes_" class="header-mark" aria-label="Header mark for '&lt;em&gt;Notes&lt;/em&gt;'"></a>6 <em>Notes</em></h2><ul>
+<h2 id="notes" class="headerLink">
+    <a href="#notes" class="header-mark"></a>6 <em>Notes</em></h2><ul>
 <li><code>open xterm</code> was needed because my test Linux environment had a DE installed, on a remote server the commands will be executed directly on TTY so this step is not nesessary.</li>
 <li>The skill branching had a <a href="https://mycroft.ai/blog/skill-branching-18-02/" target="_blank" rel="noopener noreferrer">big change</a> and now some skills are not (yet) available (autogui is one of them) but this is not the real point. Mycroft has skills to interact with domotic houses and other services that can still be manipulated (the lack of imagination is the limit here). The vulnerability lies in the lack of authentication for the ws.</li>
 </ul>
 <h2 id="affected-devices" class="headerLink">
-    <a href="#affected-devices" class="header-mark" aria-label="Header mark for 'Affected devices'"></a>7 Affected devices</h2><pre><code>All the devices running Mycroft &lt;= ? with the websocket server exposed (Mark-I has the websocket behind a firewall by default)
+    <a href="#affected-devices" class="header-mark"></a>7 Affected devices</h2><pre><code>All the devices running Mycroft &lt;= ? with the websocket server exposed (Mark-I has the websocket behind a firewall by default)
 </code></pre>
 <h2 id="timeline" class="headerLink">
-    <a href="#timeline" class="header-mark" aria-label="Header mark for 'Timeline'"></a>8 Timeline</h2><ul>
+    <a href="#timeline" class="header-mark"></a>8 Timeline</h2><ul>
 <li>08/03/2018 Vulnerability found</li>
 <li>09/03/2018 Vulnerability reported</li>
 <li>13/03/2018 The CTO answered that they are aware of this problem and are currently working on a patch</li>
