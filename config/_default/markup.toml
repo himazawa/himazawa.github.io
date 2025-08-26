@@ -25,7 +25,7 @@
   [goldmark.renderer]
     # whether to use HTML tags directly in the document
     # 是否在文档中直接使用 HTML 标签
-    unsafe = false
+    unsafe = true
 # Table Of Contents settings
 # 目录设置
 [tableOfContents]
