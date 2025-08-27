@@ -17,9 +17,9 @@ Private servers are still vulnerable.</div></div></div>
     </div>
     <div class="details-content">
         <div class="admonition-content">In the initial version of this post I wrote that the housing system was removed in 5.0 but some players made me notice that this is <em>wrong</em> indeed the housing system is still there in the <em>retail</em> version of AION (still maintained) but not present in the <em>classic</em> version of the game. This is interesting because apparently we have a bigger playground to investigate, maybe in a follow-up.</div></div></div>
-<p>When I was younger, MMOs were everywhere. World of Warcraft had already taken over the world with millions of players, Lineage II and Runescape had their own massive communities, and when AION launched in 2009 by NCSoft (a South Korean Company) it quickly became one of the most pupulated MMOs, with around 6 millions players in Asia and 1 million in Europe.</p>
-<p>But honestly the teenager me never really got into it. My thing was mainly FPS. I’d rather be playing Halo 3 or Call of Duty matches than grinding dungeons and raids.</p>
-<p>Few weeks ago tho, some of my friends decided to give AION another go, this time on a private server.
+<p>When I was younger, MMOs were everywhere. World of Warcraft had already taken over the world with millions of players, Lineage II and Runescape had their own massive communities, and when AION launched in 2009 by NCSoft (a South Korean Company) it quickly became one of the most populated MMOs, with around 6 million players in Asia and 1 million in Europe.</p>
+<p>But honestly teenager me never really got into it. My thing was mainly FPS. I’d rather be playing Halo 3 or Call of Duty matches than grinding dungeons and raids.</p>
+<p>Few weeks ago though, some of my friends decided to give AION another go, this time on a private server.
 For anyone unfamiliar, private servers are unofficial versions of the game run by the community. They invited me to join them, and that’s how I finally ended up in AION.</p>
 <p>Except, instead of just playing, I got curious about how things worked behind the scenes, which eventually led me to uncover a vulnerability hidden in the original client itself.</p>
 <h2 id="the-housing-system" class="headerLink">
@@ -180,7 +180,7 @@ For anyone unfamiliar, private servers are unofficial versions of the game run b
 <p>For those not familiar, Lua is an interpreted language known for being lightweight and highly extensible. Global variables, functions, etc., live in a global table called <code>_G</code>.</p>
 <p>My idea was to loop through <code>_G</code> and see what I actually had access to, since again, there’s zero documentation on this system.</p>
 <p>At first I tried getting some output using <code>print()</code>  or writing to stderr, but both were disabled. Even though the scripting editor had an output box, I couldn’t figure out how to write to it directly.</p>
-<p>The only thing that worked was calling <code>error()</code>, which does print to the box, but it also returns immediatly, which makes things messy.</p>
+<p>The only thing that worked was calling <code>error()</code>, which does print to the box, but it also returns immediately, which makes things messy.</p>
 <p>While looking through one of the sample scripts bundled with the Butler, I noticed a function called <code>H.Say()</code> that makes the NPC speak in chat.</p>
 <p>That seemed like the perfect way to get output without stopping the execution, so I decided to use it for my enumeration.</p>
 <p>Here’s the first script I wrote to dump accessible tables:</p>
@@ -304,14 +304,14 @@ For anyone unfamiliar, private servers are unofficial versions of the game run b
 </span></span><span class="line"><span class="cl">        
 </span></span><span class="line"><span class="cl"><span class="kr">end</span></span></span></code></pre>
 </div>
-<p>And with my great surprise it worked:</p>
+<p>And to my great surprise it worked:</p>
 <figure><img src="/posts/aion-housing-exploit/res/stdbutler.png"><figcaption>
       <h4>He&#39;s speaking the language of the interpreter</h4>
     </figcaption>
 </figure>
 
 <h2 id="reaching-code-execution" class="headerLink">
-    <a href="#reaching-code-execution" class="header-mark"></a>3 Reaching code execution</h2><p>Apparently the sandbox is very losely configured and we have access to <em>a lot</em> of functions that allows code execution.
+    <a href="#reaching-code-execution" class="header-mark"></a>3 Reaching code execution</h2><p>Apparently the sandbox is very loosely configured and we have access to <em>a lot</em> of functions that allow code execution.
 Among those we have: <code>loadstring()</code>, <code>loadfile()</code>, <code>load()</code>.</p>
 <p>A partial list is available in this image:
 <figure><img src="/posts/aion-housing-exploit/res/function_list.png"><figcaption>
@@ -319,10 +319,10 @@ Among those we have: <code>loadstring()</code>, <code>loadfile()</code>, <code>l
     </figcaption>
 </figure>
 </p>
-<p>There is a very interesting article about memory corruptions in Lua applied in particular to games, which explains why functions like <code>load()</code>, <code>loadfile()</code> and <code>loadstring()</code> are very dangerous.</p>
+<p>There is a <a href="https://memorycorruption.net/posts/rce-lua-factorio/" target="_blank" rel="noopener noreferrer">very interesting article</a> about memory corruptions in Lua applied in particular to games, which explains why functions like <code>load()</code>, <code>loadfile()</code> and <code>loadstring()</code> are very dangerous.</p>
 <p>They allow execution of raw bytecode, which isn’t inherently unsafe, but in Lua versions ≤ 5.1 there are numerous bypasses for memory safety issues and in Lua 5.2 the bytecode verifier was completely removed (<a href="https://web.archive.org/web/20230308193701/htt%60ps://lua-users.org/lists/lua-l/2009-03/msg00039.html" target="_blank" rel="noopener noreferrer">source</a>, <a href="https://gist.github.com/ulidtko/51b8671260db79da64d193e41d7e7d16" target="_blank" rel="noopener noreferrer">bypass</a>).</p>
 <p>This means we can leak addresses using <code>print()</code>, or, in our case <code>H.Say()</code>, write and load bytecode, and trigger memory corruption entirely through built-in functions.</p>
-<p>Do do this tho, I would normally need a decent interface to read leaked addresses, edit bytecode, or attach a debugger. However, this client includes an anti-cheat system called [Active Anticheat](<a href="https://active-ac.com/" target="_blank" rel="noopener noreferrer">https://active-ac.com/</a> which prevents processes from attaching to the client.</p>
+<p>To do this though, I would normally need a decent interface to read leaked addresses, edit bytecode, or attach a debugger. However, this client includes an anti-cheat system called <a href="https://active-ac.com/" target="_blank" rel="noopener noreferrer">Active Anticheat</a>which prevents processes from attaching to the client.</p>
 <p>That rules out using <code>gdb</code> to debug my (very rough) payloads, and although <code>stdbutler</code> is useful, it would be a pain to debug everything with it, especially with <code>ASLR</code> in play.</p>
 <p>Fortunately we don&rsquo;t need any of this since the developers forgot to disable the <code>io</code> package which gives access to <code>io.popen()</code> allowing us to spawn processes directly.</p>
 <p>The final script is really simple but effective:</p>
@@ -531,18 +531,18 @@ Among those we have: <code>loadstring()</code>, <code>loadfile()</code>, <code>l
 </span></span></span><span class="line"><span class="cl"><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span></span></span></code></pre>
 </div>
-<p>This means that is possible to achieve code execution on the client of every player who interact with the Butler.
+<p>This means that it is possible to achieve code execution on the client of every player who interacts with the Butler.
 This is cool but how can we trigger it without requiring the interaction?</p>
-<p>Looking at the pre-populated scripts there are some functiuons available:</p>
+<p>Looking at the pre-populated scripts there are some functions available:</p>
 <ul>
 <li><code>OnMenu()</code>, which runs when a menu option is selected</li>
 <li><code>OnUserMessage</code>, which triggers whenever someone sends a chat message</li>
-<li><code>OnInit()</code>, which runs automatically whenever the script is loaded (which is when a Player enter a House).</li>
+<li><code>OnInit()</code>, which runs automatically whenever the script is loaded (which is when a player enters a House).</li>
 </ul>
 <p>We can leverage <code>OnInit()</code> to execute our payload automatically each time the script is initialized, removing the need for any interaction.</p>
 <h2 id="conclusions" class="headerLink">
     <a href="#conclusions" class="header-mark"></a>5 Conclusions</h2><p>As expected, a feature implemented more than a decade ago turned out to be vulnerable to code execution in a surprisingly simple way.</p>
-<p>The official AION MMO is still running in two version &ldquo;Classic&rdquo; that doesn&rsquo;t have the housing system at all, and &ldquo;Retail&rdquo; which still maintain the housing system but according to someone who read this blogpost and tested it, the same payload doesn&rsquo;t work.</p>
+<p>The official AION MMO is still running in two versions: &ldquo;Classic&rdquo;, which doesn&rsquo;t have the housing system at all, and &ldquo;Retail&rdquo; which still maintains the housing system but according to someone who read this blogpost and tested it, the same payload doesn&rsquo;t work.</p>
 <p>In the private server scene, however, the situation is different: most active servers run versions from 3.0 to 4.8, which are still susceptible to this vulnerability.</p>
 <p>I’ve always found game exploits fascinating, as they often require deep knowledge of binary exploitation and creative ways to bypass anti-cheat mechanisms.</p>
 <p>In the future, I’d like to experiment loading bytecode directly to trigger memory corruptions through the in-house scripting system, though doing so would require bypassing the anti-cheat protections. I would also try to do a bit of research on the latest version of the retail game.</p>
