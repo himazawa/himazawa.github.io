@@ -1,10 +1,19 @@
 # About Me
 
 
-My name is Francesco Giordano and I'm a Product Security Engineer with a background in vulnerability reasearch, malware development and offensive security in general.
+My name is Francesco Giordano, and I’m a Product Security Engineer with a background in vulnerability research, malware development, and offensive security. 
 
-I also like to develop my own frameworks and tools, you can find my work and contributions on [my GitHub](https://github.com/himazawa).
+I’m passionate about understanding how systems really work and how to break them.
 
-I used to run [another blog](https://bsod.dev), you can read more about that [here](/posts/long-time-no-see).
+Over the years, I’ve worked on projects involving exploit development, and internal security tooling for large-scale environments.
 
-If you want to reach out feel free to send an email to: francesco@[this.website]
+I’m also a developer at heart. I enjoy creating my own frameworks, automation tools, and research utilities to make security work faster and scaling better. You can find some of my projects and open-source contributions on [my GitHub](https://github.com/himazawa).
+
+Before this blog, I used to run another blog at [bsod.dev](https://bsod.dev) but all the content is (slowly) getting moved here, you can read more about that [here](/posts/long-time-no-see/).
+
+Outside of work, I like experimenting with web applications, embedded devices, and novel attack surfaces.
+
+If you’d like to connect, collaborate or discuss security research, feel free to reach out. 
+I’m always open to chatting about offensive security or interesting technical challenges. You can contact me at francesco[at]this.domain
+
+
