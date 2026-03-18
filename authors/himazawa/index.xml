@@ -529,7 +529,7 @@ Among those we have: <code>loadstring()</code>, <code>loadfile()</code>, <code>l
 </span></span></span><span class="line"><span class="cl"><span class="w">		</span><span class="n">scriptSplitList</span><span class="p">.</span><span class="na">forEach</span><span class="p">(</span><span class="n">part</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">PacketSendUtility</span><span class="p">.</span><span class="na">sendPacket</span><span class="p">(</span><span class="n">player</span><span class="p">,</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">SM_HOUSE_SCRIPTS</span><span class="p">(</span><span class="n">houseAddress</span><span class="p">,</span><span class="w"> </span><span class="n">part</span><span class="p">)));</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="p">}</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span></span></span></code></pre>
+</span></span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre>
 </div>
 <p>This means that it is possible to achieve code execution on the client of every player who interacts with the Butler.
 This is cool but how can we trigger it without requiring the interaction?</p>
@@ -707,7 +707,7 @@ And I also don&rsquo;t want to change a working keyboard.</p>
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="c1">// the path parameter is sent by the user</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="nx">output</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">exec</span><span class="p">.</span><span class="nf">Command</span><span class="p">(</span><span class="s">&#34;lsblk&#34;</span><span class="p">,</span><span class="w"> </span><span class="nx">path</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;-O&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;-J&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;-b&#34;</span><span class="p">).</span><span class="nf">Output</span><span class="p">()</span><span class="w"> 
 </span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="o">...</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span></span></span></code></pre>
+</span></span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre>
 </div>
 <p>Before merging the disk (and so calling <code>lsblk</code>), the <a href="https://github.com/IceWhaleTech/CasaOS-LocalStorage/blob/ca6d672f152920dca851c24a941136747ccc2ec2/service/v2/merge.go#L209-L216" target="_blank" rel="noopener noreferrer">existence for the mountpoint is checked</a>:</p>
 <div class="code-block highlight is-open show-line-numbers  tw-group tw-my-2">
@@ -948,7 +948,7 @@ And I also don&rsquo;t want to change a working keyboard.</p>
 </span></span></span><span class="line"><span class="cl"><span class="w">		</span><span class="k">go</span><span class="w"> </span><span class="nx">command2</span><span class="p">.</span><span class="nf">OnlyExec</span><span class="p">(</span><span class="s">&#34;curl -fsSL https://get.casaos.io/update?t=&#34;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">osRelease</span><span class="p">[</span><span class="s">&#34;MANUFACTURER&#34;</span><span class="p">]</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&#34; | bash&#34;</span><span class="p">)</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="p">}</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span></span></span></code></pre>
+</span></span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre>
 </div>
 <p>the TL;DR is: a script get downloaded from <code>https://get.casaos.io/update</code> and piped to bash.</p>
 <p>It&rsquo;s honestly a questionable design but I&rsquo;m not here to judge (not today atleast), but since they already got native code runnig the update script could be a native function instead.
@@ -1274,7 +1274,7 @@ And will for sure cut out issues like the domain being unreachable or, even wors
       tw-scrollbar-thin
       "><span class="line"><span class="cl"><span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">s</span><span class="w"> </span><span class="o">*</span><span class="nx">FileUploadService</span><span class="p">)</span><span class="w"> </span><span class="nf">UploadFile</span><span class="p">(</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="o">...</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">)</span><span class="w"> </span><span class="kt">error</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="p">)</span><span class="w"> </span><span class="kt">error</span><span class="w"> </span><span class="p">{</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="o">...</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="c1">// path and relativePath are sent by the user</span><span class="w">
@@ -1289,7 +1289,7 @@ And will for sure cut out issues like the domain being unreachable or, even wors
 </span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="nx">_</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">io</span><span class="p">.</span><span class="nf">Copy</span><span class="p">(</span><span class="nx">file</span><span class="p">,</span><span class="w"> </span><span class="nx">src</span><span class="p">)</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="o">...</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span></span></span></code></pre>
+</span></span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre>
 </div>
 <figure><img src="/posts/zimaos-casaos-rce/arbitrary_file_upload.png"><figcaption>
       <h4>Arbitrary file upload</h4>
@@ -1403,7 +1403,7 @@ This time the only requirement is a reboot (the webUI allows to reboot from web 
 </span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">// execute the script</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">		</span><span class="nx">cmd</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">exec</span><span class="p">.</span><span class="nf">Command</span><span class="p">(</span><span class="nx">interpreter</span><span class="p">,</span><span class="w"> </span><span class="nx">scriptFilepath</span><span class="p">)</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="o">...</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span></span></span></code></pre>
+</span></span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre>
 </div>
 <figure><img src="/posts/zimaos-casaos-rce/ExecuteScripts_logic.png"><figcaption>
       <h4>ExecuteScripts() logic flow</h4>
@@ -2776,7 +2776,7 @@ The theme localization it&rsquo;s a pretty cool feature but having to rewrite th
       tw-overflow-x-auto
       tw-scrollbar-thin
       "><span class="line"><span class="cl"><span class="c1">// The mycroft-core messagebus&#39; websocket
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="s2">&#34;websocket&#34;</span><span class="err">:</span> <span class="p">{</span>
+</span></span></span><span class="line"><span class="cl">  <span class="s2">&#34;websocket&#34;</span><span class="err">:</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="nt">&#34;host&#34;</span><span class="p">:</span> <span class="s2">&#34;0.0.0.0&#34;</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">    <span class="nt">&#34;port&#34;</span><span class="p">:</span> <span class="mi">8181</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">    <span class="nt">&#34;route&#34;</span><span class="p">:</span> <span class="s2">&#34;/core&#34;</span><span class="p">,</span>

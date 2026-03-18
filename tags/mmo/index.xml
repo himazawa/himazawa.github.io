@@ -529,7 +529,7 @@ Among those we have: <code>loadstring()</code>, <code>loadfile()</code>, <code>l
 </span></span></span><span class="line"><span class="cl"><span class="w">		</span><span class="n">scriptSplitList</span><span class="p">.</span><span class="na">forEach</span><span class="p">(</span><span class="n">part</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">PacketSendUtility</span><span class="p">.</span><span class="na">sendPacket</span><span class="p">(</span><span class="n">player</span><span class="p">,</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">SM_HOUSE_SCRIPTS</span><span class="p">(</span><span class="n">houseAddress</span><span class="p">,</span><span class="w"> </span><span class="n">part</span><span class="p">)));</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="p">}</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span></span></span></code></pre>
+</span></span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre>
 </div>
 <p>This means that it is possible to achieve code execution on the client of every player who interacts with the Butler.
 This is cool but how can we trigger it without requiring the interaction?</p>

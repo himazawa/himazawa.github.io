@@ -200,7 +200,7 @@
       tw-overflow-x-auto
       tw-scrollbar-thin
       "><span class="line"><span class="cl"><span class="c1">// The mycroft-core messagebus&#39; websocket
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="s2">&#34;websocket&#34;</span><span class="err">:</span> <span class="p">{</span>
+</span></span></span><span class="line"><span class="cl">  <span class="s2">&#34;websocket&#34;</span><span class="err">:</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="nt">&#34;host&#34;</span><span class="p">:</span> <span class="s2">&#34;0.0.0.0&#34;</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">    <span class="nt">&#34;port&#34;</span><span class="p">:</span> <span class="mi">8181</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">    <span class="nt">&#34;route&#34;</span><span class="p">:</span> <span class="s2">&#34;/core&#34;</span><span class="p">,</span>
