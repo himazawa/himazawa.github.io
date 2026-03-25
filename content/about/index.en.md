@@ -4,7 +4,7 @@ date: 2025-08-23T19:32:00+01:00
 draft: false
 ---
 
-My name is Francesco Giordano, and I’m a Product Security Engineer with a background in vulnerability research, malware development, and offensive security. 
+My name is Francesco Giordano, and I’m a Product Security Lead with a background in vulnerability research, malware development, and offensive security. 
 
 I’m passionate about understanding how systems really work and how to break them.
 

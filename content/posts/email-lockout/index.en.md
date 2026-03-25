@@ -106,7 +106,7 @@ The domino effect was real, and it made me realize just how much this is gonna a
 Every now and then someone is recommending to "just self-host your mailserver" to escape the tech giants.
 Yeah, been there, done that. Anyone who’s actually tried it (and stuck with it) will tell you tahat running your own mail server is nihtmerish, not because of the tech stack but mainly because it’s hard keeping your server’s reputation clean without getting blacklisted by the world and honestly I don’t have the time, nor mana for that.
 
-{{< admonition type=tip title="Note" open=true >}}
+{{< admonition type=note title="Note" open=true >}}
 And yes.. I hear you Bob: "then you deserved to get locked out of your email".
 Imagine for a second you’re not tech savvy. You barely understand how the internet works, but you still need an email address because it’s 2026 and everything is online. Do you really deserve to be locked out just because you can’t self-host a mail server?
 {{< /admonition >}}
@@ -120,7 +120,7 @@ Since I was already using Proton VPN and had a good experience, I upgraded to th
 
 This time, I’m trying a new approach to email management, since Proton Mail has some genuinely useful features.
 
-{{< admonition type=tip title="Heads up" open=true >}}
+{{< admonition type=info title="Info" open=true >}}
 if you wanna support me here is a proton mail referral that gives you 20$ to redeem on your next bill if you subscribe using it: https://pr.tn/ref/5JTNAQZW
 {{< /admonition >}}
 
@@ -130,7 +130,7 @@ if you wanna support me here is a proton mail referral that gives you 20$ to red
 
 This is perfect for signing up to sketchy or oneshot services you don’t fully trust. If they start spamming you, just nuke the alias and you’re done with them for good.
 
-{{< admonition type=tip title="Heads up" open=true >}}
+{{< admonition type=warning title="Warning" open=true >}}
 As far as I can tell, hide-my-email aliases are receive-only. So, use them for stuff you don’t care about replying to. In the past it happen that some sites wanted me to prove account ownership by sending an email from my registered address, which you can’t do in this case.
 {{< /admonition >}}
 
