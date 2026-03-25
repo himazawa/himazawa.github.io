@@ -16,7 +16,7 @@ This is a post-mortem of what happened and what I learned.
 
 {{< admonition type=info title="This post is NOT sponsored" open=false >}}
 This post is not sponsored or paid by Proton.
-I am just talkign about what happen to me and the steps I took.
+I am just writing about what happen to me and the steps I took.
 I decied to switch to proton just because I already was paying for their VPN service and I had a good experience.
 Other providers I considered are [tuta](https://tuta.com/) and [fastmail](https://www.fastmail.com/)
 {{< /admonition >}}
