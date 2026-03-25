@@ -2,6 +2,17 @@
                 <img src="https://imgs.xkcd.com/comics/two_key_system.png" referrerpolicy="no-referrer">
             </div><p>A few weeks ago, I lost access to my email account. That experience opened my eyes to just how much I depended on it and how expensive a “free” service can become when things go wrong.</p>
 <p>This is a post-mortem of what happened and what I learned.</p>
+<div class="details admonition info">
+    <div class="details-summary admonition-title">
+        <span class="icon"><svg class="icon"
+    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M256 8C119.043 8 8 119.083 8 256c0 136.997 111.043 248 248 248s248-111.003 248-248C504 119.083 392.957 8 256 8zm0 110c23.196 0 42 18.804 42 42s-18.804 42-42 42-42-18.804-42-42 18.804-42 42-42zm56 254c0 6.627-5.373 12-12 12h-88c-6.627 0-12-5.373-12-12v-24c0-6.627 5.373-12 12-12h12v-64h-12c-6.627 0-12-5.373-12-12v-24c0-6.627 5.373-12 12-12h64c6.627 0 12 5.373 12 12v100h12c6.627 0 12 5.373 12 12v24z"/></svg></span>This post is NOT sponsored<span class="details-icon"><svg class="icon"
+    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34z"/></svg></span>
+    </div>
+    <div class="details-content">
+        <div class="admonition-content">This post is not sponsored or paid by Proton.
+I am just talkign about what happen to me and the steps I took.
+I decied to switch to proton just because I already was paying for their VPN service and I had a good experience.
+Other providers I considered are <a href="https://tuta.com/" target="_blank" rel="noopener noreferrer">tuta</a> and <a href="https://www.fastmail.com/" target="_blank" rel="noopener noreferrer">fastmail</a></div></div></div>
 <h2 id="the-mfa-trap-losing-access-to-everything" class="headerLink">
     <a href="#the-mfa-trap-losing-access-to-everything" class="header-mark"></a>17 The MFA trap: losing access to everything</h2><p>Few weeks ago changed my Outlook password using my password manager on mobile. If you have ever tried this, you know that sometimes the password gets changed but does not get saved in the manager, especially if you forget to press save. I figured it was not a big deal and that I could reset it later if needed.</p>
 <p>Then my phone broke. I was not too worried, since I had backups and assumed I could recover everything.</p>
@@ -74,7 +85,7 @@
 <p>The domino effect was real, and it made me realize just how much this is gonna affect me.</p>
 <h2 id="any-alternative" class="headerLink">
     <a href="#any-alternative" class="header-mark"></a>21 Any alternative?</h2><p>Every now and then someone is recommending to &ldquo;just self-host your mailserver&rdquo; to escape the tech giants.
-Yeah, been there, done that. Anyone who’s actually tried it (and stuck with it) will tell you tahat running your own mail server is nihtmerish, not because of the tech stack but mainly because it’s hard keeping your server’s reputation clean without getting blacklisted by the world and honestly I don’t have the time, nor mana for that.</p>
+Yeah, been there, done that. Anyone who’s actually tried it (and stuck with it) will tell you tahat running your own mail server is nightmerish, not because of the tech stack but mainly because it’s hard keeping your server’s reputation clean without getting blacklisted by the world and honestly I don’t have the time, nor mana for that.</p>
 <div class="details admonition note open">
     <div class="details-summary admonition-title">
         <span class="icon"><svg class="icon"
@@ -85,7 +96,8 @@ Yeah, been there, done that. Anyone who’s actually tried it (and stuck with it
         <div class="admonition-content">And yes.. I hear you Bob: &ldquo;then you deserved to get locked out of your email&rdquo;.
 Imagine for a second you’re not tech savvy. You barely understand how the internet works, but you still need an email address because it’s 2026 and everything is online. Do you really deserve to be locked out just because you can’t self-host a mail server?</div></div></div>
 <h3 id="proton-mail" class="headerLink">
-    <a href="#proton-mail" class="header-mark"></a>21.1 Proton Mail</h3><p>After a lot of thinking (and a lot of 72-hour lockouts, thanks Outlook support), I realized the real problem wasn’t Zero Trust policies locking me out. It was support—run by what felt like a lobotomized LLM failing to understand basic issues. So, following the old &ldquo;you get what you pay for&rdquo; mantra, I decided to try paid providers.</p>
+    <a href="#proton-mail" class="header-mark"></a>21.1 Proton Mail</h3><p>After a lot of thinking (and a lot of 72-hour lockouts, thanks Outlook support), I realized the real problem wasn’t Zero Trust policies locking me out which is fair. It was support, run by what felt like a lobotomized LLM failing to understand basic tasks.</p>
+<p>So, following the old &ldquo;you get what you pay for&rdquo; mantra, I decided to try paid providers.</p>
 <p>It’s a gamble, of course. Support is like security: you don’t realize how much you need it until you really need it. I just hope my money is going into the right bucket.</p>
 <p>Since I was already using Proton VPN and had a good experience, I upgraded to the unlimited plan that also offers 24/7 support, just in case.</p>
 <p>This time, I’m trying a new approach to email management, since Proton Mail has some genuinely useful features.</p>

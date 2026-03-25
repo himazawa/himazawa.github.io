@@ -7,6 +7,13 @@ This is a post-mortem of what happened and what I learned.
 
 <!--more-->
 
+{{< admonition type=info title="This post is NOT sponsored" open=false >}}
+This post is not sponsored or paid by Proton.
+I am just talkign about what happen to me and the steps I took.
+I decied to switch to proton just because I already was paying for their VPN service and I had a good experience.
+Other providers I considered are [tuta](https://tuta.com/) and [fastmail](https://www.fastmail.com/)
+{{< /admonition >}}
+
 ## The MFA trap: losing access to everything
 
 Few weeks ago changed my Outlook password using my password manager on mobile. If you have ever tried this, you know that sometimes the password gets changed but does not get saved in the manager, especially if you forget to press save. I figured it was not a big deal and that I could reset it later if needed.
@@ -101,7 +108,7 @@ The domino effect was real, and it made me realize just how much this is gonna a
 ## Any alternative?
 
 Every now and then someone is recommending to "just self-host your mailserver" to escape the tech giants.
-Yeah, been there, done that. Anyone who’s actually tried it (and stuck with it) will tell you tahat running your own mail server is nihtmerish, not because of the tech stack but mainly because it’s hard keeping your server’s reputation clean without getting blacklisted by the world and honestly I don’t have the time, nor mana for that.
+Yeah, been there, done that. Anyone who’s actually tried it (and stuck with it) will tell you tahat running your own mail server is nightmerish, not because of the tech stack but mainly because it’s hard keeping your server’s reputation clean without getting blacklisted by the world and honestly I don’t have the time, nor mana for that.
 
 {{< admonition type=note title="Note" open=true >}}
 And yes.. I hear you Bob: "then you deserved to get locked out of your email".
@@ -109,7 +116,9 @@ Imagine for a second you’re not tech savvy. You barely understand how the inte
 {{< /admonition >}}
 
 ### Proton Mail
-After a lot of thinking (and a lot of 72-hour lockouts, thanks Outlook support), I realized the real problem wasn’t Zero Trust policies locking me out. It was support—run by what felt like a lobotomized LLM failing to understand basic issues. So, following the old "you get what you pay for" mantra, I decided to try paid providers.
+After a lot of thinking (and a lot of 72-hour lockouts, thanks Outlook support), I realized the real problem wasn’t Zero Trust policies locking me out which is fair. It was support, run by what felt like a lobotomized LLM failing to understand basic tasks. 
+
+So, following the old "you get what you pay for" mantra, I decided to try paid providers.
 
 It’s a gamble, of course. Support is like security: you don’t realize how much you need it until you really need it. I just hope my money is going into the right bucket.
 
