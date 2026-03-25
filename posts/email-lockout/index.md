@@ -10,7 +10,7 @@ This is a post-mortem of what happened and what I learned.
 {{< admonition type=info title="This post is NOT sponsored" open=false >}}
 This post is not sponsored or paid by Proton.
 I am just writing about what happen to me and the steps I took.
-I decied to switch to proton just because I already was paying for their VPN service and I had a good experience.
+I decided to switch to proton just because I already was paying for their VPN service and I had a good experience.
 Other providers I considered are [tuta](https://tuta.com/) and [fastmail](https://www.fastmail.com/)
 {{< /admonition >}}
 
@@ -77,7 +77,9 @@ As a result, it silently disabled the SMS recovery method without any warning or
 
 Reaching out to support felt like entering a bureaucratic maze. I got send to fill out a recovery form: twenty questions about my account, supposedly checked by a bot. If you get enough right, you get your account back. If not, it is gone forever.
 
-The questions ranged from "What was your Skype Mename?" to "List ten subjects and exact recipients of emails you sent in the last year." I tried to recall as many details as possible, even calling friends and colleagues to piece together the information.
+The questions ranged from "What was your Skype name?" to "List ten subjects and exact recipients of emails you sent in the last year."
+
+I tried to recall as many details as possible, even calling friends and colleagues to piece together the information.
 
 Seconds after submitting the form, I received an automated rejection from Microsoft.
 

@@ -11,7 +11,7 @@
     <div class="details-content">
         <div class="admonition-content">This post is not sponsored or paid by Proton.
 I am just writing about what happen to me and the steps I took.
-I decied to switch to proton just because I already was paying for their VPN service and I had a good experience.
+I decided to switch to proton just because I already was paying for their VPN service and I had a good experience.
 Other providers I considered are <a href="https://tuta.com/" target="_blank" rel="noopener noreferrer">tuta</a> and <a href="https://www.fastmail.com/" target="_blank" rel="noopener noreferrer">fastmail</a></div></div></div>
 <h2 id="the-mfa-trap-losing-access-to-everything" class="headerLink">
     <a href="#the-mfa-trap-losing-access-to-everything" class="header-mark"></a>17 The MFA trap: losing access to everything</h2><p>Few weeks ago changed my Outlook password using my password manager on mobile. If you have ever tried this, you know that sometimes the password gets changed but does not get saved in the manager, especially if you forget to press save. I figured it was not a big deal and that I could reset it later if needed.</p>
@@ -59,7 +59,8 @@ Other providers I considered are <a href="https://tuta.com/" target="_blank" rel
 <p>As a result, it silently disabled the SMS recovery method without any warning or explanation. The only feedback I got was the generic &ldquo;This method is not available&rdquo; message. Which prompted me to just retry, flagging me even more as suspicious attempt and locking my account even more.</p>
 <h2 id="no-way-in" class="headerLink">
     <a href="#no-way-in" class="header-mark"></a>19 No way in</h2><p>Reaching out to support felt like entering a bureaucratic maze. I got send to fill out a recovery form: twenty questions about my account, supposedly checked by a bot. If you get enough right, you get your account back. If not, it is gone forever.</p>
-<p>The questions ranged from &ldquo;What was your Skype Mename?&rdquo; to &ldquo;List ten subjects and exact recipients of emails you sent in the last year.&rdquo; I tried to recall as many details as possible, even calling friends and colleagues to piece together the information.</p>
+<p>The questions ranged from &ldquo;What was your Skype name?&rdquo; to &ldquo;List ten subjects and exact recipients of emails you sent in the last year.&rdquo;</p>
+<p>I tried to recall as many details as possible, even calling friends and colleagues to piece together the information.</p>
 <p>Seconds after submitting the form, I received an automated rejection from Microsoft.</p>
 <figure><img src="/posts/email-lockout/res/no-recovery.png"><figcaption>
       <h4>This was supposed to help me</h4>
