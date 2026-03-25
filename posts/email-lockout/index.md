@@ -86,9 +86,13 @@ Of course, I was asleep and missed it.
 
 Losing access to my Microsoft account was not just about missing email but it broke everything that relied on OAuth2/OIDC.
 
-I could not log in to services like Tailscale, which only allow sign ups through OIDC providers. Basically my digital identity had become a single point of failure, locking me out of tools and workspaces.
+I could not log in to services like [Tailscale](https://tailscale.com/docs/integrations/identity), which only allow sign ups through OIDC providers and as of 03/2026 only [allows passkey accounts](https://tailscale.com/blog/passkeys) if you get invited to a TailNet by an account that signed up via OIDC . Basically my digital identity had become a single point of failure, locking me out of tools and workspaces.
 
-The consequences went beyond tech. In Italy, you can declare a certified email address tied to your electronic Identity Card, which is required to access public administration services.
+{{< admonition type=note title="Note" open=true >}}
+I don't blame Tailscale for not wanting to handle passwords, they are a pain most of the time.
+{{< /admonition >}}
+
+The consequences went beyond tech. In Italy, you can declare a certified email address tied to your [electronic Identity Card](https://www.cartaidentita.interno.gov.it/en/cie/electronic-identity-card/), which is required to access public administration services.
 
 Guess which email I had registered as my certified address? Exactly. The one I was now locked out of. 
 
