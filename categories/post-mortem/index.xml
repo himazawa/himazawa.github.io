@@ -15,6 +15,14 @@ I decided to switch to proton just because I already was paying for their VPN se
 Other providers I considered are <a href="https://tuta.com/" target="_blank" rel="noopener noreferrer">tuta</a> and <a href="https://www.fastmail.com/" target="_blank" rel="noopener noreferrer">fastmail</a></div></div></div>
 <h2 id="the-mfa-trap-losing-access-to-everything" class="headerLink">
     <a href="#the-mfa-trap-losing-access-to-everything" class="header-mark"></a>17 The MFA trap: losing access to everything</h2><p>Few weeks ago changed my Outlook password using my password manager on mobile. If you have ever tried this, you know that sometimes the password gets changed but does not get saved in the manager, especially if you forget to press save. I figured it was not a big deal and that I could reset it later if needed.</p>
+<div class="details admonition note">
+    <div class="details-summary admonition-title">
+        <span class="icon"><svg class="icon"
+    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M497.9 142.1l-46.1 46.1c-4.7 4.7-12.3 4.7-17 0l-111-111c-4.7-4.7-4.7-12.3 0-17l46.1-46.1c18.7-18.7 49.1-18.7 67.9 0l60.1 60.1c18.8 18.7 18.8 49.1 0 67.9zM284.2 99.8L21.6 362.4.4 483.9c-2.9 16.4 11.4 30.6 27.8 27.8l121.5-21.3 262.6-262.6c4.7-4.7 4.7-12.3 0-17l-111-111c-4.8-4.7-12.4-4.7-17.1 0zM124.1 339.9c-5.5-5.5-5.5-14.3 0-19.8l154-154c5.5-5.5 14.3-5.5 19.8 0s5.5 14.3 0 19.8l-154 154c-5.5 5.5-14.3 5.5-19.8 0zM88 424h48v36.3l-64.5 11.3-31.1-31.1L51.7 376H88v48z"/></svg></span>Why the password didn&#39;t get saved<span class="details-icon"><svg class="icon"
+    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34z"/></svg></span>
+    </div>
+    <div class="details-content">
+        <div class="admonition-content">The password manager I am using has an issue of not saving rotated password sometimes, you can read more <a href="https://www.reddit.com/r/Bitwarden/comments/1hc2z5r/auto_generated_password_not_saved/" target="_blank" rel="noopener noreferrer">here</a>. It happens, yes, the mistake was preventable but still, why a recovery option is there if it can&rsquo;t be used?</div></div></div>
 <p>Then my phone broke. I was not too worried, since I had backups and assumed I could recover everything.</p>
 <p>I restored my backup, reinstalled Microsoft Authenticator, and tried to log in.</p>
 <p>But to approve the request on the Authenticator I needed to log in to my Microsoft account, which required the password I had just changed (and not saved).</p>
@@ -120,7 +128,9 @@ Imagine for a second you’re not tech savvy. You barely understand how the inte
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34z"/></svg></span>
     </div>
     <div class="details-content">
-        <div class="admonition-content">As far as I can tell, hide-my-email aliases are receive-only. So, use them for stuff you don’t care about replying to. In the past it happen that some sites wanted me to prove account ownership by sending an email from my registered address, which you can’t do in this case.</div></div></div>
+        <div class="admonition-content"><p>As far as I can tell, hide-my-email aliases are receive-only. So, use them for stuff you don’t care about replying to. In the past it happen that some sites wanted me to prove account ownership by sending an email from my registered address, which you can’t do in this case.</p>
+<p>EDIT: as ome users on Reddit made pointed out, you can send email from SimpleLogin aliases but you need to download SimpleLogin app, and create a new contact for the alias.</p>
+</div></div></div>
 <h4 id="sieve-filters" class="headerLink">
     <a href="#sieve-filters" class="header-mark"></a>21.1.2 Sieve Filters</h4><p>Another interesting feature of Proton Mail is <a href="https://proton.me/support/sieve-advanced-custom-filters" target="_blank" rel="noopener noreferrer">Sieve filters</a> basically you can write scripts to handle incoming mails and do actions based on various conditions.
 The system is very powerful but limited by the fact that, since email body is encrypted e2e the filters can&rsquo;t access it.</p>
