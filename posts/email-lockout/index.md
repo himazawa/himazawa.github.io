@@ -48,8 +48,8 @@ Here is a brief sequence diagram to resume the situation:
 sequenceDiagram
     participant Me  
     participant Microsoft Account
-    participant Authenticator App
     participant Recovery Email
+    participant Authenticator App
     participant SMS
 
     Me->>Me: Resets phone
@@ -62,11 +62,13 @@ sequenceDiagram
     Recovery Email->>Me: Receives code
     Me->>Microsoft Account: Enters email code
     Microsoft Account->>Me: Prompt for second factor (Authenticator or SMS)
-    Me->>SMS: Request SMS
-    SMS->> Me:This Method is not available
+    Me->>Microsoft Account: Request SMS
+    Microsoft Account->> Me: Prompt for phone number
+    Me->>Microsoft Account: Enters correct phone number
+    Microsoft Account->> Me: This method is not available, try again later
     loop Repeated attempts
         Me->>Microsoft Account: Retries process
-        Microsoft Account->>Me: Second factor still required
+        Microsoft Account->>Me: Second factor still required, SMS fails to be sent
     end
     Microsoft Account->>Me: Account locked for 24h
 ```
