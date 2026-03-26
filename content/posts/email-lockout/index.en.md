@@ -1,7 +1,8 @@
 ---
 title: "How losing my email account locked me out of my Digital Life"
 subtitle: "Free services are never really free"
-lastmod: 2026-03-23T00:23:00+01:00
+date: 2026-03-19T00:23:00+01:00
+lastmod: 2026-03-26T00:11:00+01:00
 authors: ["himazawa"]
 categories: ["post-mortem", "identity"]
 tags: ["MFA", "Microsoft", "OAuth2", "TOTP", "Proton", "SimpleLogin"]
