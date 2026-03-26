@@ -25,6 +25,10 @@ Other providers I considered are [tuta](https://tuta.com/) and [fastmail](https:
 
 Few weeks ago changed my Outlook password using my password manager on mobile. If you have ever tried this, you know that sometimes the password gets changed but does not get saved in the manager, especially if you forget to press save. I figured it was not a big deal and that I could reset it later if needed.
 
+{{< admonition type=note title="Why the password didn't get saved" open=false >}}
+The password manager I am using has an issue of not saving rotated password sometimes, you can read more [here](https://www.reddit.com/r/Bitwarden/comments/1hc2z5r/auto_generated_password_not_saved/). It happens, yes, the mistake was preventable but still, why a recovery option is there if it can't be used?
+{{< /admonition >}}
+
 Then my phone broke. I was not too worried, since I had backups and assumed I could recover everything. 
 
 I restored my backup, reinstalled Microsoft Authenticator, and tried to log in. 
@@ -147,6 +151,8 @@ This is perfect for signing up to sketchy or oneshot services you don’t fully 
 
 {{< admonition type=warning title="Warning" open=true >}}
 As far as I can tell, hide-my-email aliases are receive-only. So, use them for stuff you don’t care about replying to. In the past it happen that some sites wanted me to prove account ownership by sending an email from my registered address, which you can’t do in this case.
+
+EDIT: as ome users on Reddit made pointed out, you can send email from SimpleLogin aliases but you need to download SimpleLogin app, and create a new contact for the alias.
 {{< /admonition >}}
 
 #### Sieve Filters
