@@ -70,8 +70,8 @@ sequenceDiagram
     Recovery Email->>Me: Receives code
     Me->>Microsoft Account: Enters email code
     Microsoft Account->>Me: Prompt for second factor (Authenticator or SMS)
-    Me->>Authenticator App: Tries to access Authenticator (cannot log in)
-    Me->>SMS: Tries SMS (not working)
+    Me->>SMS: Request SMS
+    SMS->> Me:This Method is not available
     loop Repeated attempts
         Me->>Microsoft Account: Retries process
         Microsoft Account->>Me: Second factor still required
